@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Иван Полехин](https://up.htmlacademy.ru/react/4/user/674919).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Балесный](https://htmlacademy.ru/profile/id221665).
 
 ---
 
