@@ -2,4 +2,4 @@ const getRandomIntegerNumber = (min, max) => min + Math.floor(Math.random() * (m
 
 export {
   getRandomIntegerNumber,
-}
+};

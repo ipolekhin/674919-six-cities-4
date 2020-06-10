@@ -88,9 +88,9 @@ const MainScreen = (props) => {
 
                 <span className="places__sorting-type" tabIndex="0">
                   Popular
-                  {/*<svg className="places__sorting-arrow" width="7" height="4">*/}
-                  {/*  <use xlink:href="#icon-arrow-select"></use>*/}
-                  {/*</svg>*/}
+                  <svg className="places__sorting-arrow" width="7" height="4">
+                    <use xlinkHref="#icon-arrow-select"></use>
+                  </svg>
                 </span>
 
                 <ul className="places__options places__options--custom places__options--opened">
@@ -112,8 +112,7 @@ const MainScreen = (props) => {
 
                   <div className="cities__image-wrapper place-card__image-wrapper">
                     <a href="#">
-                      <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200"
-                           alt="Place image" />
+                      <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" />
                     </a>
                   </div>
 
@@ -126,9 +125,9 @@ const MainScreen = (props) => {
                       </div>
 
                       <button className="place-card__bookmark-button button" type="button">
-                        {/*<svg className="place-card__bookmark-icon" width="18" height="19">*/}
-                        {/*  <use xlink:href="#icon-bookmark"></use>*/}
-                        {/*</svg>*/}
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark"></use>
+                        </svg>
 
                         <span className="visually-hidden">To bookmarks</span>
                       </button>
@@ -136,7 +135,7 @@ const MainScreen = (props) => {
 
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        {/*<span style="width: 80%"></span>*/}
+                        <span style={{width: `80%`}}></span>
 
                         <span className="visually-hidden">Rating</span>
                       </div>
@@ -165,11 +164,10 @@ const MainScreen = (props) => {
                         <span className="place-card__price-text">&#47;&nbsp;night</span>
                       </div>
 
-                      <button className="place-card__bookmark-button place-card__bookmark-button--active button"
-                              type="button">
-                        {/*<svg className="place-card__bookmark-icon" width="18" height="19">*/}
-                        {/*  <use xlink:href="#icon-bookmark"></use>*/}
-                        {/*</svg>*/}
+                      <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark"></use>
+                        </svg>
 
                         <span className="visually-hidden">In bookmarks</span>
                       </button>
@@ -177,7 +175,7 @@ const MainScreen = (props) => {
 
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        {/*<span style="width: 80%"></span>*/}
+                        <span style={{width: `80%`}}></span>
 
                         <span className="visually-hidden">Rating</span>
                       </div>
@@ -194,8 +192,7 @@ const MainScreen = (props) => {
                 <article className="cities__place-card place-card">
                   <div className="cities__image-wrapper place-card__image-wrapper">
                     <a href="#">
-                      <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200"
-                           alt="Place image" />
+                      <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place image" />
                     </a>
                   </div>
 
@@ -208,9 +205,9 @@ const MainScreen = (props) => {
                       </div>
 
                       <button className="place-card__bookmark-button button" type="button">
-                        {/*<svg className="place-card__bookmark-icon" width="18" height="19">*/}
-                        {/*  <use xlink:href="#icon-bookmark"></use>*/}
-                        {/*</svg>*/}
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark"></use>
+                        </svg>
 
                         <span className="visually-hidden">To bookmarks</span>
                       </button>
@@ -218,7 +215,7 @@ const MainScreen = (props) => {
 
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        {/*<span style="width: 80%"></span>*/}
+                        <span style={{width: `80%`}}></span>
 
                         <span className="visually-hidden">Rating</span>
                       </div>
@@ -239,8 +236,7 @@ const MainScreen = (props) => {
 
                   <div className="cities__image-wrapper place-card__image-wrapper">
                     <a href="#">
-                      <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200"
-                           alt="Place image" />
+                      <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image" />
                     </a>
                   </div>
 
@@ -253,16 +249,16 @@ const MainScreen = (props) => {
                       </div>
 
                       <button className="place-card__bookmark-button button" type="button">
-                        {/*<svg className="place-card__bookmark-icon" width="18" height="19">*/}
-                        {/*  <use xlink:href="#icon-bookmark"></use>*/}
-                        {/*</svg>*/}
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark"></use>
+                        </svg>
                         <span className="visually-hidden">To bookmarks</span>
                       </button>
                     </div>
 
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        {/*<span style="width: 100%"></span>*/}
+                        <span style={{width: `100%`}}></span>
 
                         <span className="visually-hidden">Rating</span>
                       </div>
@@ -291,11 +287,10 @@ const MainScreen = (props) => {
                         <span className="place-card__price-text">&#47;&nbsp;night</span>
                       </div>
 
-                      <button className="place-card__bookmark-button place-card__bookmark-button--active button"
-                              type="button">
-                        {/*<svg className="place-card__bookmark-icon" width="18" height="19">*/}
-                        {/*  <use xlink:href="#icon-bookmark-active"></use>*/}
-                        {/*</svg>*/}
+                      <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+                        <svg className="place-card__bookmark-icon" width="18" height="19">
+                          <use xlinkHref="#icon-bookmark-active"></use>
+                        </svg>
 
                         <span className="visually-hidden">In bookmarks</span>
                       </button>
@@ -303,7 +298,7 @@ const MainScreen = (props) => {
 
                     <div className="place-card__rating rating">
                       <div className="place-card__stars rating__stars">
-                        {/*<span style="width: 80%"></span>*/}
+                        <span style={{width: `80%`}}></span>
 
                         <span className="visually-hidden">Rating</span>
                       </div>

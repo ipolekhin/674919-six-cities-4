@@ -9,7 +9,7 @@ const Settings = {
 };
 
 ReactDOM.render(
-  <App
-  countPlaces = {Settings.COUNT_PLACES} />,
-  document.querySelector(`#root`)
+    <App
+      countPlaces = {Settings.COUNT_PLACES} />,
+    document.querySelector(`#root`)
 );
