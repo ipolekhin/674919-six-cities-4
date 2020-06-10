@@ -1,7 +1,7 @@
 import React from "react";
-// eslint-disable-next-line react/prop-types
 
 const MainScreen = (props) => {
+  // eslint-disable-next-line react/prop-types
   const {countPlaces} = props;
 
   return (
