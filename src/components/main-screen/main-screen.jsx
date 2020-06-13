@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PlaceCard from "../place-card/place-card.jsx";
+import PlaceCards from "../place-card/place-card.jsx";
 
 const MainScreen = (props) => {
   const {countPlaces, placeCards} = props;
@@ -107,7 +107,7 @@ const MainScreen = (props) => {
                 </form>
 
                 <div className="cities__places-list places__list tabs__content">
-                  { <PlaceCard
+                  { <PlaceCards
                     placeCards = {placeCards} /> }
                 </div>
 

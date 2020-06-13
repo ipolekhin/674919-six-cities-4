@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PlaceCard = (props) => {
+const PlaceCards = (props) => {
   const {placeCards} = props;
 
   return (
@@ -57,7 +57,7 @@ const PlaceCard = (props) => {
   );
 };
 
-PlaceCard.propTypes = {
+PlaceCards.propTypes = {
   placeCards: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -71,4 +71,4 @@ PlaceCard.propTypes = {
   ).isRequired,
 };
 
-export default PlaceCard;
+export default PlaceCards;

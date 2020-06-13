@@ -8,14 +8,15 @@ import {
   getRandomItem
 } from "../utils/common";
 
-const MIN_RATING = 1;
-const MAX_RATING = 5;
+const MIN_RATING = 0;
+const MAX_RATING = 4;
+const MAX_PRICE = 300;
 
 const generatePlaceCard = () => {
   const id = String(Math.random());
   const image = getRandomItem(CARD_IMAGES);
   const premiumPlace = getRandomBooleanValue();
-  const price = getRandomIntegerNumber(0, 300);
+  const price = getRandomIntegerNumber(0, MAX_PRICE);
   const cardName = getRandomItem(CARD_NAMES);
   const cardType = getRandomItem(CARD_TYPES);
   const cardRating = Ratings[getRandomIntegerNumber(MIN_RATING, MAX_RATING)];
