@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PlaceCards from "../place-card/place-card.jsx";
+import PlaceCards from "../place-cards/place-cards.jsx";
 
 const MainScreen = (props) => {
   const {countPlaces, placeCards} = props;
