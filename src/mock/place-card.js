@@ -15,6 +15,7 @@ const MAX_PRICE = 300;
 const generatePlaceCard = () => {
   const id = String(Math.random());
   const image = getRandomItem(CARD_IMAGES);
+  // const premiumPlace = 123;
   const premiumPlace = getRandomBooleanValue();
   const price = getRandomIntegerNumber(0, MAX_PRICE);
   const cardName = getRandomItem(CARD_NAMES);
