@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import PlaceCards from "../place-cards/place-cards.jsx";
 
 const MainScreen = (props) => {
+  // const {countPlaces} = props;
   const {countPlaces, placeCards} = props;
 
   return (

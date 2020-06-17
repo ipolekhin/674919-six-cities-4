@@ -1,15 +1,18 @@
 import React from "react";
 import MainScreen from "../main-screen/main-screen.jsx";
+// import {countPlacesType} from "../../types/types";
 import {countPlacesType, placeCardsType} from "../../types/types";
 
 const App = (props) => {
+  // const {countPlaces} = props;
   const {countPlaces, placeCards} = props;
 
   return (
     <React.Fragment>
-      <MainScreen
+       <MainScreen
         countPlaces = {countPlaces}
-        placeCards = {placeCards} />
+        placeCards = {placeCards}
+       />
     </React.Fragment>
   );
 };
