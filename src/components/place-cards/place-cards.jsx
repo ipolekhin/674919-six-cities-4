@@ -1,8 +1,8 @@
 import React from "react";
-import {placeCardsType} from "../../types/types";
+import {placeCardsType, titleClickType} from "../../types/types";
 
 const PlaceCards = (props) => {
-  const {placeCards} = props;
+  const {placeCards, titleClickHandler} = props;
 
   return (
     <React.Fragment>
@@ -46,7 +46,12 @@ const PlaceCards = (props) => {
             </div>
 
             <h2 className="place-card__name">
-              <a href="#">{card.cardName}</a>
+              <a
+                href="#"
+                onClick={titleClickHandler}
+              >
+                {card.cardName}
+              </a>
             </h2>
 
             <p className="place-card__type">{card.cardType}</p>
@@ -59,6 +64,7 @@ const PlaceCards = (props) => {
 
 PlaceCards.propTypes = {
   placeCards: placeCardsType,
+  titleClickHandler: titleClickType,
 };
 
 export default PlaceCards;

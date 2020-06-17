@@ -315,6 +315,7 @@ exports[`Render App 1`] = `
                 >
                   <a
                     href="#"
+                    onClick={[Function]}
                   >
                     Wood and stone place
                   </a>

@@ -14,11 +14,14 @@ const placeCards = [{
   cardRating: `80%`,
 }];
 
+const titleClickHandler = () => {};
+
 it(`Render App`, () => {
   const tree = renderer
     .create(<App
       countPlaces = {countPlaces}
       placeCards = {placeCards}
+      titleClickHandler = {titleClickHandler}
     />)
     .toJSON();
 

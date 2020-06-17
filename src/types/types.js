@@ -14,7 +14,10 @@ const placeCardsType = PropTypes.arrayOf(
     })
 ).isRequired;
 
+const titleClickType = PropTypes.func.isRequired;
+
 export {
   countPlacesType,
   placeCardsType,
+  titleClickType,
 };
