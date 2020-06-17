@@ -1,20 +1,27 @@
 import React from "react";
-import PropTypes from "prop-types";
 import MainScreen from "../main-screen/main-screen.jsx";
+import {countPlacesType, placeCardsType, titleClickType} from "../../types/types";
+
+const titleClickHandler = () => {};
 
 const App = (props) => {
   const {countPlaces, placeCards} = props;
 
   return (
-    <MainScreen
-      countPlaces = {countPlaces}
-      placeCards = {placeCards} />
+    <React.Fragment>
+      <MainScreen
+        countPlaces = {countPlaces}
+        placeCards = {placeCards}
+        titleClickHandler = {titleClickHandler}
+      />
+    </React.Fragment>
   );
 };
 
 App.propTypes = {
-  countPlaces: PropTypes.number.isRequired,
-  placeCards: PropTypes.array.isRequired,
+  countPlaces: countPlacesType,
+  placeCards: placeCardsType,
+  titleClickHandler: titleClickType,
 };
 
 export default App;

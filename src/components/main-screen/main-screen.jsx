@@ -1,9 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
-import PlaceCard from "../place-card/place-card.jsx";
+import PlaceCards from "../place-cards/place-cards.jsx";
+import {countPlacesType, placeCardsType, titleClickType} from "../../types/types";
 
 const MainScreen = (props) => {
-  const {countPlaces, placeCards} = props;
+  const {countPlaces, placeCards, titleClickHandler} = props;
 
   return (
     <React.Fragment>
@@ -107,8 +107,9 @@ const MainScreen = (props) => {
                 </form>
 
                 <div className="cities__places-list places__list tabs__content">
-                  { <PlaceCard
-                    placeCards = {placeCards} /> }
+                  { <PlaceCards
+                    placeCards = {placeCards}
+                    titleClickHandler = {titleClickHandler} /> }
                 </div>
 
               </section>
@@ -121,8 +122,9 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  countPlaces: PropTypes.number.isRequired,
-  placeCards: PropTypes.array.isRequired,
+  countPlaces: countPlacesType,
+  placeCards: placeCardsType,
+  titleClickHandler: titleClickType,
 };
 
 export default MainScreen;

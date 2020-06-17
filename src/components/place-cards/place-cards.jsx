@@ -1,8 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {placeCardsType, titleClickType} from "../../types/types";
 
-const PlaceCard = (props) => {
-  const {placeCards} = props;
+const PlaceCards = (props) => {
+  const {placeCards, titleClickHandler} = props;
 
   return (
     <React.Fragment>
@@ -46,7 +46,12 @@ const PlaceCard = (props) => {
             </div>
 
             <h2 className="place-card__name">
-              <a href="#">{card.cardName}</a>
+              <a
+                href="#"
+                onClick={titleClickHandler}
+              >
+                {card.cardName}
+              </a>
             </h2>
 
             <p className="place-card__type">{card.cardType}</p>
@@ -57,18 +62,9 @@ const PlaceCard = (props) => {
   );
 };
 
-PlaceCard.propTypes = {
-  placeCards: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        premiumPlace: PropTypes.bool.isRequired,
-        price: PropTypes.number.isRequired,
-        cardName: PropTypes.string.isRequired,
-        cardType: PropTypes.string.isRequired,
-        cardRating: PropTypes.string.isRequired,
-      })
-  ).isRequired,
+PlaceCards.propTypes = {
+  placeCards: placeCardsType,
+  titleClickHandler: titleClickType,
 };
 
-export default PlaceCard;
+export default PlaceCards;
