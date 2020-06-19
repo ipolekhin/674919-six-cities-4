@@ -1,6 +1,6 @@
 import React from "react";
-import MainScreen from "../main-screen/main-screen.jsx";
-import {countPlacesType, placeCardsType, titleClickType} from "../../types/types";
+import Main from "../main/main.jsx";
+import {countPlacesType, placeCardsType} from "../../types/types";
 
 const titleClickHandler = () => {};
 
@@ -9,7 +9,7 @@ const App = (props) => {
 
   return (
     <React.Fragment>
-      <MainScreen
+      <Main
         countPlaces = {countPlaces}
         placeCards = {placeCards}
         titleClickHandler = {titleClickHandler}
@@ -21,7 +21,6 @@ const App = (props) => {
 App.propTypes = {
   countPlaces: countPlacesType,
   placeCards: placeCardsType,
-  titleClickHandler: titleClickType,
 };
 
 export default App;

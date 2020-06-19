@@ -2,6 +2,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
 
+// jest.mock(`../main/main.jsx`, () => `Main`);
+
 const countPlaces = 312;
 
 const placeCards = [{

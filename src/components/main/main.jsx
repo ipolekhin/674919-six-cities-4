@@ -2,7 +2,7 @@ import React from "react";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import {countPlacesType, placeCardsType, titleClickType} from "../../types/types";
 
-const MainScreen = (props) => {
+const Main = (props) => {
   const {countPlaces, placeCards, titleClickHandler} = props;
 
   return (
@@ -121,10 +121,10 @@ const MainScreen = (props) => {
   );
 };
 
-MainScreen.propTypes = {
+Main.propTypes = {
   countPlaces: countPlacesType,
   placeCards: placeCardsType,
   titleClickHandler: titleClickType,
 };
 
-export default MainScreen;
+export default Main;
