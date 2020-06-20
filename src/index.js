@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
-import {generatePlaceCards} from "./mock/place-card";
+import {generatePlaceCards} from "./mocks/offers";
 import {getRandomIntegerNumber} from "./utils/common";
 
 const MAX_COUNT_PLACES = 10;
