@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MainScreen from "./main-screen";
+import Main from "./main";
 
 const countPlaces = 312;
 
@@ -18,7 +18,7 @@ const titleClickHandler = () => {};
 
 it(`Render MainScreen`, () => {
   const tree = renderer
-    .create(<MainScreen
+    .create(<Main
       countPlaces = {countPlaces}
       placeCards = {placeCards}
       titleClickHandler = {titleClickHandler}

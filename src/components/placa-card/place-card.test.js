@@ -1,12 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import PlaceCard from "./place-card";
 
-// jest.mocks(`../main/main.jsx`, () => `Main`);
+const handleHover = () => {};
 
-const countPlaces = 312;
-
-const placeCards = [{
+const placeCard = {
   id: `1`,
   image: `img/apartment-01.jpg`,
   premiumPlace: true,
@@ -14,16 +12,16 @@ const placeCards = [{
   cardName: `Wood and stone place`,
   cardType: `Room`,
   cardRating: `80%`,
-}];
+};
 
 const titleClickHandler = () => {};
 
-it(`Render App`, () => {
+it(`Render PlaceCards`, () => {
   const tree = renderer
-    .create(<App
-      countPlaces = {countPlaces}
-      placeCards = {placeCards}
+    .create(<PlaceCard
+      placeCard = {placeCard}
       titleClickHandler = {titleClickHandler}
+      handleHover = {handleHover}
     />)
     .toJSON();
 

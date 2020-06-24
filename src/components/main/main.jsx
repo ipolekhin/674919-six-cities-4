@@ -2,7 +2,7 @@ import React from "react";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import {countPlacesType, placeCardsType, titleClickType} from "../../types/types";
 
-const MainScreen = (props) => {
+const Main = (props) => {
   const {countPlaces, placeCards, titleClickHandler} = props;
 
   return (
@@ -111,8 +111,11 @@ const MainScreen = (props) => {
                     placeCards = {placeCards}
                     titleClickHandler = {titleClickHandler} /> }
                 </div>
-
               </section>
+
+              <div className="cities__right-section">
+                <section className="cities__map map"></section>
+              </div>
             </div>
           </div>
         </main>
@@ -121,10 +124,10 @@ const MainScreen = (props) => {
   );
 };
 
-MainScreen.propTypes = {
+Main.propTypes = {
   countPlaces: countPlacesType,
   placeCards: placeCardsType,
   titleClickHandler: titleClickType,
 };
 
-export default MainScreen;
+export default Main;

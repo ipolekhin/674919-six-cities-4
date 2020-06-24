@@ -1,70 +1,37 @@
 import React from "react";
+import PlaceCard from "../placa-card/place-card.jsx";
 import {placeCardsType, titleClickType} from "../../types/types";
 
-const PlaceCards = (props) => {
-  const {placeCards, titleClickHandler} = props;
+export default class PlaceCards extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {placeCardId: null};
+    this._handleHover = this._handleHover.bind(this);
+  }
 
-  return (
-    <React.Fragment>
-      {placeCards.map((card) => (
-        <article className="cities__place-card place-card" key={card.id}>
-          {card.premiumPlace && (
-            <div className="place-card__mark">
-              <span>Premium</span>
-            </div>
-          )}
+  render() {
+    const {placeCards, titleClickHandler} = this.props;
 
-          <div className="cities__image-wrapper place-card__image-wrapper">
-            <a href="#">
-              <img className="place-card__image" src={card.image} width="260" height="200" alt="Place image" />
-            </a>
-          </div>
+    return (
+      <React.Fragment>
+        {placeCards.map((placeCard) => (
+          <PlaceCard
+            key={placeCard.id}
+            placeCard = {placeCard}
+            titleClickHandler = {titleClickHandler}
+            handleHover = {this._handleHover}
+          />
+        ))}
+      </React.Fragment>
+    );
+  }
 
-          <div className="place-card__info">
-            <div className="place-card__price-wrapper">
-              <div className="place-card__price">
-                <b className="place-card__price-value">&euro;{card.price}</b>
-
-                <span className="place-card__price-text">&#47;&nbsp;night</span>
-              </div>
-
-              <button className="place-card__bookmark-button button" type="button">
-                <svg className="place-card__bookmark-icon" width="18" height="19">
-                  <use xlinkHref="#icon-bookmark"></use>
-                </svg>
-
-                <span className="visually-hidden">To bookmarks</span>
-              </button>
-            </div>
-
-            <div className="place-card__rating rating">
-              <div className="place-card__stars rating__stars">
-                <span style={{width: card.cardRating}}></span>
-
-                <span className="visually-hidden">Rating</span>
-              </div>
-            </div>
-
-            <h2 className="place-card__name">
-              <a
-                href="#"
-                onClick={titleClickHandler}
-              >
-                {card.cardName}
-              </a>
-            </h2>
-
-            <p className="place-card__type">{card.cardType}</p>
-          </div>
-        </article>
-      ))}
-    </React.Fragment>
-  );
-};
+  _handleHover(placeCardId) {
+    this.setState({placeCardId});
+  }
+}
 
 PlaceCards.propTypes = {
   placeCards: placeCardsType,
   titleClickHandler: titleClickType,
 };
-
-export default PlaceCards;
