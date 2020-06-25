@@ -1,5 +1,6 @@
 import React from "react";
 import Main from "../main/main.jsx";
+import Offer from "../offer/offer.jsx";
 import {countPlacesType, placeCardsType} from "../../types/types";
 
 const titleClickHandler = () => {};
@@ -9,6 +10,7 @@ const App = (props) => {
 
   return (
     <React.Fragment>
+      <Offer/>
       <Main
         countPlaces = {countPlaces}
         placeCards = {placeCards}
@@ -24,4 +26,3 @@ App.propTypes = {
 };
 
 export default App;
-
