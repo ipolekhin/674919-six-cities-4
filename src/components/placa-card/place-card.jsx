@@ -45,7 +45,7 @@ const PlaceCard = (props) => {
 
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: placeCard.cardRating}}></span>
+              <span style={{width: placeCard.cardRatingStars}}></span>
 
               <span className="visually-hidden">Rating</span>
             </div>
@@ -54,7 +54,10 @@ const PlaceCard = (props) => {
           <h2 className="place-card__name">
             <a
               href="#"
-              onClick={titleClickHandler}
+              onClick={(event) => {
+                event.preventDefault();
+                titleClickHandler(placeCard.id);
+              }}
             >
               {placeCard.cardName}
             </a>
@@ -68,7 +71,7 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  placeCard: placeCardType,
+  placeCard: (placeCardType).isRequired,
   titleClickHandler: titleClickType,
   handleHover: handleHoverType,
 };
