@@ -20,8 +20,10 @@ const App = (props) => {
               titleClickHandler = {titleClickHandler}
             />
           </Route>
-          <Route exact path="/dev-component">
-            <Offer />
+          <Route exact path="/dev-offer">
+            <Offer
+              offer = {placeCards[0]}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

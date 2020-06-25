@@ -5,26 +5,27 @@ const countPlacesType = PropTypes.number.isRequired;
 const handleHoverType = PropTypes.func.isRequired;
 
 const placeCardType = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  premiumPlace: PropTypes.bool.isRequired,
-  price: PropTypes.number.isRequired,
+  adults: PropTypes.number.isRequired,
+  bedrooms: PropTypes.number.isRequired,
   cardName: PropTypes.string.isRequired,
   cardType: PropTypes.string.isRequired,
-  cardRating: PropTypes.string.isRequired,
-}).isRequired;
+  cardRating: PropTypes.number.isRequired,
+  cardRatingStars: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  images: PropTypes.array.isRequired,
+  image: PropTypes.string.isRequired,
+  insideItems: PropTypes.array.isRequired,
+  premiumPlace: PropTypes.bool.isRequired,
+  price: PropTypes.number.isRequired,
+  user: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    pro: PropTypes.bool.isRequired,
+  }).isRequired,
+});
 
-const placeCardsType = PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      premiumPlace: PropTypes.bool.isRequired,
-      price: PropTypes.number.isRequired,
-      cardName: PropTypes.string.isRequired,
-      cardType: PropTypes.string.isRequired,
-      cardRating: PropTypes.string.isRequired,
-    })
-).isRequired;
+const placeCardsType = PropTypes.arrayOf(placeCardType).isRequired;
 
 const titleClickType = PropTypes.func.isRequired;
 

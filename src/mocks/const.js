@@ -12,3 +12,16 @@ export const CARD_NAMES = [
   `Nice, cozy, warm big bed apartment`,
   `Stone and Wood place`,
 ];
+
+export const INSIDE_ITEMS = [
+  `Wi-Fi`,
+  `Washing machine`,
+  `Towels`,
+  `Heating`,
+  `Coffee machine`,
+  `Baby seat`,
+  `Kitchen`,
+  `Dishwasher`,
+  `Cabel TV`,
+  `Fridge`,
+];

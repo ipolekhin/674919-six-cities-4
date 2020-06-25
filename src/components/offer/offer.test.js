@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main";
+import Offer from "./offer.jsx";
 
-const countPlaces = 312;
+const handleHover = () => {};
 
-const placeCards = [{
+const offer = {
   adults: 3,
   bedrooms: 2,
   cardName: `Wood and stone place`,
@@ -23,16 +23,16 @@ const placeCards = [{
     avatar: `img/avatar-angelina.jpg`,
     pro: true,
   },
-}];
+};
 
 const titleClickHandler = () => {};
 
-it(`Render MainScreen`, () => {
+it(`Render Offer`, () => {
   const tree = renderer
-    .create(<Main
-      countPlaces = {countPlaces}
-      placeCards = {placeCards}
+    .create(<Offer
+      offer = {offer}
       titleClickHandler = {titleClickHandler}
+      handleHover = {handleHover}
     />)
     .toJSON();
 
