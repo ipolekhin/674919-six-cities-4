@@ -198,7 +198,7 @@ exports[`Render Offer 1`] = `
             <h2
               className="property__inside-title"
             >
-              What's inside
+              What inside
             </h2>
             <ul
               className="property__inside-list"

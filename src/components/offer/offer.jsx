@@ -3,7 +3,6 @@ import {placeCardType} from "../../types/types";
 
 const Offer = (props) => {
   const {offer} = props;
-  console.log(`переключение`);
 
   return (
     <React.Fragment>
@@ -94,7 +93,7 @@ const Offer = (props) => {
                 </div>
 
                 <div className="property__inside">
-                  <h2 className="property__inside-title">What's inside</h2>
+                  <h2 className="property__inside-title">What inside</h2>
 
                   <ul className="property__inside-list">
                     {offer.insideItems.map((item, index) => (

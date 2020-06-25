@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
@@ -12,7 +12,7 @@ export default class App extends React.PureComponent {
   }
 
   render() {
-    const {countPlaces, placeCards} = this.props;
+    const {placeCards} = this.props;
 
     return (
       <React.Fragment>
@@ -20,11 +20,6 @@ export default class App extends React.PureComponent {
           <Switch>
             <Route exact path="/">
               {this._renderOfferScreen()}
-              {/*<Main*/}
-              {/*  countPlaces = {countPlaces}*/}
-              {/*  placeCards = {placeCards}*/}
-              {/*  titleClickHandler = {this.titleClickHandler}*/}
-              {/*/>*/}
             </Route>
             <Route exact path="/dev-offer">
               <Offer
@@ -38,11 +33,12 @@ export default class App extends React.PureComponent {
   }
 
   _renderOfferScreen() {
+    const {countPlaces, placeCards} = this.props;
     if (this.state.offer === null) {
       return (
         <Main
-          countPlaces = {this.props.countPlaces}
-          placeCards = {this.props.placeCards}
+          countPlaces = {countPlaces}
+          placeCards = {placeCards}
           titleClickHandler = {this.titleClickHandler}
         />
       );
