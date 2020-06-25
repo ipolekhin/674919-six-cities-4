@@ -1,4 +1,5 @@
 import React from "react";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
 import {countPlacesType, placeCardsType} from "../../types/types";
@@ -10,12 +11,20 @@ const App = (props) => {
 
   return (
     <React.Fragment>
-      <Offer/>
-      <Main
-        countPlaces = {countPlaces}
-        placeCards = {placeCards}
-        titleClickHandler = {titleClickHandler}
-      />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Main
+              countPlaces = {countPlaces}
+              placeCards = {placeCards}
+              titleClickHandler = {titleClickHandler}
+            />
+          </Route>
+          <Route exact path="/dev-component">
+            <Offer />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </React.Fragment>
   );
 };
