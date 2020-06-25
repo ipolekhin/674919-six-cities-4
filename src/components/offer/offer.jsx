@@ -3,6 +3,7 @@ import {placeCardType} from "../../types/types";
 
 const Offer = (props) => {
   const {offer} = props;
+  console.log(`переключение`);
 
   return (
     <React.Fragment>

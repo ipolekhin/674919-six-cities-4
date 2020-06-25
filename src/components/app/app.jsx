@@ -1,39 +1,67 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
 import {countPlacesType, placeCardsType} from "../../types/types";
 
-const titleClickHandler = () => {};
+export default class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {offer: null};
+    this.titleClickHandler = this.titleClickHandler.bind(this);
+  }
 
-const App = (props) => {
-  const {countPlaces, placeCards} = props;
+  render() {
+    const {countPlaces, placeCards} = this.props;
 
-  return (
-    <React.Fragment>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            <Main
-              countPlaces = {countPlaces}
-              placeCards = {placeCards}
-              titleClickHandler = {titleClickHandler}
-            />
-          </Route>
-          <Route exact path="/dev-offer">
-            <Offer
-              offer = {placeCards[0]}
-            />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </React.Fragment>
-  );
-};
+    return (
+      <React.Fragment>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              {this._renderOfferScreen()}
+              {/*<Main*/}
+              {/*  countPlaces = {countPlaces}*/}
+              {/*  placeCards = {placeCards}*/}
+              {/*  titleClickHandler = {this.titleClickHandler}*/}
+              {/*/>*/}
+            </Route>
+            <Route exact path="/dev-offer">
+              <Offer
+                offer = {placeCards[0]}
+              />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </React.Fragment>
+    );
+  }
+
+  _renderOfferScreen() {
+    if (this.state.offer === null) {
+      return (
+        <Main
+          countPlaces = {this.props.countPlaces}
+          placeCards = {this.props.placeCards}
+          titleClickHandler = {this.titleClickHandler}
+        />
+      );
+    } else {
+      return (
+        <Offer
+          offer = {this.state.offer}
+        />
+      );
+    }
+
+  }
+
+  titleClickHandler(offerId) {
+    this.setState({offer: this.props.placeCards.find((card) => card.id === offerId)});
+  }
+}
 
 App.propTypes = {
   countPlaces: countPlacesType,
   placeCards: placeCardsType,
 };
-
-export default App;

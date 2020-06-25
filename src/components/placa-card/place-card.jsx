@@ -54,7 +54,10 @@ const PlaceCard = (props) => {
           <h2 className="place-card__name">
             <a
               href="#"
-              onClick={titleClickHandler}
+              onClick={(event) => {
+                event.preventDefault();
+                titleClickHandler(placeCard.id);
+              }}
             >
               {placeCard.cardName}
             </a>
