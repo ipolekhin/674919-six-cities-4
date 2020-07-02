@@ -1,5 +1,7 @@
 import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
+import PageContainer from "../page-container/page-container.jsx";
+import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
 import {countPlacesType, placeCardsType} from "../../types/types";
@@ -16,18 +18,21 @@ export default class App extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/">
-              {this._renderOfferScreen()}
-            </Route>
-            <Route exact path="/dev-offer">
-              <Offer
-                offer = {placeCards[0]}
-              />
-            </Route>
-          </Switch>
-        </BrowserRouter>
+        <PageContainer>
+          <Header/>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/">
+                {this._renderOfferScreen()}
+              </Route>
+              <Route exact path="/dev-offer">
+                <Offer
+                  offer = {placeCards[0]}
+                />
+              </Route>
+            </Switch>
+          </BrowserRouter>
+        </PageContainer>
       </React.Fragment>
     );
   }
