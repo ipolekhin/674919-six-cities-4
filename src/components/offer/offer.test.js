@@ -2,8 +2,6 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Offer from "./offer.jsx";
 
-const handleHover = () => {};
-
 const offer = {
   adults: 3,
   bedrooms: 2,
@@ -25,14 +23,10 @@ const offer = {
   },
 };
 
-const titleClickHandler = () => {};
-
 it(`Render Offer`, () => {
   const tree = renderer
     .create(<Offer
       offer = {offer}
-      titleClickHandler = {titleClickHandler}
-      handleHover = {handleHover}
     />)
     .toJSON();
 

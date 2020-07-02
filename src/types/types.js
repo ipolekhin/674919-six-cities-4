@@ -13,9 +13,9 @@ const placeCardType = PropTypes.shape({
   cardRatingStars: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  images: PropTypes.array.isRequired,
+  images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   image: PropTypes.string.isRequired,
-  insideItems: PropTypes.array.isRequired,
+  insideItems: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   premiumPlace: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,
   user: PropTypes.shape({
