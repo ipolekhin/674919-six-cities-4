@@ -11,6 +11,7 @@ const placeCardType = PropTypes.shape({
   cardType: PropTypes.string.isRequired,
   cardRating: PropTypes.number.isRequired,
   cardRatingStars: PropTypes.string.isRequired,
+  coordinatesItem: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
   description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
