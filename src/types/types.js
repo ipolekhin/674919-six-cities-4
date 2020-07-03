@@ -29,10 +29,13 @@ const placeCardsType = PropTypes.arrayOf(placeCardType).isRequired;
 
 const titleClickType = PropTypes.func.isRequired;
 
+const childrenType = PropTypes.node.isRequired;
+
 export {
-  placeCardType,
+  childrenType,
   countPlacesType,
   handleHoverType,
+  placeCardType,
   placeCardsType,
   titleClickType,
 };

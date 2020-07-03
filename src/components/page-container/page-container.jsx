@@ -1,6 +1,8 @@
 import React from "react";
+import {childrenType} from "../../types/types";
 
 const PageContainer = (props) => {
+  const {children} = props;
   const getClass = () => {
     switch (window.document.location.pathname) {
       case `/`:
@@ -13,10 +15,15 @@ const PageContainer = (props) => {
   return (
     <React.Fragment>
       <div className={`page${getClass()}`}>
-        {props.children}
+        {children}
       </div>
     </React.Fragment>
   );
 };
 
+PageContainer.propTypes = {
+  children: childrenType
+};
+
 export default PageContainer;
+
