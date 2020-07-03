@@ -1,4 +1,4 @@
-import {CARD_IMAGES, CARD_NAMES, INSIDE_ITEMS} from "./const";
+import {CARD_IMAGES, CARD_NAMES, COORDINATES_LIST, INSIDE_ITEMS} from "./const";
 import {CARD_TYPES, Ratings} from "../const";
 import {
   getRandomBooleanValue,
@@ -21,6 +21,7 @@ const generatePlaceCard = () => {
   const cardType = getRandomItem(CARD_TYPES);
   const cardRating = getRandomIntegerNumber(MIN_RATING, MAX_RATING);
   const cardRatingStars = Ratings[cardRating - 1];
+  const coordinatesItem = COORDINATES_LIST.pop();
   const id = String(Math.random());
   const images = reshuffle(CARD_IMAGES, CARD_IMAGES.length);
   const image = getRandomItem(images);
@@ -36,6 +37,7 @@ const generatePlaceCard = () => {
     cardRating,
     cardRatingStars,
     cardType,
+    coordinatesItem,
     description,
     id,
     image,
