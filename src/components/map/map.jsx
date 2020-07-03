@@ -21,7 +21,6 @@ export default class Map extends React.PureComponent {
     const {placeCards} = this.props;
     this._city = [52.38333, 4.9];
     this._offerCords = placeCards.map(({coordinatesItem}) => coordinatesItem);
-
     this._map = leaflet.map(this._mapRef.current, {
       center: this._city,
       zoom: this._zoom,

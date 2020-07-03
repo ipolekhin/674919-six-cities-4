@@ -1,6 +1,20 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import PlaceCards from "./place-cards.jsx";
+import Map from "./map.jsx";
+
+jest.mock(`leaflet`, () => ({
+  icon: jest.fn(),
+  map: jest.fn().mockReturnValue({
+    setView: jest.fn(),
+    remove: jest.fn()
+  }),
+  tileLayer: jest.fn().mockReturnValue({
+    addTo: jest.fn()
+  }),
+  marker: jest.fn().mockReturnValue({
+    addTo: jest.fn()
+  }),
+}));
 
 const placeCards = [
   {
@@ -47,14 +61,15 @@ const placeCards = [
   },
 ];
 
-const titleClickHandler = () => {};
-
-it(`Render PlaceCards`, () => {
+it(`Render Map`, () => {
   const tree = renderer
-    .create(<PlaceCards
+    .create(<Map
       placeCards = {placeCards}
-      titleClickHandler = {titleClickHandler}
-    />)
+    />, {
+      createNodeMock: () => {
+        return {};
+      }
+    })
     .toJSON();
 
   expect(tree).toMatchSnapshot();
