@@ -1,4 +1,5 @@
 import React from "react";
+import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import {countPlacesType, placeCardsType, titleClickType} from "../../types/types";
 
@@ -87,9 +88,7 @@ const Main = (props) => {
               </div>
             </section>
 
-            <div className="cities__right-section">
-              <section className="cities__map map"></section>
-            </div>
+            <Map/>
           </div>
         </div>
       </main>
