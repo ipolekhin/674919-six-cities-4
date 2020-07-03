@@ -88,7 +88,9 @@ const Main = (props) => {
               </div>
             </section>
 
-            <Map/>
+            <Map
+              placeCards = {placeCards}
+            />
           </div>
         </div>
       </main>

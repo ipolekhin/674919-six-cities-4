@@ -1,5 +1,6 @@
 import React, {createRef} from "react";
 import leaflet from 'leaflet';
+import {placeCardsType} from "../../types/types";
 
 const icon = leaflet.icon({
   iconUrl: `img/pin.svg`,
@@ -7,8 +8,8 @@ const icon = leaflet.icon({
 });
 
 export default class Map extends React.PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this._city = null;
     this._map = null;
     this._mapRef = createRef();
@@ -17,8 +18,9 @@ export default class Map extends React.PureComponent {
   }
 
   componentDidMount() {
+    const {placeCards} = this.props;
     this._city = [52.38333, 4.9];
-    this._offerCords = [52.3709553943508, 4.89309666406198];
+    this._offerCords = placeCards.map(({coordinatesItem}) => coordinatesItem);
 
     this._map = leaflet.map(this._mapRef.current, {
       center: this._city,
@@ -33,15 +35,17 @@ export default class Map extends React.PureComponent {
       })
       .addTo(this._map);
 
-    leaflet
-      .marker(this._offerCords, {icon})
-      .addTo(this._map);
+    this._offerCords.map((coordinate) => {
+      leaflet
+        .marker(coordinate, {icon})
+        .addTo(this._map);
+    });
   }
 
   componentWillUnmount() {
     this._city = null;
     this._city = null;
-    this._map = null;
+    this._offerCords = null;
   }
 
   render() {
@@ -53,7 +57,8 @@ export default class Map extends React.PureComponent {
       </React.Fragment>
     );
   }
-};
+}
 
-// Map.propTypes = {
-// };
+Map.propTypes = {
+  placeCards: placeCardsType,
+};
