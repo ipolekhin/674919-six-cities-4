@@ -2,8 +2,6 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Offer from "./offer.jsx";
 
-const handleHover = () => {};
-
 const offer = {
   adults: 3,
   bedrooms: 2,
@@ -11,6 +9,7 @@ const offer = {
   cardRating: 4.6,
   cardRatingStars: `92%`,
   cardType: `Room`,
+  coordinatesItem: [52.3909553943508, 4.85309666406198],
   description: `Text text....`,
   id: `1`,
   image: `img/apartment-01.jpg`,
@@ -25,14 +24,10 @@ const offer = {
   },
 };
 
-const titleClickHandler = () => {};
-
 it(`Render Offer`, () => {
   const tree = renderer
     .create(<Offer
       offer = {offer}
-      titleClickHandler = {titleClickHandler}
-      handleHover = {handleHover}
     />)
     .toJSON();
 

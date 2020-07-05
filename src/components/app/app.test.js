@@ -13,6 +13,7 @@ const placeCards = [{
   cardRating: 4.6,
   cardRatingStars: `92%`,
   cardType: `Room`,
+  coordinatesItem: [52.3909553943508, 4.85309666406198],
   description: `Text text....`,
   id: `1`,
   image: `img/apartment-01.jpg`,
