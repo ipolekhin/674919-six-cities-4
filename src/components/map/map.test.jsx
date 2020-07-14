@@ -1,20 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Map from "./map.jsx";
-
-jest.mock(`leaflet`, () => ({
-  icon: jest.fn(),
-  map: jest.fn().mockReturnValue({
-    setView: jest.fn(),
-    remove: jest.fn()
-  }),
-  tileLayer: jest.fn().mockReturnValue({
-    addTo: jest.fn()
-  }),
-  marker: jest.fn().mockReturnValue({
-    addTo: jest.fn()
-  }),
-}));
+import {TownCoordinates, TownType} from "../../__mocks__/const";
 
 const placeCards = [
   {
@@ -61,10 +48,13 @@ const placeCards = [
   },
 ];
 
+const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
+
 it(`Render Map`, () => {
   const tree = renderer
     .create(<Map
       placeCards = {placeCards}
+      cityCoordinate = {cityCoordinate}
     />, {
       createNodeMock: () => {
         return {};

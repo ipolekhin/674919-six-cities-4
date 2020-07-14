@@ -1,6 +1,6 @@
 import React, {createRef} from "react";
 import leaflet from 'leaflet';
-import {placeCardsType} from "../../types/types";
+import {cityCoordinateType, placeCardsType} from "../../types/types";
 
 const icon = leaflet.icon({
   iconUrl: `img/pin.svg`,
@@ -18,8 +18,9 @@ export default class Map extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {placeCards} = this.props;
-    this._city = [52.38333, 4.9];
+    const {placeCards, cityCoordinate} = this.props;
+    // console.log(city);
+    this._city = cityCoordinate;
     this._offerCords = placeCards.map(({coordinatesItem}) => coordinatesItem);
     this._map = leaflet.map(this._mapRef.current, {
       center: this._city,
@@ -34,7 +35,7 @@ export default class Map extends React.PureComponent {
       })
       .addTo(this._map);
 
-    this._offerCords.map((coordinate) => {
+    this._offerCords.forEach((coordinate) => {
       leaflet
         .marker(coordinate, {icon})
         .addTo(this._map);
@@ -43,7 +44,7 @@ export default class Map extends React.PureComponent {
 
   componentWillUnmount() {
     this._city = null;
-    this._city = null;
+    this._map = null;
     this._offerCords = null;
   }
 
@@ -60,4 +61,5 @@ export default class Map extends React.PureComponent {
 
 Map.propTypes = {
   placeCards: placeCardsType,
+  cityCoordinate: cityCoordinateType,
 };

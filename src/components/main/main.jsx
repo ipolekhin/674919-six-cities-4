@@ -1,10 +1,10 @@
 import React from "react";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
-import {countPlacesType, placeCardsType, titleClickType} from "../../types/types";
+import {cityCoordinateType, countPlacesType, placeCardsType, titleClickType} from "../../types/types";
 
 const Main = (props) => {
-  const {countPlaces, placeCards, titleClickHandler} = props;
+  const {countPlaces, placeCards, titleClickHandler, cityCoordinate} = props;
 
   return (
     <React.Fragment>
@@ -90,6 +90,7 @@ const Main = (props) => {
 
             <Map
               placeCards = {placeCards}
+              cityCoordinate = {cityCoordinate}
             />
           </div>
         </div>
@@ -102,6 +103,7 @@ Main.propTypes = {
   countPlaces: countPlacesType,
   placeCards: placeCardsType,
   titleClickHandler: titleClickType,
+  cityCoordinate: cityCoordinateType,
 };
 
 export default Main;

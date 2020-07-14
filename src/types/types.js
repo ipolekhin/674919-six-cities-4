@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+const cityCoordinateType = PropTypes.arrayOf(PropTypes.number.isRequired).isRequired;
+
 const countPlacesType = PropTypes.number.isRequired;
 
 const handleHoverType = PropTypes.func.isRequired;
@@ -33,6 +35,7 @@ const titleClickType = PropTypes.func.isRequired;
 const childrenType = PropTypes.node.isRequired;
 
 export {
+  cityCoordinateType,
   childrenType,
   countPlacesType,
   handleHoverType,

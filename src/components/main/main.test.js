@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main";
+import {TownCoordinates, TownType} from "../../__mocks__/const";
 
 const countPlaces = 312;
 
@@ -26,6 +27,8 @@ const placeCards = [{
   },
 }];
 
+const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
+
 const titleClickHandler = () => {};
 
 it(`Render MainScreen`, () => {
@@ -34,6 +37,7 @@ it(`Render MainScreen`, () => {
       countPlaces = {countPlaces}
       placeCards = {placeCards}
       titleClickHandler = {titleClickHandler}
+      cityCoordinate = {cityCoordinate}
     />)
     .toJSON();
 

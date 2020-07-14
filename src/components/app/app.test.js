@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
+import {TownCoordinates, TownType} from "../../__mocks__/const";
 
 // jest.mocks(`../main/main.jsx`, () => `Main`);
 
@@ -28,6 +29,8 @@ const placeCards = [{
   },
 }];
 
+const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
+
 const titleClickHandler = () => {};
 
 it(`Render App`, () => {
@@ -36,6 +39,7 @@ it(`Render App`, () => {
       countPlaces = {countPlaces}
       placeCards = {placeCards}
       titleClickHandler = {titleClickHandler}
+      cityCoordinate = {cityCoordinate}
     />)
     .toJSON();
 

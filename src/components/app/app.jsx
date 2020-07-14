@@ -5,6 +5,7 @@ import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
 import {countPlacesType, placeCardsType} from "../../types/types";
+import {TownCoordinates, TownType} from "../../const";
 
 export default class App extends React.PureComponent {
   constructor(props) {
@@ -45,6 +46,7 @@ export default class App extends React.PureComponent {
           countPlaces = {countPlaces}
           placeCards = {placeCards}
           titleClickHandler = {this.titleClickHandler}
+          cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
         />
       );
     } else {
