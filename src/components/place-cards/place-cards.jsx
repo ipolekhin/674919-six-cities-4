@@ -16,7 +16,7 @@ export default class PlaceCards extends React.PureComponent {
       <React.Fragment>
         {placeCards.map((placeCard) => (
           <PlaceCard
-            key={placeCard.id}
+            key = {placeCard.id}
             placeCard = {placeCard}
             titleClickHandler = {titleClickHandler}
             handleHover = {this._handleHover}
