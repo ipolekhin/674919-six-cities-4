@@ -28,7 +28,9 @@ export default class App extends React.PureComponent {
               </Route>
               <Route exact path="/dev-offer">
                 <Offer
+                  cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
                   offer = {placeCards[0]}
+                  placeCards = {placeCards}
                 />
               </Route>
             </Switch>

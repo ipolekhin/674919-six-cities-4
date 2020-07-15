@@ -91,6 +91,11 @@ const Main = (props) => {
             <Map
               placeCards = {placeCards}
               cityCoordinate = {cityCoordinate}
+              renderMap = {(mapRef) => (
+                <div className="cities__right-section">
+                  <section className="cities__map map" ref={mapRef}></section>
+                </div>
+              )}
             />
           </div>
         </div>

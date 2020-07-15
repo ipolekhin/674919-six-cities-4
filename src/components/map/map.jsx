@@ -51,9 +51,8 @@ export default class Map extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className="cities__right-section">
-          <section className="cities__map map" ref={this._mapRef}></section>
-        </div>
+        {this.props.renderMap(this._mapRef)}
+          {/*<section className="cities__map map" ref={this._mapRef}></section>*/}
       </React.Fragment>
     );
   }

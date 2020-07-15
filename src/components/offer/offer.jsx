@@ -1,9 +1,10 @@
 import React from "react";
+import Map from "../map/map.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import {placeCardType} from "../../types/types";
 
 const Offer = (props) => {
-  const {offer} = props;
+  const {cityCoordinate, offer, placeCards} = props;
 
   return (
     <React.Fragment>
@@ -157,7 +158,12 @@ const Offer = (props) => {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+
+          <Map
+            cityCoordinate = {cityCoordinate}
+            placeCards = {placeCards}
+            renderMap = {(mapRef) => (<section className="property__map map" ref={mapRef}></section>)}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
