@@ -2,12 +2,12 @@ import React from "react";
 import {placeCardType, titleClickType, handleHoverType} from "../../types/types";
 
 const PlaceCard = (props) => {
-  const {placeCard, titleClickHandler, handleHover} = props;
+  const {className, placeCard, titleClickHandler, handleHover} = props;
 
   return (
     <React.Fragment>
       <article
-        className="cities__place-card place-card"
+        className={`${className} place-card`}
         onMouseOver={(event) => {
           event.preventDefault();
           handleHover(placeCard.id);

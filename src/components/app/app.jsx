@@ -31,6 +31,7 @@ export default class App extends React.PureComponent {
                   cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
                   offer = {placeCards[0]}
                   placeCards = {placeCards}
+                  titleClickHandler = {this.titleClickHandler}
                 />
               </Route>
             </Switch>

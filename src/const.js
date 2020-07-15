@@ -33,3 +33,8 @@ export const TownCoordinates = {
   [TownType.HAMBURG]: [52.38333, 4.9],
   [TownType.PARIS]: [52.38333, 4.9],
 };
+
+export const OfferCardsClassesType = {
+  MAIN_CONTAINER: `cities__place-card`,
+  OFFER_CONTAINER: `near-places__card`,
+};

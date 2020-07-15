@@ -2,6 +2,7 @@ import React from "react";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import {cityCoordinateType, countPlacesType, placeCardsType, titleClickType} from "../../types/types";
+import {OfferCardsClassesType} from "../../const";
 
 const Main = (props) => {
   const {countPlaces, placeCards, titleClickHandler, cityCoordinate} = props;
@@ -83,6 +84,7 @@ const Main = (props) => {
 
               <div className="cities__places-list places__list tabs__content">
                 { <PlaceCards
+                  className = {OfferCardsClassesType.MAIN_CONTAINER}
                   placeCards = {placeCards}
                   titleClickHandler = {titleClickHandler} /> }
               </div>
