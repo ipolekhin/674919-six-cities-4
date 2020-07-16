@@ -6,6 +6,8 @@ const childrenType = PropTypes.node.isRequired;
 
 const classNameType = PropTypes.string.isRequired;
 
+const coordinateActivePinType = PropTypes.arrayOf(PropTypes.number.isRequired);
+
 const countPlacesType = PropTypes.number.isRequired;
 
 const handleHoverType = PropTypes.func.isRequired;
@@ -44,7 +46,6 @@ const placeCardType = PropTypes.shape({
 
 const placeCardsType = PropTypes.arrayOf(placeCardType).isRequired;
 
-
 const reviewType = PropTypes.shape({
   date: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
@@ -64,6 +65,7 @@ export {
   cityCoordinateType,
   childrenType,
   classNameType,
+  coordinateActivePinType,
   countPlacesType,
   handleHoverType,
   placeCardType,

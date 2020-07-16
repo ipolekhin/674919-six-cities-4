@@ -164,6 +164,7 @@ const Offer = (props) => {
 
           <Map
             cityCoordinate = {cityCoordinate}
+            coordinateActivePin = {offer.coordinatesItem}
             placeCards = {nearPlaces}
             renderMap = {(mapRef) => (
               <section className="property__map map" ref={mapRef}></section>

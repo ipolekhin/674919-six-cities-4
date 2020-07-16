@@ -1,10 +1,17 @@
 import React, {createRef} from "react";
 import leaflet from 'leaflet';
-import {cityCoordinateType, placeCardsType, renderMapType} from "../../types/types";
+import {cityCoordinateType, coordinateActivePinType, placeCardsType, renderMapType} from "../../types/types";
+import {MapProps} from "../../const";
+
 
 const icon = leaflet.icon({
-  iconUrl: `img/pin.svg`,
-  iconSize: [30, 30],
+  iconUrl: MapProps.ICON_URL,
+  iconSize: MapProps.ICON_SIZE,
+});
+
+const iconActive = leaflet.icon({
+  iconUrl: MapProps.ICON_ACTIVE_URL,
+  iconSize: MapProps.ICON_SIZE,
 });
 
 export default class Map extends React.PureComponent {
@@ -14,12 +21,12 @@ export default class Map extends React.PureComponent {
     this._map = null;
     this._mapRef = createRef();
     this._offerCords = null;
-    this._zoom = 12;
+    this._zoom = MapProps.ZOOM;
   }
 
   componentDidMount() {
-    const {placeCards, cityCoordinate} = this.props;
-    // console.log(city);
+    const {placeCards, cityCoordinate, coordinateActivePin = null} = this.props;
+
     this._city = cityCoordinate;
     this._offerCords = placeCards.map(({coordinatesItem}) => coordinatesItem);
     this._map = leaflet.map(this._mapRef.current, {
@@ -40,6 +47,10 @@ export default class Map extends React.PureComponent {
         .marker(coordinate, {icon})
         .addTo(this._map);
     });
+
+    if (coordinateActivePin) {
+      leaflet.marker(coordinateActivePin, {iconActive}).addTo(this._map);
+    }
   }
 
   componentWillUnmount() {
@@ -59,6 +70,7 @@ export default class Map extends React.PureComponent {
 
 Map.propTypes = {
   cityCoordinate: cityCoordinateType,
+  coordinateActivePin: coordinateActivePinType,
   placeCards: placeCardsType,
   renderMap: renderMapType,
 };

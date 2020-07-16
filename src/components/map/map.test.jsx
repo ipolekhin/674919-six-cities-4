@@ -68,13 +68,16 @@ const placeCards = [
   },
 ];
 
+const coordinatesItemActive = [52.369553943508, 4.85309666406198];
+
 const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
 
 it(`Render Map`, () => {
   const tree = renderer
     .create(<Map
-      placeCards = {placeCards}
       cityCoordinate = {cityCoordinate}
+      coordinateActivePin = {coordinatesItemActive}
+      placeCards = {placeCards}
       renderMap = {(mapRef) => (
         <div className="cities__right-section">
           <section className="cities__map map" ref={mapRef}></section>
