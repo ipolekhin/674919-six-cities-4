@@ -19,6 +19,16 @@ const placeCards = [
     insideItems: [`wi-fi`, `bathroom`],
     premiumPlace: true,
     price: 100,
+    reviews: [
+      {
+        date: `14.07.2020`,
+        id: `01`,
+        rating: `92%`,
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        userAvatar: `img/avatar-max.jpg`,
+        userName: `Max`,
+      }
+    ],
     user: {
       name: `Angelina`,
       avatar: `img/avatar-angelina.jpg`,
@@ -40,6 +50,16 @@ const placeCards = [
     insideItems: [`wi-fi`, `bathroom`],
     premiumPlace: true,
     price: 120,
+    reviews: [
+      {
+        date: `16.07.2020`,
+        id: `02`,
+        rating: `82%`,
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        userAvatar: `img/avatar-max.jpg`,
+        userName: `John`,
+      }
+    ],
     user: {
       name: `Angelina`,
       avatar: `img/avatar-angelina.jpg`,
@@ -47,6 +67,8 @@ const placeCards = [
     },
   },
 ];
+
+const className = `page`;
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -57,6 +79,7 @@ describe(`TitleLink`, () => {
     const titleClickHandler = jest.fn();
     const placeCardsComponent = shallow(
         <PlaceCards
+          className = {className}
           placeCards = {placeCards}
           titleClickHandler = {titleClickHandler}
         />

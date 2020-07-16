@@ -19,6 +19,16 @@ const placeCards = [
     insideItems: [`wi-fi`, `bathroom`],
     premiumPlace: true,
     price: 100,
+    reviews: [
+      {
+        date: `14.07.2020`,
+        id: `02`,
+        rating: `82%`,
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        userAvatar: `img/avatar-max.jpg`,
+        userName: `John`,
+      }
+    ],
     user: {
       name: `Angelina`,
       avatar: `img/avatar-angelina.jpg`,
@@ -40,6 +50,16 @@ const placeCards = [
     insideItems: [`bathroom`],
     premiumPlace: true,
     price: 120,
+    reviews: [
+      {
+        date: `16.07.2020`,
+        id: `02`,
+        rating: `82%`,
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        userAvatar: `img/avatar-max.jpg`,
+        userName: `John`,
+      }
+    ],
     user: {
       name: `Angelina`,
       avatar: `img/avatar-angelina.jpg`,
@@ -55,6 +75,11 @@ it(`Render Map`, () => {
     .create(<Map
       placeCards = {placeCards}
       cityCoordinate = {cityCoordinate}
+      renderMap = {(mapRef) => (
+        <div className="cities__right-section">
+          <section className="cities__map map" ref={mapRef}></section>
+        </div>
+      )}
     />, {
       createNodeMock: () => {
         return {};

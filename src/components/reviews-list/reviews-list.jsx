@@ -1,8 +1,10 @@
 import React from "react";
 import ReviewsItem from "../reviews-item/reviews-item.jsx";
+import {reviewsType} from "../../types/types";
 
 const ReviewsList = (props) => {
   const {reviews} = props;
+  // console.log(reviews);
 
   return (
     <React.Fragment>
@@ -16,6 +18,10 @@ const ReviewsList = (props) => {
       </ul>
     </React.Fragment>
   );
+};
+
+ReviewsList.propTypes = {
+  reviews: reviewsType,
 };
 
 export default ReviewsList;

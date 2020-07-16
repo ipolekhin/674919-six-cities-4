@@ -2,7 +2,7 @@ import React from "react";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
-import {placeCardType} from "../../types/types";
+import {cityCoordinateType, placeCardsType, placeCardType, titleClickType} from "../../types/types";
 import {OfferCardsClassesType} from "../../const";
 
 const Offer = (props) => {
@@ -165,7 +165,9 @@ const Offer = (props) => {
           <Map
             cityCoordinate = {cityCoordinate}
             placeCards = {nearPlaces}
-            renderMap = {(mapRef) => (<section className="property__map map" ref={mapRef}></section>)}
+            renderMap = {(mapRef) => (
+              <section className="property__map map" ref={mapRef}></section>
+            )}
           />
         </section>
 
@@ -188,7 +190,10 @@ const Offer = (props) => {
 };
 
 Offer.propTypes = {
+  cityCoordinate: cityCoordinateType,
   offer: (placeCardType).isRequired,
+  placeCards: placeCardsType,
+  titleClickHandler: titleClickType,
 };
 
 export default Offer;

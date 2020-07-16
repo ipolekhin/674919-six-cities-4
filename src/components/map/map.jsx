@@ -1,6 +1,6 @@
 import React, {createRef} from "react";
 import leaflet from 'leaflet';
-import {cityCoordinateType, placeCardsType} from "../../types/types";
+import {cityCoordinateType, placeCardsType, renderMapType} from "../../types/types";
 
 const icon = leaflet.icon({
   iconUrl: `img/pin.svg`,
@@ -52,13 +52,13 @@ export default class Map extends React.PureComponent {
     return (
       <React.Fragment>
         {this.props.renderMap(this._mapRef)}
-          {/*<section className="cities__map map" ref={this._mapRef}></section>*/}
       </React.Fragment>
     );
   }
 }
 
 Map.propTypes = {
-  placeCards: placeCardsType,
   cityCoordinate: cityCoordinateType,
+  placeCards: placeCardsType,
+  renderMap: renderMapType,
 };

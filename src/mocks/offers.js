@@ -15,7 +15,7 @@ const MAX_ADULTS = 8;
 
 const generatePlaceCard = () => {
   const adults = getRandomIntegerNumber(1, MAX_ADULTS);
-  const date = new Date();
+  const date = new Date().toLocaleDateString();
   const description = `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`;
   const bedrooms = getRandomIntegerNumber(1, MAX_BEDROOMS);
   const cardName = getRandomItem(CARD_NAMES);
@@ -47,11 +47,6 @@ const generatePlaceCard = () => {
     insideItems,
     premiumPlace,
     price,
-    user: {
-      name: `Angelina`,
-      avatar: `img/avatar-angelina.jpg`,
-      pro: userPro,
-    },
     reviews: [
       {
         date,
@@ -62,6 +57,11 @@ const generatePlaceCard = () => {
         userName: `Max`,
       }
     ],
+    user: {
+      name: `Angelina`,
+      avatar: `img/avatar-angelina.jpg`,
+      pro: userPro,
+    },
   };
 };
 

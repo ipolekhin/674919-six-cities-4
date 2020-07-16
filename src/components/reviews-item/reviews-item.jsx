@@ -1,8 +1,9 @@
 import React from "react";
+import {reviewType} from "../../types/types";
 
 const ReviewsItem = (props) => {
   const {date, text, rating, userAvatar, userName} = props.review;
-
+  // console.log(date);
   return (
     <React.Fragment>
       <ul className="reviews__list">
@@ -26,12 +27,16 @@ const ReviewsItem = (props) => {
             <p className="reviews__text">
               {text}
             </p>
-            <time className="reviews__time" dateTime="2019-04-24">{date.toLocaleDateString()}</time>
+            <time className="reviews__time" dateTime="2019-04-24">{date}</time>
           </div>
         </li>
       </ul>
     </React.Fragment>
   );
+};
+
+ReviewsItem.propTypes = {
+  review: reviewType,
 };
 
 export default ReviewsItem;
