@@ -3,7 +3,7 @@ import {reviewType} from "../../types/types";
 
 const ReviewsItem = (props) => {
   const {date, text, rating, userAvatar, userName} = props.review;
-  // console.log(date);
+
   return (
     <React.Fragment>
       <ul className="reviews__list">

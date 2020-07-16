@@ -4,7 +4,6 @@ import {reviewsType} from "../../types/types";
 
 const ReviewsList = (props) => {
   const {reviews} = props;
-  // console.log(reviews);
 
   return (
     <React.Fragment>
