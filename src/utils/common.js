@@ -1,3 +1,16 @@
+import {MONTHS} from "../const";
+
+const getMonthYear = (value) => {
+  const date = new Date(value);
+  return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+};
+
+const getDateTime = (value) => {
+  const date = new Date(value);
+
+  return `${date.getFullYear()}-${date.getMonth()}-${date.getDay()} `;
+};
+
 const getRandomBooleanValue = () => Math.random() > 0.5;
 
 const getRandomIntegerNumber = (min, max) => min + Math.floor(Math.random() * (max - min));
@@ -15,6 +28,8 @@ const reshuffle = (data, maxNumber) => {
 };
 
 export {
+  getDateTime,
+  getMonthYear,
   getRandomBooleanValue,
   getRandomIntegerNumber,
   getRandomItem,

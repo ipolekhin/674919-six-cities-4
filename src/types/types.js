@@ -29,7 +29,7 @@ const placeCardType = PropTypes.shape({
   price: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
-        date: PropTypes.string.isRequired,
+        date: PropTypes.object.isRequired,
         id: PropTypes.string.isRequired,
         rating: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired,
@@ -47,7 +47,7 @@ const placeCardType = PropTypes.shape({
 const placeCardsType = PropTypes.arrayOf(placeCardType).isRequired;
 
 const reviewType = PropTypes.shape({
-  date: PropTypes.string.isRequired,
+  date: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,

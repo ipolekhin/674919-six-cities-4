@@ -20,7 +20,7 @@ const placeCards = [
     price: 100,
     reviews: [
       {
-        date: `14.07.2020`,
+        date: new Date(),
         id: `02`,
         rating: `82%`,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -51,7 +51,7 @@ const placeCards = [
     price: 120,
     reviews: [
       {
-        date: `16.07.2020`,
+        date: new Date(),
         id: `02`,
         rating: `82%`,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,

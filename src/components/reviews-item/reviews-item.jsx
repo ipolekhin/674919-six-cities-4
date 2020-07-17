@@ -1,8 +1,11 @@
 import React from "react";
 import {reviewType} from "../../types/types";
+import {getDateTime, getMonthYear} from "../../utils/common";
 
 const ReviewsItem = (props) => {
   const {date, text, rating, userAvatar, userName} = props.review;
+  const dateFormatted = getMonthYear(date);
+  const dateTime = getDateTime(date);
 
   return (
     <React.Fragment>
@@ -27,7 +30,7 @@ const ReviewsItem = (props) => {
             <p className="reviews__text">
               {text}
             </p>
-            <time className="reviews__time" dateTime={date}>{date}</time>
+            <time className="reviews__time" dateTime={dateTime}>{dateFormatted}</time>
           </div>
         </li>
       </ul>
