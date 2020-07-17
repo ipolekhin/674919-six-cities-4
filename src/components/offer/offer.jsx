@@ -6,7 +6,7 @@ import {cityCoordinateType, placeCardsType, placeCardType, titleClickType} from 
 import {OfferCardsClassesType} from "../../const";
 
 const Offer = (props) => {
-  const {cityCoordinate, offer, placeCards, titleClickHandler} = props;
+  const {cityCoordinate, offer, placeCards, onTitleClick} = props;
   const nearPlaces = placeCards.filter((place) => offer.id !== place.id);
 
   return (
@@ -179,8 +179,8 @@ const Offer = (props) => {
             <div className="near-places__list places__list">
               <PlaceCards
                 className = {OfferCardsClassesType.OFFER_CONTAINER}
+                onTitleClick = {onTitleClick}
                 placeCards = {nearPlaces}
-                titleClickHandler = {titleClickHandler}
               />
             </div>
           </section>
@@ -194,7 +194,7 @@ Offer.propTypes = {
   cityCoordinate: cityCoordinateType,
   offer: (placeCardType).isRequired,
   placeCards: placeCardsType,
-  titleClickHandler: titleClickType,
+  onTitleClick: titleClickType,
 };
 
 export default Offer;

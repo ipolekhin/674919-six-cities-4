@@ -1,7 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Offer from "./offer.jsx";
-import {TownCoordinates, TownType} from "../../__mocks__/const.js";
 
 const placeCards = [
   {
@@ -100,17 +99,17 @@ const offer = {
   },
 };
 
-const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
+const cityCoordinate = [52.38333, 4.9];
 
-const titleClickHandler = () => {};
+const onTitleClick = () => {};
 
 it(`Render Offer`, () => {
   const tree = renderer
     .create(<Offer
       cityCoordinate = {cityCoordinate}
       offer = {offer}
+      onTitleClick = {onTitleClick}
       placeCards = {placeCards}
-      titleClickHandler = {titleClickHandler}
     />)
     .toJSON();
 

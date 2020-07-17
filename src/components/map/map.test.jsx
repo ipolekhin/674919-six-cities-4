@@ -1,7 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Map from "./map.jsx";
-import {TownCoordinates, TownType} from "../../__mocks__/const";
 
 const placeCards = [
   {
@@ -70,7 +69,7 @@ const placeCards = [
 
 const coordinatesItemActive = [52.369553943508, 4.85309666406198];
 
-const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
+const cityCoordinate = [52.38333, 4.9];
 
 it(`Render Map`, () => {
   const tree = renderer

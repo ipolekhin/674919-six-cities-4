@@ -11,7 +11,7 @@ export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {offer: null};
-    this.titleClickHandler = this.titleClickHandler.bind(this);
+    this.onTitleClick = this.onTitleClick.bind(this);
   }
 
   render() {
@@ -31,7 +31,7 @@ export default class App extends React.PureComponent {
                   cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
                   offer = {placeCards[0]}
                   placeCards = {placeCards}
-                  titleClickHandler = {this.titleClickHandler}
+                  onTitleClick = {this.onTitleClick}
                 />
               </Route>
             </Switch>
@@ -48,7 +48,7 @@ export default class App extends React.PureComponent {
         <Main
           countPlaces = {countPlaces}
           placeCards = {placeCards}
-          titleClickHandler = {this.titleClickHandler}
+          onTitleClick = {this.onTitleClick}
           cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
         />
       );
@@ -62,7 +62,7 @@ export default class App extends React.PureComponent {
 
   }
 
-  titleClickHandler(offerId) {
+  onTitleClick(offerId) {
     this.setState({offer: this.props.placeCards.find((card) => card.id === offerId)});
   }
 }

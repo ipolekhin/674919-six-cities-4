@@ -38,15 +38,15 @@ const placeCard = {
 
 const className = `page`;
 
-const titleClickHandler = () => {};
+const onTitleClick = () => {};
 
 it(`Render PlaceCard`, () => {
   const tree = renderer
     .create(<PlaceCard
       className = {className}
-      placeCard = {placeCard}
-      titleClickHandler = {titleClickHandler}
       handleHover = {handleHover}
+      placeCard = {placeCard}
+      onTitleClick = {onTitleClick}
     />)
     .toJSON();
 

@@ -44,13 +44,13 @@ Enzyme.configure({
 describe(`TitleLink`, () => {
   it(`Should mouse on card and get cardID`, () => {
     const handleHover = jest.fn((placeCardId) => placeCardId);
-    const titleClickHandler = jest.fn();
+    const onTitleClick = jest.fn();
     const placeCardComponent = shallow(
         <PlaceCard
           className = {className}
-          placeCard = {placeCard}
-          titleClickHandler = {titleClickHandler}
           handleHover = {handleHover}
+          onTitleClick = {onTitleClick}
+          placeCard = {placeCard}
         />
     );
 

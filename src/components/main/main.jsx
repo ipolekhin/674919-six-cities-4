@@ -5,7 +5,7 @@ import {cityCoordinateType, countPlacesType, placeCardsType, titleClickType} fro
 import {OfferCardsClassesType} from "../../const";
 
 const Main = (props) => {
-  const {countPlaces, placeCards, titleClickHandler, cityCoordinate} = props;
+  const {countPlaces, placeCards, onTitleClick, cityCoordinate} = props;
 
   return (
     <React.Fragment>
@@ -86,7 +86,7 @@ const Main = (props) => {
                 { <PlaceCards
                   className = {OfferCardsClassesType.MAIN_CONTAINER}
                   placeCards = {placeCards}
-                  titleClickHandler = {titleClickHandler} /> }
+                  onTitleClick = {onTitleClick} /> }
               </div>
             </section>
 
@@ -109,7 +109,7 @@ const Main = (props) => {
 Main.propTypes = {
   countPlaces: countPlacesType,
   placeCards: placeCardsType,
-  titleClickHandler: titleClickType,
+  onTitleClick: titleClickType,
   cityCoordinate: cityCoordinateType,
 };
 

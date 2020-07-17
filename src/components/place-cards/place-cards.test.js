@@ -69,14 +69,14 @@ const placeCards = [
 
 const className = `page`;
 
-const titleClickHandler = () => {};
+const onTitleClick = () => {};
 
 it(`Render PlaceCards`, () => {
   const tree = renderer
     .create(<PlaceCards
       className = {className}
       placeCards = {placeCards}
-      titleClickHandler = {titleClickHandler}
+      onTitleClick = {onTitleClick}
     />)
     .toJSON();
 

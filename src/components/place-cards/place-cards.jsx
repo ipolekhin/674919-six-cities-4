@@ -10,17 +10,17 @@ export default class PlaceCards extends React.PureComponent {
   }
 
   render() {
-    const {className, placeCards, titleClickHandler} = this.props;
+    const {className, placeCards, onTitleClick} = this.props;
 
     return (
       <React.Fragment>
         {placeCards.map((placeCard) => (
           <PlaceCard
             className = {className}
-            key = {placeCard.id}
-            placeCard = {placeCard}
-            titleClickHandler = {titleClickHandler}
             handleHover = {this._handleHover}
+            key = {placeCard.id}
+            onTitleClick = {onTitleClick}
+            placeCard = {placeCard}
           />
         ))}
       </React.Fragment>
@@ -35,5 +35,5 @@ export default class PlaceCards extends React.PureComponent {
 PlaceCards.propTypes = {
   className: classNameType,
   placeCards: placeCardsType,
-  titleClickHandler: titleClickType,
+  onTitleClick: titleClickType,
 };

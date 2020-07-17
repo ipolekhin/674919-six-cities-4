@@ -76,12 +76,12 @@ Enzyme.configure({
 
 describe(`TitleLink`, () => {
   it(`Should title click handler be pressed`, () => {
-    const titleClickHandler = jest.fn();
+    const onTitleClick = jest.fn();
     const placeCardsComponent = shallow(
         <PlaceCards
           className = {className}
+          onTitleClick = {onTitleClick}
           placeCards = {placeCards}
-          titleClickHandler = {titleClickHandler}
         />
     );
 
@@ -91,6 +91,6 @@ describe(`TitleLink`, () => {
       link.props().onClick();
     });
 
-    expect(titleClickHandler.mock.calls.length).toBe(titleLinkBefore.length);
+    expect(onTitleClick.mock.calls.length).toBe(titleLinkBefore.length);
   });
 });
