@@ -60,7 +60,7 @@ exports[`Render ReviewsList 1`] = `
         </p>
         <time
           className="reviews__time"
-          dateTime="23"
+          dateTime="2020-07-17"
         >
           July 2020
         </time>
@@ -123,7 +123,7 @@ exports[`Render ReviewsList 1`] = `
         </p>
         <time
           className="reviews__time"
-          dateTime="23"
+          dateTime="2020-07-17"
         >
           July 2020
         </time>
