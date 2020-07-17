@@ -12,21 +12,6 @@ export const MapProps = {
   ZOOM: 12,
 };
 
-export const MONTHS = [
-  `January`,
-  `February`,
-  `March`,
-  `April`,
-  `May`,
-  `June`,
-  `July`,
-  `August`,
-  `September`,
-  `October`,
-  `November`,
-  `December`,
-];
-
 export const OfferCardsClassesType = {
   MAIN_CONTAINER: `cities__place-card`,
   OFFER_CONTAINER: `near-places__card`,

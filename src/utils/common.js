@@ -1,14 +1,11 @@
-import {MONTHS} from "../const";
+import moment from "moment";
 
-const getMonthYear = (value) => {
-  const date = new Date(value);
-  return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+const getMonthYear = (date) => {
+  return moment(date).format(`MMMM YYYY`);
 };
 
-const getDateTime = (value) => {
-  const date = new Date(value);
-
-  return `${date.getFullYear()}-${date.getMonth()}-${date.getDay()} `;
+const getDateTime = (date) => {
+  return moment(date).format(`YYYY-MM-DD`);
 };
 
 const getRandomBooleanValue = () => Math.random() > 0.5;
