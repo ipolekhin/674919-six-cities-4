@@ -1,20 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Map from "./map.jsx";
-
-jest.mock(`leaflet`, () => ({
-  icon: jest.fn(),
-  map: jest.fn().mockReturnValue({
-    setView: jest.fn(),
-    remove: jest.fn()
-  }),
-  tileLayer: jest.fn().mockReturnValue({
-    addTo: jest.fn()
-  }),
-  marker: jest.fn().mockReturnValue({
-    addTo: jest.fn()
-  }),
-}));
+import {TownCoordinates, TownType} from "../../__mocks__/const";
 
 const placeCards = [
   {
@@ -32,6 +19,16 @@ const placeCards = [
     insideItems: [`wi-fi`, `bathroom`],
     premiumPlace: true,
     price: 100,
+    reviews: [
+      {
+        date: `14.07.2020`,
+        id: `02`,
+        rating: `82%`,
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        userAvatar: `img/avatar-max.jpg`,
+        userName: `John`,
+      }
+    ],
     user: {
       name: `Angelina`,
       avatar: `img/avatar-angelina.jpg`,
@@ -53,6 +50,16 @@ const placeCards = [
     insideItems: [`bathroom`],
     premiumPlace: true,
     price: 120,
+    reviews: [
+      {
+        date: `16.07.2020`,
+        id: `02`,
+        rating: `82%`,
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        userAvatar: `img/avatar-max.jpg`,
+        userName: `John`,
+      }
+    ],
     user: {
       name: `Angelina`,
       avatar: `img/avatar-angelina.jpg`,
@@ -61,10 +68,21 @@ const placeCards = [
   },
 ];
 
+const coordinatesItemActive = [52.369553943508, 4.85309666406198];
+
+const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
+
 it(`Render Map`, () => {
   const tree = renderer
     .create(<Map
+      cityCoordinate = {cityCoordinate}
+      coordinateActivePin = {coordinatesItemActive}
       placeCards = {placeCards}
+      renderMap = {(mapRef) => (
+        <div className="cities__right-section">
+          <section className="cities__map map" ref={mapRef}></section>
+        </div>
+      )}
     />, {
       createNodeMock: () => {
         return {};

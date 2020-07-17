@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
+import {TownCoordinates, TownType} from "../../__mocks__/const";
 
 // jest.mocks(`../main/main.jsx`, () => `Main`);
 
@@ -21,12 +22,24 @@ const placeCards = [{
   insideItems: [`wi-fi`, `bathroom`],
   premiumPlace: true,
   price: 100,
+  reviews: [
+    {
+      date: `16.07.2020`,
+      id: `01`,
+      rating: `92%`,
+      text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+      userAvatar: `img/avatar-max.jpg`,
+      userName: `Max`,
+    }
+  ],
   user: {
     name: `Angelina`,
     avatar: `img/avatar-angelina.jpg`,
     pro: true,
   },
 }];
+
+const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
 
 const titleClickHandler = () => {};
 
@@ -36,6 +49,7 @@ it(`Render App`, () => {
       countPlaces = {countPlaces}
       placeCards = {placeCards}
       titleClickHandler = {titleClickHandler}
+      cityCoordinate = {cityCoordinate}
     />)
     .toJSON();
 

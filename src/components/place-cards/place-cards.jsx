@@ -1,6 +1,6 @@
 import React from "react";
 import PlaceCard from "../placa-card/place-card.jsx";
-import {placeCardsType, titleClickType} from "../../types/types";
+import {classNameType, placeCardsType, titleClickType} from "../../types/types";
 
 export default class PlaceCards extends React.PureComponent {
   constructor(props) {
@@ -10,13 +10,14 @@ export default class PlaceCards extends React.PureComponent {
   }
 
   render() {
-    const {placeCards, titleClickHandler} = this.props;
+    const {className, placeCards, titleClickHandler} = this.props;
 
     return (
       <React.Fragment>
         {placeCards.map((placeCard) => (
           <PlaceCard
-            key={placeCard.id}
+            className = {className}
+            key = {placeCard.id}
             placeCard = {placeCard}
             titleClickHandler = {titleClickHandler}
             handleHover = {this._handleHover}
@@ -32,6 +33,7 @@ export default class PlaceCards extends React.PureComponent {
 }
 
 PlaceCards.propTypes = {
+  className: classNameType,
   placeCards: placeCardsType,
   titleClickHandler: titleClickType,
 };

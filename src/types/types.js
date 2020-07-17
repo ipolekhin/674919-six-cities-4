@@ -1,5 +1,13 @@
 import PropTypes from "prop-types";
 
+const cityCoordinateType = PropTypes.arrayOf(PropTypes.number.isRequired).isRequired;
+
+const childrenType = PropTypes.node.isRequired;
+
+const classNameType = PropTypes.string.isRequired;
+
+const coordinateActivePinType = PropTypes.arrayOf(PropTypes.number.isRequired);
+
 const countPlacesType = PropTypes.number.isRequired;
 
 const handleHoverType = PropTypes.func.isRequired;
@@ -19,6 +27,16 @@ const placeCardType = PropTypes.shape({
   insideItems: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   premiumPlace: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,
+  reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        date: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        rating: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        userAvatar: PropTypes.string.isRequired,
+        userName: PropTypes.string.isRequired,
+      }).isRequired
+  ).isRequired,
   user: PropTypes.shape({
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -28,15 +46,32 @@ const placeCardType = PropTypes.shape({
 
 const placeCardsType = PropTypes.arrayOf(placeCardType).isRequired;
 
+const reviewType = PropTypes.shape({
+  date: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  userAvatar: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+}).isRequired;
+
+const reviewsType = PropTypes.arrayOf(reviewType).isRequired;
+
 const titleClickType = PropTypes.func.isRequired;
 
-const childrenType = PropTypes.node.isRequired;
+const renderMapType = PropTypes.func.isRequired;
 
 export {
+  cityCoordinateType,
   childrenType,
+  classNameType,
+  coordinateActivePinType,
   countPlacesType,
   handleHoverType,
   placeCardType,
   placeCardsType,
+  renderMapType,
+  reviewType,
+  reviewsType,
   titleClickType,
 };

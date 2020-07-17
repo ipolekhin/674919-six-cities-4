@@ -1,10 +1,17 @@
 import React, {createRef} from "react";
 import leaflet from 'leaflet';
-import {placeCardsType} from "../../types/types";
+import {cityCoordinateType, coordinateActivePinType, placeCardsType, renderMapType} from "../../types/types";
+import {MapProps} from "../../const";
+
 
 const icon = leaflet.icon({
-  iconUrl: `img/pin.svg`,
-  iconSize: [30, 30],
+  iconUrl: MapProps.ICON_URL,
+  iconSize: MapProps.ICON_SIZE,
+});
+
+const iconActive = leaflet.icon({
+  iconUrl: MapProps.ICON_ACTIVE_URL,
+  iconSize: MapProps.ICON_SIZE,
 });
 
 export default class Map extends React.PureComponent {
@@ -14,12 +21,13 @@ export default class Map extends React.PureComponent {
     this._map = null;
     this._mapRef = createRef();
     this._offerCords = null;
-    this._zoom = 12;
+    this._zoom = MapProps.ZOOM;
   }
 
   componentDidMount() {
-    const {placeCards} = this.props;
-    this._city = [52.38333, 4.9];
+    const {placeCards, cityCoordinate, coordinateActivePin = null} = this.props;
+
+    this._city = cityCoordinate;
     this._offerCords = placeCards.map(({coordinatesItem}) => coordinatesItem);
     this._map = leaflet.map(this._mapRef.current, {
       center: this._city,
@@ -34,30 +42,35 @@ export default class Map extends React.PureComponent {
       })
       .addTo(this._map);
 
-    this._offerCords.map((coordinate) => {
+    this._offerCords.forEach((coordinate) => {
       leaflet
         .marker(coordinate, {icon})
         .addTo(this._map);
     });
+
+    if (coordinateActivePin) {
+      leaflet.marker(coordinateActivePin, {iconActive}).addTo(this._map);
+    }
   }
 
   componentWillUnmount() {
     this._city = null;
-    this._city = null;
+    this._map = null;
     this._offerCords = null;
   }
 
   render() {
     return (
       <React.Fragment>
-        <div className="cities__right-section">
-          <section className="cities__map map" ref={this._mapRef}></section>
-        </div>
+        {this.props.renderMap(this._mapRef)}
       </React.Fragment>
     );
   }
 }
 
 Map.propTypes = {
+  cityCoordinate: cityCoordinateType,
+  coordinateActivePin: coordinateActivePinType,
   placeCards: placeCardsType,
+  renderMap: renderMapType,
 };
