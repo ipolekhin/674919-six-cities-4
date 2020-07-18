@@ -19,24 +19,33 @@ export default class App extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <PageContainer>
-          <Header/>
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/">
-                {this._renderOfferScreen()}
-              </Route>
-              <Route exact path="/dev-offer">
-                <Offer
-                  cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
-                  offer = {placeCards[0]}
-                  placeCards = {placeCards}
-                  onTitleClick = {this.onTitleClick}
-                />
-              </Route>
-            </Switch>
-          </BrowserRouter>
-        </PageContainer>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              <PageContainer renderContainer = {() => (
+                <div className="page page--gray page--main">
+                  <Header isMain = {true} />
+                  {this._renderOfferScreen()}
+                </div>
+              )}>
+              </PageContainer>
+            </Route>
+            <Route exact path="/dev-offer">
+              <PageContainer renderContainer = {() => (
+                <div className="page">
+                  <Header/>
+                  <Offer
+                    cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
+                    offer = {placeCards[0]}
+                    placeCards = {placeCards}
+                    onTitleClick = {this.onTitleClick}
+                  />
+                </div>
+              )}>
+              </PageContainer>
+            </Route>
+          </Switch>
+        </BrowserRouter>
       </React.Fragment>
     );
   }

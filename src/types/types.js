@@ -12,6 +12,8 @@ const countPlacesType = PropTypes.number.isRequired;
 
 const handleHoverType = PropTypes.func.isRequired;
 
+const isMainType = PropTypes.bool;
+
 const placeCardType = PropTypes.shape({
   adults: PropTypes.number.isRequired,
   bedrooms: PropTypes.number.isRequired,
@@ -59,7 +61,7 @@ const reviewsType = PropTypes.arrayOf(reviewType).isRequired;
 
 const titleClickType = PropTypes.func.isRequired;
 
-const renderMapType = PropTypes.func.isRequired;
+const renderFunctionType = PropTypes.func.isRequired;
 
 export {
   cityCoordinateType,
@@ -68,9 +70,10 @@ export {
   coordinateActivePinType,
   countPlacesType,
   handleHoverType,
+  isMainType,
   placeCardType,
   placeCardsType,
-  renderMapType,
+  renderFunctionType,
   reviewType,
   reviewsType,
   titleClickType,
