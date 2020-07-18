@@ -1,5 +1,9 @@
 import moment from "moment";
 
+const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
 const getMonthYear = (date) => {
   return moment(date).format(`MMMM YYYY`);
 };
@@ -25,6 +29,7 @@ const reshuffle = (data, maxNumber) => {
 };
 
 export {
+  extend,
   getDateTime,
   getMonthYear,
   getRandomBooleanValue,
