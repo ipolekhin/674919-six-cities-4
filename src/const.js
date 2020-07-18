@@ -19,6 +19,8 @@ export const OfferCardsClassesType = {
 
 export const Ratings = [`20%`, `40%`, `60%`, `80%`, `100%`];
 
+export const STARS_PROPERTY = [`terribly`, `badly`, `not bad`, `good`, `perfect`];
+
 export const TownType = {
   AMSTERDAM: `Amsterdam`,
   BRUSSELS: `Brussels`,

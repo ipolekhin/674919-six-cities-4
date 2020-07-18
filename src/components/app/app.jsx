@@ -46,16 +46,19 @@ export default class App extends React.PureComponent {
     if (this.state.offer === null) {
       return (
         <Main
-          countPlaces = {countPlaces}
-          placeCards = {placeCards}
-          onTitleClick = {this.onTitleClick}
           cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
+          countPlaces = {countPlaces}
+          onTitleClick = {this.onTitleClick}
+          placeCards = {placeCards}
         />
       );
     } else {
       return (
         <Offer
+          cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
           offer = {this.state.offer}
+          placeCards = {placeCards}
+          onTitleClick = {this.onTitleClick}
         />
       );
     }

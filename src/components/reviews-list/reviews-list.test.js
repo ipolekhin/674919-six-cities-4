@@ -4,7 +4,7 @@ import ReviewsList from "./reviews-list.jsx";
 
 const reviews = [
   {
-    date: new Date(),
+    date: new Date(2020, 7, 17),
     id: `01`,
     rating: `92%`,
     text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -12,7 +12,7 @@ const reviews = [
     userName: `Max`,
   },
   {
-    date: new Date(),
+    date: new Date(2020, 7, 15),
     id: `02`,
     rating: `91%`,
     text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,

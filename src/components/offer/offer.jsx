@@ -3,7 +3,7 @@ import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import {cityCoordinateType, placeCardsType, placeCardType, titleClickType} from "../../types/types";
-import {OfferCardsClassesType} from "../../const";
+import {OfferCardsClassesType, STARS_PROPERTY} from "../../const";
 
 const Offer = (props) => {
   const {cityCoordinate, offer, placeCards, onTitleClick} = props;
@@ -119,7 +119,7 @@ const Offer = (props) => {
                         return (
                           <React.Fragment key={value}>
                             <input className="form__rating-input visually-hidden" name="rating" value={value} id={`${value}-stars`} type="radio" />
-                            <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title="perfect">
+                            <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={STARS_PROPERTY[value - 1]}>
                               <svg className="form__star-image" width="37" height="33">
                                 <use xlinkHref="#icon-star"></use>
                               </svg>
