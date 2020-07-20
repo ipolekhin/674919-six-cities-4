@@ -5,6 +5,7 @@ import Map from "./map.jsx";
 const placeCards = [
   {
     adults: 3,
+    townName: `Amsterdam`,
     bedrooms: 2,
     cardName: `Wood and stone place`,
     cardRating: 4.6,
@@ -36,6 +37,7 @@ const placeCards = [
   },
   {
     adults: 2,
+    townName: `Amsterdam`,
     bedrooms: 1,
     cardName: `Wood and stone place`,
     cardRating: 3.6,
@@ -67,15 +69,12 @@ const placeCards = [
   },
 ];
 
-const coordinatesItemActive = [52.369553943508, 4.85309666406198];
-
-const cityCoordinate = [52.38333, 4.9];
+const currentCity = `Amsterdam`;
 
 it(`Render Map`, () => {
   const tree = renderer
     .create(<Map
-      cityCoordinate = {cityCoordinate}
-      coordinateActivePin = {coordinatesItemActive}
+      currentCity = {currentCity}
       placeCards = {placeCards}
       renderMap = {(mapRef) => (
         <div className="cities__right-section">

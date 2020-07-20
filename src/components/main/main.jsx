@@ -58,9 +58,9 @@ const Main = (props) => {
                 </section>
 
                 <Map
+                  currentCity = {currentCity}
                   key={currentCity}
                   placeCards = {placeCards}
-                  currentCity = {currentCity}
                   renderMap = {(mapRef) => (
                     <div className="cities__right-section">
                       <section className="cities__map map" ref={mapRef}></section>

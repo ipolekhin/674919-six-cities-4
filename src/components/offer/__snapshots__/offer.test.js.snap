@@ -269,7 +269,7 @@ exports[`Render Offer 1`] = `
                   </p>
                   <time
                     className="reviews__time"
-                    dateTime="2020-08-13"
+                    dateTime="2020-08-17"
                   >
                     August 2020
                   </time>

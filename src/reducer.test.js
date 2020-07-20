@@ -1,12 +1,11 @@
-import {reducer, ActionType} from "./reducer.js";
+import {reducer, ActionCreator, ActionType, placeCards} from "./reducer.js";
 
-const offers = {};
 const city = `Amsterdam`;
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     city,
-    offers,
+    offers: placeCards.filter((place) => place.townName === city),
   });
 });
 
@@ -27,5 +26,14 @@ it(`Reducer should change city by a given value`, () => {
     payload: `Amsterdam`,
   })).toEqual({
     city: `Amsterdam`,
+  });
+});
+
+describe(`Action creators work correctly`, () => {
+  it(`Action creator for incrementing step returns correct action`, () => {
+    expect(ActionCreator.changeCity(`Amsterdam`)).toEqual({
+      type: ActionType.CHANGE_CITY,
+      payload: `Amsterdam`,
+    });
   });
 });

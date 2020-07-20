@@ -2,10 +2,9 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main";
 
-const countPlaces = 312;
-
 const placeCards = [{
   adults: 3,
+  townName: `Amsterdam`,
   bedrooms: 2,
   cardName: `Wood and stone place`,
   cardRating: 4.6,
@@ -36,15 +35,16 @@ const placeCards = [{
   },
 }];
 
-const cityCoordinate = [52.38333, 4.9];
-
 const onTitleClick = () => {};
+const onCityClick = () => {};
+
+const currentCity = `Amsterdam`;
 
 it(`Render MainScreen`, () => {
   const tree = renderer
     .create(<Main
-      countPlaces = {countPlaces}
-      cityCoordinate = {cityCoordinate}
+      currentCity = {currentCity}
+      onCityClick = {onCityClick}
       onTitleClick = {onTitleClick}
       placeCards = {placeCards}
     />)

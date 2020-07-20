@@ -1,13 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import {App} from "./app.jsx";
 
-// jest.mocks(`../main/main.jsx`, () => `Main`);
+const currentCity = `Amsterdam`;
 
-const countPlaces = 312;
-
-const placeCards = [{
+const offers = [{
   adults: 3,
+  townName: `Amsterdam`,
   bedrooms: 2,
   cardName: `Wood and stone place`,
   cardRating: 4.6,
@@ -38,18 +37,17 @@ const placeCards = [{
   },
 }];
 
-const cityCoordinate = [52.38333, 4.9];
-
-const onTitleClick = () => {};
+const onCityClick = () => {};
 
 it(`Render App`, () => {
   const tree = renderer
-    .create(<App
-      cityCoordinate = {cityCoordinate}
-      onTitleClick = {onTitleClick}
-      countPlaces = {countPlaces}
-      placeCards = {placeCards}
-    />)
+    .create(
+        <App
+          currentCity = {currentCity}
+          offers = {offers}
+          onCityClick = {onCityClick}
+        />
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
