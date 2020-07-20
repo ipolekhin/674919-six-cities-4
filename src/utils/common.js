@@ -1,4 +1,5 @@
 import moment from "moment";
+import {TownCoordinates} from "../const";
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -13,6 +14,13 @@ const getDateTime = (date) => {
 };
 
 const getRandomBooleanValue = () => Math.random() > 0.5;
+
+const getRandomCoordinateOffer = (town) => {
+  const townCoordinate = TownCoordinates[town];
+  const x = townCoordinate[0] + Math.random() / 20;
+  const y = townCoordinate[1] + Math.random() / 20;
+  return [x, y];
+};
 
 const getRandomIntegerNumber = (min, max) => min + Math.floor(Math.random() * (max - min));
 
@@ -33,6 +41,7 @@ export {
   getDateTime,
   getMonthYear,
   getRandomBooleanValue,
+  getRandomCoordinateOffer,
   getRandomIntegerNumber,
   getRandomItem,
   reshuffle,
