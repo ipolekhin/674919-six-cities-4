@@ -8,7 +8,7 @@ const classNameType = PropTypes.string.isRequired;
 
 const coordinateActivePinType = PropTypes.arrayOf(PropTypes.number.isRequired);
 
-const countPlacesType = PropTypes.number.isRequired;
+const currentCityType = PropTypes.string.isRequired;
 
 const handleHoverType = PropTypes.func.isRequired;
 
@@ -59,7 +59,7 @@ const reviewType = PropTypes.shape({
 
 const reviewsType = PropTypes.arrayOf(reviewType).isRequired;
 
-const titleClickType = PropTypes.func.isRequired;
+const functionClickType = PropTypes.func.isRequired;
 
 const renderFunctionType = PropTypes.func.isRequired;
 
@@ -68,7 +68,8 @@ export {
   childrenType,
   classNameType,
   coordinateActivePinType,
-  countPlacesType,
+  currentCityType,
+  functionClickType,
   handleHoverType,
   isMainType,
   placeCardType,
@@ -76,5 +77,4 @@ export {
   renderFunctionType,
   reviewType,
   reviewsType,
-  titleClickType,
 };

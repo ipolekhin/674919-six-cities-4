@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {currentCityType, functionClickType} from "../../types/types";
 
 const CitiesItem = (props) => {
   const {currentCity, city, onCityClick} = props;
@@ -23,8 +24,8 @@ const CitiesItem = (props) => {
 
 CitiesItem.propTypes = {
   city: PropTypes.string,
-  currentCity: PropTypes.string,
-  onCityClick: PropTypes.func
+  currentCity: currentCityType,
+  onCityClick: functionClickType,
 };
 
 export default CitiesItem;

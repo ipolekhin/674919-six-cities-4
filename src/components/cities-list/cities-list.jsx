@@ -1,5 +1,6 @@
 import React from "react";
 import CitiesItem from "../city-item/cities-item.jsx";
+import {currentCityType, functionClickType} from "../../types/types";
 import {TOWN_NAMES} from "../../const";
 
 const CitiesList = (props) => {
@@ -21,6 +22,11 @@ const CitiesList = (props) => {
       </section>
     </div>
   );
+};
+
+CitiesList.propTypes = {
+  currentCity: currentCityType,
+  onCityClick: functionClickType,
 };
 
 export default CitiesList;

@@ -1,6 +1,6 @@
 import React, {createRef} from "react";
 import leaflet from 'leaflet';
-import {coordinateActivePinType, placeCardsType, renderFunctionType} from "../../types/types";
+import {coordinateActivePinType, currentCityType, placeCardsType, renderFunctionType} from "../../types/types";
 import {MapProps, TownCoordinates} from "../../const";
 
 
@@ -69,6 +69,7 @@ export default class Map extends React.PureComponent {
 
 Map.propTypes = {
   coordinateActivePin: coordinateActivePinType,
+  currentCity: currentCityType,
   placeCards: placeCardsType,
   renderMap: renderFunctionType,
 };

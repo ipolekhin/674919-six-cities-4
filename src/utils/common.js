@@ -15,8 +15,8 @@ const getDateTime = (date) => {
 
 const getRandomBooleanValue = () => Math.random() > 0.5;
 
-const getRandomCoordinateOffer = (town) => {
-  const townCoordinate = TownCoordinates[town];
+const getRandomCoordinateOffer = (townName) => {
+  const townCoordinate = TownCoordinates[townName];
   const x = townCoordinate[0] + Math.random() / 20;
   const y = townCoordinate[1] + Math.random() / 20;
   return [x, y];

@@ -7,7 +7,7 @@ const placeCards = generatePlaceCards(MAX_COUNT_PLACES);
 
 const initialState = {
   city: TownType.AMSTERDAM,
-  offers: placeCards.filter((place) => place.town === TownType.AMSTERDAM),
+  offers: placeCards.filter((place) => place.townName === TownType.AMSTERDAM),
 };
 
 const ActionType = {
@@ -17,8 +17,6 @@ const ActionType = {
 
 const ActionCreator = {
   changeCity: (city) => {
-    console.log(`ActionCreator`);
-
     return ({
       type: ActionType.CHANGE_CITY,
       payload: city,
@@ -26,11 +24,9 @@ const ActionCreator = {
   },
 
   getOffersList: (city) => {
-    console.log(`getOffersList`);
-
     return ({
       type: ActionType.OFFERS_LIST,
-      payload: placeCards.filter((place) => place.town === city),
+      payload: placeCards.filter((place) => place.townName === city),
     });
   },
 };

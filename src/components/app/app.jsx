@@ -6,8 +6,7 @@ import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
-import {countPlacesType, placeCardsType} from "../../types/types";
-import {TownCoordinates, TownType} from "../../const";
+import {currentCityType, functionClickType, placeCardsType} from "../../types/types";
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -17,7 +16,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    // const {placeCards} = this.props;
+    const {currentCity, onCityClick, offers} = this.props;
 
     return (
       <React.Fragment>
@@ -27,7 +26,7 @@ class App extends React.PureComponent {
               <PageContainer renderContainer = {() => (
                 <div className="page page--gray page--main">
                   <Header isMain = {true} />
-                  {this._renderOfferScreen()}
+                  {this._renderOfferScreen(currentCity, onCityClick, offers)}
                 </div>
               )}>
               </PageContainer>
@@ -37,10 +36,9 @@ class App extends React.PureComponent {
                 <div className="page">
                   <Header/>
                   <Offer
-                    cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
-                    offer = {placeCards[0]}
-                    placeCards = {placeCards}
+                    currentCity = {currentCity}
                     onTitleClick = {this.onTitleClick}
+                    placeCards = {offers}
                   />
                 </div>
               )}>
@@ -52,10 +50,7 @@ class App extends React.PureComponent {
     );
   }
 
-  _renderOfferScreen() {
-    const {currentCity, onCityClick, offers} = this.props;
-    // console.log(offers);
-
+  _renderOfferScreen(currentCity, onCityClick, offers) {
     if (this.state.offer === null) {
       return (
         <Main
@@ -67,20 +62,18 @@ class App extends React.PureComponent {
       );
     } else {
       return (
-        <div>123</div>
-        // <Offer
-        //   cityCoordinate = {TownCoordinates[TownType.AMSTERDAM]}
-        //   offer = {this.state.offer}
-        //   placeCards = {placeCards}
-        //   onTitleClick = {this.onTitleClick}
-        // />
+        <Offer
+          currentCity = {currentCity}
+          onTitleClick = {this.onTitleClick}
+          placeCards = {offers}
+        />
       );
     }
 
   }
 
   onTitleClick(offerId) {
-    this.setState({offer: this.props.placeCards.find((card) => card.id === offerId)});
+    this.setState({offer: this.props.offers.find((card) => card.id === offerId)});
   }
 }
 
@@ -97,7 +90,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 App.propTypes = {
-  // placeCards: placeCardsType,
+  currentCity: currentCityType,
+  offers: placeCardsType,
+  onCityClick: functionClickType,
 };
 
 export {App};

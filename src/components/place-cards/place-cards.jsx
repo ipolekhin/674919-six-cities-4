@@ -1,6 +1,6 @@
 import React from "react";
 import PlaceCard from "../placa-card/place-card.jsx";
-import {classNameType, placeCardsType, titleClickType} from "../../types/types";
+import {classNameType, placeCardsType, functionClickType} from "../../types/types";
 
 export default class PlaceCards extends React.PureComponent {
   constructor(props) {
@@ -35,5 +35,5 @@ export default class PlaceCards extends React.PureComponent {
 PlaceCards.propTypes = {
   className: classNameType,
   placeCards: placeCardsType,
-  onTitleClick: titleClickType,
+  onTitleClick: functionClickType,
 };

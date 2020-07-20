@@ -2,7 +2,7 @@ import React from "react";
 import CitiesList from "../cities-list/cities-list.jsx";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
-import {placeCardsType, titleClickType} from "../../types/types";
+import {currentCityType, functionClickType, placeCardsType} from "../../types/types";
 import {OfferCardsClassesType} from "../../const";
 
 const Main = (props) => {
@@ -88,8 +88,10 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  currentCity: currentCityType,
   placeCards: placeCardsType,
-  onTitleClick: titleClickType,
+  onTitleClick: functionClickType,
+  onCityClick: functionClickType,
 };
 
 export default Main;

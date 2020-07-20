@@ -1,5 +1,5 @@
 import React from "react";
-import {classNameType, placeCardType, titleClickType, handleHoverType} from "../../types/types";
+import {classNameType, placeCardType, functionClickType, handleHoverType} from "../../types/types";
 
 const PlaceCard = (props) => {
   const {className, placeCard, onTitleClick, handleHover} = props;
@@ -73,7 +73,7 @@ const PlaceCard = (props) => {
 PlaceCard.propTypes = {
   className: classNameType,
   placeCard: (placeCardType).isRequired,
-  onTitleClick: titleClickType,
+  onTitleClick: functionClickType,
   handleHover: handleHoverType,
 };
 
