@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Map from "./map.jsx";
-import {TownCoordinates, TownType} from "../../__mocks__/const";
 
 const placeCards = [
   {
     adults: 3,
+    townName: `Amsterdam`,
     bedrooms: 2,
     cardName: `Wood and stone place`,
     cardRating: 4.6,
@@ -21,7 +21,7 @@ const placeCards = [
     price: 100,
     reviews: [
       {
-        date: `14.07.2020`,
+        date: new Date(2020, 7, 17),
         id: `02`,
         rating: `82%`,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -37,6 +37,7 @@ const placeCards = [
   },
   {
     adults: 2,
+    townName: `Amsterdam`,
     bedrooms: 1,
     cardName: `Wood and stone place`,
     cardRating: 3.6,
@@ -52,7 +53,7 @@ const placeCards = [
     price: 120,
     reviews: [
       {
-        date: `16.07.2020`,
+        date: new Date(2020, 7, 15),
         id: `02`,
         rating: `82%`,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -68,15 +69,12 @@ const placeCards = [
   },
 ];
 
-const coordinatesItemActive = [52.369553943508, 4.85309666406198];
-
-const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
+const currentCity = `Amsterdam`;
 
 it(`Render Map`, () => {
   const tree = renderer
     .create(<Map
-      cityCoordinate = {cityCoordinate}
-      coordinateActivePin = {coordinatesItemActive}
+      currentCity = {currentCity}
       placeCards = {placeCards}
       renderMap = {(mapRef) => (
         <div className="cities__right-section">

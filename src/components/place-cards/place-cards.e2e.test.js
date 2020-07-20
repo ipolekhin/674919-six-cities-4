@@ -21,7 +21,7 @@ const placeCards = [
     price: 100,
     reviews: [
       {
-        date: `14.07.2020`,
+        date: new Date(2020, 7, 17),
         id: `01`,
         rating: `92%`,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -52,7 +52,7 @@ const placeCards = [
     price: 120,
     reviews: [
       {
-        date: `16.07.2020`,
+        date: new Date(2020, 7, 15),
         id: `02`,
         rating: `82%`,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -76,12 +76,12 @@ Enzyme.configure({
 
 describe(`TitleLink`, () => {
   it(`Should title click handler be pressed`, () => {
-    const titleClickHandler = jest.fn();
+    const onTitleClick = jest.fn();
     const placeCardsComponent = shallow(
         <PlaceCards
           className = {className}
+          onTitleClick = {onTitleClick}
           placeCards = {placeCards}
-          titleClickHandler = {titleClickHandler}
         />
     );
 
@@ -91,6 +91,6 @@ describe(`TitleLink`, () => {
       link.props().onClick();
     });
 
-    expect(titleClickHandler.mock.calls.length).toBe(titleLinkBefore.length);
+    expect(onTitleClick.mock.calls.length).toBe(titleLinkBefore.length);
   });
 });

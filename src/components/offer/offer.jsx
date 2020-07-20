@@ -2,12 +2,13 @@ import React from "react";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
-import {cityCoordinateType, placeCardsType, placeCardType, titleClickType} from "../../types/types";
-import {OfferCardsClassesType} from "../../const";
+import {currentCityType, functionClickType, placeCardsType} from "../../types/types";
+import {OfferCardsClassesType, STARS_PROPERTY} from "../../const";
 
 const Offer = (props) => {
-  const {cityCoordinate, offer, placeCards, titleClickHandler} = props;
-  const nearPlaces = placeCards.filter((place) => offer.id !== place.id);
+  const {currentCity, onTitleClick, placeCards} = props;
+  const nearPlaces = placeCards.filter((place) => placeCards[0].id !== place.id);
+  const FIVE_STAR = [5, 4, 3, 2, 1];
 
   return (
     <React.Fragment>
@@ -15,7 +16,7 @@ const Offer = (props) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {offer.images.map((image, index) => (
+              {placeCards[0].images.map((image, index) => (
                 <div className="property__image-wrapper" key={index}>
                   <img className="property__image" src={image} alt="Photo studio" />
                 </div>
@@ -24,7 +25,7 @@ const Offer = (props) => {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {offer.premiumPlace && (
+              {placeCards[0].premiumPlace && (
                 <div className="property__mark">
                   <span>Premium</span>
                 </div>
@@ -32,7 +33,7 @@ const Offer = (props) => {
 
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  {offer.cardName}
+                  {placeCards[0].cardName}
                 </h1>
 
                 <button className="property__bookmark-button button" type="button">
@@ -45,30 +46,30 @@ const Offer = (props) => {
 
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: offer.cardRatingStars}}></span>
+                  <span style={{width: placeCards[0].cardRatingStars}}></span>
 
                   <span className="visually-hidden">Rating</span>
                 </div>
 
-                <span className="property__rating-value rating__value">{offer.cardRating}</span>
+                <span className="property__rating-value rating__value">{placeCards[0].cardRating}</span>
               </div>
 
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {offer.cardType}
+                  {placeCards[0].cardType}
                 </li>
 
                 <li className="property__feature property__feature--bedrooms">
-                  {offer.bedrooms} Bedrooms
+                  {placeCards[0].bedrooms} Bedrooms
                 </li>
 
                 <li className="property__feature property__feature--adults">
-                  Max {offer.adults} adults
+                  Max {placeCards[0].adults} adults
                 </li>
               </ul>
 
               <div className="property__price">
-                <b className="property__price-value">€{offer.price}</b>
+                <b className="property__price-value">€{placeCards[0].price}</b>
 
                 <span className="property__price-text">&nbsp;night</span>
               </div>
@@ -77,7 +78,7 @@ const Offer = (props) => {
                 <h2 className="property__inside-title">What inside</h2>
 
                 <ul className="property__inside-list">
-                  {offer.insideItems.map((item, index) => (
+                  {placeCards[0].insideItems.map((item, index) => (
                     <li className="property__inside-item" key={index}>
                       {item}
                     </li>
@@ -89,64 +90,44 @@ const Offer = (props) => {
                 <h2 className="property__host-title">Meet the host</h2>
 
                 <div className="property__host-user user">
-                  <div className={`property__avatar-wrapper user__avatar-wrapper ${offer.user.pro ? `property__avatar-wrapper--pro` : ``}`}>
-                    <img className="property__avatar user__avatar" src={offer.user.avatar} alt="Host avatar"
+                  <div className={`property__avatar-wrapper user__avatar-wrapper ${placeCards[0].user.pro ? `property__avatar-wrapper--pro` : ``}`}>
+                    <img className="property__avatar user__avatar" src={placeCards[0].user.avatar} alt="Host avatar"
                       width="74" height="74" />
                   </div>
 
-                  <span className="property__user-name">{offer.user.name}</span>
+                  <span className="property__user-name">{placeCards[0].user.name}</span>
                 </div>
                 <div className="property__description">
                   <p className="property__text">
-                    {offer.description}
+                    {placeCards[0].description}
                   </p>
                 </div>
               </div>
 
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{offer.reviews.length}</span></h2>
+                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{placeCards[0].reviews.length}</span></h2>
 
                 <ReviewsList
-                  reviews = {offer.reviews}
+                  reviews = {placeCards[0].reviews}
                 />
 
                 <form className="reviews__form form" action="#" method="post">
                   <label className="reviews__label form__label" htmlFor="review">Your review</label>
                   <div className="reviews__rating-form form__rating">
-                    <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
-                    <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" type="radio" />
-                    <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" type="radio" />
-                    <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" type="radio" />
-                    <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" type="radio" />
-                    <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
+                    {
+                      FIVE_STAR.map((value) => {
+                        return (
+                          <React.Fragment key={value}>
+                            <input className="form__rating-input visually-hidden" name="rating" value={value} id={`${value}-stars`} type="radio" />
+                            <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={STARS_PROPERTY[value - 1]}>
+                              <svg className="form__star-image" width="37" height="33">
+                                <use xlinkHref="#icon-star"></use>
+                              </svg>
+                            </label>
+                          </React.Fragment>
+                        );
+                      })
+                    }
                   </div>
 
                   <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
@@ -163,8 +144,8 @@ const Offer = (props) => {
           </div>
 
           <Map
-            cityCoordinate = {cityCoordinate}
-            coordinateActivePin = {offer.coordinatesItem}
+            coordinateActivePin = {placeCards[0].coordinatesItem}
+            currentCity = {currentCity}
             placeCards = {nearPlaces}
             renderMap = {(mapRef) => (
               <section className="property__map map" ref={mapRef}></section>
@@ -179,8 +160,8 @@ const Offer = (props) => {
             <div className="near-places__list places__list">
               <PlaceCards
                 className = {OfferCardsClassesType.OFFER_CONTAINER}
+                onTitleClick = {onTitleClick}
                 placeCards = {nearPlaces}
-                titleClickHandler = {titleClickHandler}
               />
             </div>
           </section>
@@ -191,10 +172,9 @@ const Offer = (props) => {
 };
 
 Offer.propTypes = {
-  cityCoordinate: cityCoordinateType,
-  offer: (placeCardType).isRequired,
+  currentCity: currentCityType,
+  onTitleClick: functionClickType,
   placeCards: placeCardsType,
-  titleClickHandler: titleClickType,
 };
 
 export default Offer;

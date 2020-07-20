@@ -1,7 +1,7 @@
 import React, {createRef} from "react";
 import leaflet from 'leaflet';
-import {cityCoordinateType, coordinateActivePinType, placeCardsType, renderMapType} from "../../types/types";
-import {MapProps} from "../../const";
+import {coordinateActivePinType, currentCityType, placeCardsType, renderFunctionType} from "../../types/types";
+import {MapProps, TownCoordinates} from "../../const";
 
 
 const icon = leaflet.icon({
@@ -25,9 +25,8 @@ export default class Map extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {placeCards, cityCoordinate, coordinateActivePin = null} = this.props;
-
-    this._city = cityCoordinate;
+    const {placeCards, currentCity, coordinateActivePin = null} = this.props;
+    this._city = TownCoordinates[currentCity];
     this._offerCords = placeCards.map(({coordinatesItem}) => coordinatesItem);
     this._map = leaflet.map(this._mapRef.current, {
       center: this._city,
@@ -69,8 +68,8 @@ export default class Map extends React.PureComponent {
 }
 
 Map.propTypes = {
-  cityCoordinate: cityCoordinateType,
   coordinateActivePin: coordinateActivePinType,
+  currentCity: currentCityType,
   placeCards: placeCardsType,
-  renderMap: renderMapType,
+  renderMap: renderFunctionType,
 };

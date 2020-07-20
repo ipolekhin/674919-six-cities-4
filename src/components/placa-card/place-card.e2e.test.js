@@ -20,7 +20,7 @@ const placeCard = {
   price: 100,
   reviews: [
     {
-      date: `16.07.2020`,
+      date: new Date(2020, 7, 17),
       id: `01`,
       rating: `92%`,
       text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -44,13 +44,13 @@ Enzyme.configure({
 describe(`TitleLink`, () => {
   it(`Should mouse on card and get cardID`, () => {
     const handleHover = jest.fn((placeCardId) => placeCardId);
-    const titleClickHandler = jest.fn();
+    const onTitleClick = jest.fn();
     const placeCardComponent = shallow(
         <PlaceCard
           className = {className}
-          placeCard = {placeCard}
-          titleClickHandler = {titleClickHandler}
           handleHover = {handleHover}
+          onTitleClick = {onTitleClick}
+          placeCard = {placeCard}
         />
     );
 

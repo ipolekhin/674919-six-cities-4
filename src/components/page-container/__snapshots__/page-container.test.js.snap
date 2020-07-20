@@ -3,9 +3,5 @@
 exports[`Render PageContainer 1`] = `
 <div
   className="page page--gray page--main"
->
-  <div
-    className="children-component"
-  />
-</div>
+/>
 `;

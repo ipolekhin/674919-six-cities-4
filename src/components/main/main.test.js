@@ -1,12 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main";
-import {TownCoordinates, TownType} from "../../__mocks__/const";
-
-const countPlaces = 312;
 
 const placeCards = [{
   adults: 3,
+  townName: `Amsterdam`,
   bedrooms: 2,
   cardName: `Wood and stone place`,
   cardRating: 4.6,
@@ -22,7 +20,7 @@ const placeCards = [{
   price: 100,
   reviews: [
     {
-      date: `16.07.2020`,
+      date: new Date(2020, 7, 17),
       id: `01`,
       rating: `92%`,
       text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -37,17 +35,18 @@ const placeCards = [{
   },
 }];
 
-const cityCoordinate = TownCoordinates[TownType.AMSTERDAM];
+const onTitleClick = () => {};
+const onCityClick = () => {};
 
-const titleClickHandler = () => {};
+const currentCity = `Amsterdam`;
 
 it(`Render MainScreen`, () => {
   const tree = renderer
     .create(<Main
-      countPlaces = {countPlaces}
+      currentCity = {currentCity}
+      onCityClick = {onCityClick}
+      onTitleClick = {onTitleClick}
       placeCards = {placeCards}
-      titleClickHandler = {titleClickHandler}
-      cityCoordinate = {cityCoordinate}
     />)
     .toJSON();
 

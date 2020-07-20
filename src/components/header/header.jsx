@@ -1,11 +1,8 @@
 import React from "react";
+import {isMainType} from "../../types/types";
 
-let isMain = false;
-if (window.document.location.pathname === `/`) {
-  isMain = true;
-}
-
-const Header = () => {
+const Header = (props) => {
+  const {isMain = false} = props;
   const getLogoElement = () => {
     return (
       isMain
@@ -43,6 +40,10 @@ const Header = () => {
       </header>
     </React.Fragment>
   );
+};
+
+Header.propTypes = {
+  isMain: isMainType,
 };
 
 export default Header;

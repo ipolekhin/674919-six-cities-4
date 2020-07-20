@@ -19,6 +19,8 @@ export const OfferCardsClassesType = {
 
 export const Ratings = [`20%`, `40%`, `60%`, `80%`, `100%`];
 
+export const STARS_PROPERTY = [`terribly`, `badly`, `not bad`, `good`, `perfect`];
+
 export const TownType = {
   AMSTERDAM: `Amsterdam`,
   BRUSSELS: `Brussels`,
@@ -38,10 +40,10 @@ export const TOWN_NAMES = [
 ];
 
 export const TownCoordinates = {
-  [TownType.AMSTERDAM]: [52.38333, 4.9],
-  [TownType.BRUSSELS]: [52.38333, 4.9],
-  [TownType.COLOGNE]: [52.38333, 4.9],
-  [TownType.DUSSELDORF]: [52.38333, 4.9],
-  [TownType.HAMBURG]: [52.38333, 4.9],
-  [TownType.PARIS]: [52.38333, 4.9],
+  [TownType.AMSTERDAM]: [52.374, 4.889],
+  [TownType.BRUSSELS]: [50.850, 4.348],
+  [TownType.COLOGNE]: [50.933, 6.950],
+  [TownType.DUSSELDORF]: [51.221, 6.776],
+  [TownType.HAMBURG]: [53.575, 10.015],
+  [TownType.PARIS]: [48.853, 2.348],
 };
