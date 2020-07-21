@@ -5,7 +5,8 @@ const city = `Amsterdam`;
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     city,
-    offers: placeCards.filter((place) => place.townName === city),
+    offers: placeCards,
+    offersOfTown: placeCards.filter((place) => place.townName === city),
   });
 });
 

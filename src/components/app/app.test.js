@@ -4,7 +4,7 @@ import {App} from "./app.jsx";
 
 const currentCity = `Amsterdam`;
 
-const offers = [{
+const offersOfTown = [{
   adults: 3,
   townName: `Amsterdam`,
   bedrooms: 2,
@@ -44,7 +44,7 @@ it(`Render App`, () => {
     .create(
         <App
           currentCity = {currentCity}
-          offers = {offers}
+          offersOfTown = {offersOfTown}
           onCityClick = {onCityClick}
         />
     )

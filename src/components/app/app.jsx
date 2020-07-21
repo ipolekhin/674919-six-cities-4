@@ -12,11 +12,11 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {offer: null};
-    this.onTitleClick = this.onTitleClick.bind(this);
+    this.handleTitleClick = this.handleTitleClick.bind(this);
   }
 
   render() {
-    const {currentCity, onCityClick, offers} = this.props;
+    const {currentCity, onCityClick, offersOfTown} = this.props;
 
     return (
       <React.Fragment>
@@ -26,7 +26,7 @@ class App extends React.PureComponent {
               <PageContainer renderContainer = {() => (
                 <div className="page page--gray page--main">
                   <Header isMain = {true} />
-                  {this._renderOfferScreen(currentCity, onCityClick, offers)}
+                  {this._renderOfferScreen(currentCity, onCityClick, offersOfTown)}
                 </div>
               )}>
               </PageContainer>
@@ -37,8 +37,8 @@ class App extends React.PureComponent {
                   <Header/>
                   <Offer
                     currentCity = {currentCity}
-                    onTitleClick = {this.onTitleClick}
-                    placeCards = {offers}
+                    onTitleClick = {this.handleTitleClick}
+                    placeCards = {offersOfTown}
                   />
                 </div>
               )}>
@@ -50,36 +50,36 @@ class App extends React.PureComponent {
     );
   }
 
-  _renderOfferScreen(currentCity, onCityClick, offers) {
+  _renderOfferScreen(currentCity, onCityClick, offersOfTown) {
     if (this.state.offer === null) {
       return (
         <Main
           currentCity = {currentCity}
           onCityClick = {onCityClick}
-          onTitleClick = {this.onTitleClick}
-          placeCards = {offers}
+          onTitleClick = {this.handleTitleClick}
+          placeCards = {offersOfTown}
         />
       );
     } else {
       return (
         <Offer
           currentCity = {currentCity}
-          onTitleClick = {this.onTitleClick}
-          placeCards = {offers}
+          onTitleClick = {this.handleTitleClick}
+          placeCards = {offersOfTown}
         />
       );
     }
 
   }
 
-  onTitleClick(offerId) {
-    this.setState({offer: this.props.offers.find((card) => card.id === offerId)});
+  handleTitleClick(offerId) {
+    this.setState({offer: this.props.offersOfTown.find((card) => card.id === offerId)});
   }
 }
 
 const mapStateToProps = (state) => ({
   currentCity: state.city,
-  offers: state.offers,
+  offersOfTown: state.offersOfTown,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -91,7 +91,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 App.propTypes = {
   currentCity: currentCityType,
-  offers: placeCardsType,
+  offersOfTown: placeCardsType,
   onCityClick: functionClickType,
 };
 
