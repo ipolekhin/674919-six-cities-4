@@ -4,15 +4,18 @@ import {coordinateActivePinType, currentCityType, placeCardsType, renderFunction
 import {MapProps, TownCoordinates} from "../../const";
 
 
-const icon = leaflet.icon({
-  iconUrl: MapProps.ICON_URL,
-  iconSize: MapProps.ICON_SIZE,
+const LeafIcon = leaflet.Icon.extend({
+  options: {
+    iconSize: MapProps.ICON_SIZE,
+  }
 });
 
-const iconActive = leaflet.icon({
-  iconUrl: MapProps.ICON_ACTIVE_URL,
-  iconSize: MapProps.ICON_SIZE,
-});
+const defaultIcon = new LeafIcon({iconUrl: MapProps.ICON_URL});
+const orangeIcon = new LeafIcon({iconUrl: MapProps.ICON_ACTIVE_URL});
+
+leaflet.icon = function (options) {
+  return new leaflet.Icon(options);
+};
 
 export default class Map extends React.PureComponent {
   constructor(props) {
@@ -43,12 +46,12 @@ export default class Map extends React.PureComponent {
 
     this._offerCords.forEach((coordinate) => {
       leaflet
-        .marker(coordinate, {icon})
+        .marker(coordinate, {icon: defaultIcon})
         .addTo(this._map);
     });
 
     if (coordinateActivePin) {
-      leaflet.marker(coordinateActivePin, {iconActive}).addTo(this._map);
+      leaflet.marker(coordinateActivePin, {icon: orangeIcon}).addTo(this._map);
     }
   }
 

@@ -1,18 +1,21 @@
 import {extend} from "./utils/common.js";
 import {generatePlaceCards} from "./mocks/offers";
 import {TownType} from "./const.js";
+import {PlacesSortingType} from "./const";
 
 const MAX_COUNT_PLACES = 24;
 const placeCards = generatePlaceCards(MAX_COUNT_PLACES);
 
 const initialState = {
   city: TownType.AMSTERDAM,
+  sortByName: PlacesSortingType.POPULAR,
   offers: placeCards,
   offersOfTown: placeCards.filter((place) => place.townName === TownType.AMSTERDAM),
 };
 
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
+  CHANGE_SORT_OPTIONS: `CHANGE_SORT_OPTIONS`,
   OFFERS_LIST: `OFFERS_LIST`,
 };
 
@@ -21,6 +24,13 @@ const ActionCreator = {
     return ({
       type: ActionType.CHANGE_CITY,
       payload: city,
+    });
+  },
+
+  changeSortOptions: (sortByName) => {
+    return ({
+      type: ActionType.CHANGE_SORT_OPTIONS,
+      payload: sortByName,
     });
   },
 
@@ -37,6 +47,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_CITY:
       return extend(state, {
         city: action.payload,
+      });
+
+    case ActionType.CHANGE_SORT_OPTIONS:
+      return extend(state, {
+        sortByName: action.payload,
       });
 
     case ActionType.OFFERS_LIST:

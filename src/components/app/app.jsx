@@ -16,7 +16,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {currentCity, onCityClick, offersOfTown} = this.props;
+    const {currentCity, onCityClick, onSortClick, sortByName, offersOfTown} = this.props;
 
     return (
       <React.Fragment>
@@ -26,7 +26,7 @@ class App extends React.PureComponent {
               <PageContainer renderContainer = {() => (
                 <div className="page page--gray page--main">
                   <Header isMain = {true} />
-                  {this._renderOfferScreen(currentCity, onCityClick, offersOfTown)}
+                  {this._renderOfferScreen(currentCity, onCityClick, offersOfTown, onSortClick, sortByName)}
                 </div>
               )}>
               </PageContainer>
@@ -50,7 +50,7 @@ class App extends React.PureComponent {
     );
   }
 
-  _renderOfferScreen(currentCity, onCityClick, offersOfTown) {
+  _renderOfferScreen(currentCity, onCityClick, offersOfTown, onSortClick, sortByName) {
     if (this.state.offer === null) {
       return (
         <Main
@@ -58,6 +58,8 @@ class App extends React.PureComponent {
           onCityClick = {onCityClick}
           onTitleClick = {this.handleTitleClick}
           placeCards = {offersOfTown}
+          onSortClick = {onSortClick}
+          sortByName = {sortByName}
         />
       );
     } else {
@@ -69,7 +71,6 @@ class App extends React.PureComponent {
         />
       );
     }
-
   }
 
   handleTitleClick(offerId) {
@@ -79,6 +80,7 @@ class App extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   currentCity: state.city,
+  sortByName: state.sortByName,
   offersOfTown: state.offersOfTown,
 });
 
@@ -86,6 +88,9 @@ const mapDispatchToProps = (dispatch) => ({
   onCityClick(city) {
     dispatch(ActionCreator.changeCity(city));
     dispatch(ActionCreator.getOffersList(city));
+  },
+  onSortClick(sortByName) {
+    dispatch(ActionCreator.changeSortOptions(sortByName));
   },
 });
 
