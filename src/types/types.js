@@ -10,6 +10,8 @@ const coordinateActivePinType = PropTypes.arrayOf(PropTypes.number.isRequired);
 
 const currentCityType = PropTypes.string.isRequired;
 
+const functionClickType = PropTypes.func.isRequired;
+
 const handleHoverType = PropTypes.func.isRequired;
 
 const isMainType = PropTypes.bool;
@@ -59,7 +61,7 @@ const reviewType = PropTypes.shape({
 
 const reviewsType = PropTypes.arrayOf(reviewType).isRequired;
 
-const functionClickType = PropTypes.func.isRequired;
+const sortNameType = PropTypes.string.isRequired;
 
 const renderFunctionType = PropTypes.func.isRequired;
 
@@ -77,4 +79,5 @@ export {
   renderFunctionType,
   reviewType,
   reviewsType,
+  sortNameType,
 };

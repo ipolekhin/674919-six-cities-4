@@ -48,16 +48,16 @@ export const TownCoordinates = {
   [TownType.PARIS]: [48.853, 2.348],
 };
 
-export const PlacesSortingType = {
+export const SortType = {
   POPULAR: `Popular`,
   PRICE_LOW: `Price: low to high`,
   PRICE_HIGH: `Price: high to low`,
   TOP_RATED_FIRST: `Top rated first`,
 };
 
-export const PLACES_SORTING_NAMES = [
-  PlacesSortingType.POPULAR,
-  PlacesSortingType.PRICE_LOW,
-  PlacesSortingType.PRICE_HIGH,
-  PlacesSortingType.TOP_RATED_FIRST,
+export const SORT_NAMES = [
+  SortType.POPULAR,
+  SortType.PRICE_LOW,
+  SortType.PRICE_HIGH,
+  SortType.TOP_RATED_FIRST,
 ];

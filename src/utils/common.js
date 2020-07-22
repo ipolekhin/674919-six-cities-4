@@ -1,5 +1,6 @@
 import moment from "moment";
 import {TownCoordinates} from "../const";
+import {SortType} from "../const";
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -30,6 +31,28 @@ const getRandomItem = (items) => {
   return items[randomIndex];
 };
 
+const getSortedOffers = (offers, sortType) => {
+  let sortedOffers = [];
+  const showingOffers = offers.slice();
+
+  switch (sortType) {
+    case SortType.POPULAR:
+      sortedOffers = offers;
+      break;
+    case SortType.PRICE_LOW:
+      sortedOffers = showingOffers.sort((a, b) => a.price - b.price);
+      break;
+    case SortType.PRICE_HIGH:
+      sortedOffers = showingOffers.sort((a, b) => b.price - a.price);
+      break;
+    case SortType.TOP_RATED_FIRST:
+      sortedOffers = showingOffers.sort((a, b) => b.cardRating - a.cardRating);
+      break;
+  }
+
+  return sortedOffers;
+};
+
 const reshuffle = (data, maxNumber) => {
   const shuffle = data.slice().sort(() => Math.random() - 0.5);
   shuffle.length = getRandomIntegerNumber(1, maxNumber);
@@ -44,5 +67,6 @@ export {
   getRandomCoordinateOffer,
   getRandomIntegerNumber,
   getRandomItem,
+  getSortedOffers,
   reshuffle,
 };

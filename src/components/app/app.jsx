@@ -6,7 +6,8 @@ import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
-import {currentCityType, functionClickType, placeCardsType} from "../../types/types";
+import {currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
+import {getSortedOffers} from "../../utils/common";
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -17,6 +18,7 @@ class App extends React.PureComponent {
 
   render() {
     const {currentCity, onCityClick, onSortClick, sortByName, offersOfTown} = this.props;
+    const sortOffersOfTown = getSortedOffers(offersOfTown, sortByName);
 
     return (
       <React.Fragment>
@@ -26,7 +28,7 @@ class App extends React.PureComponent {
               <PageContainer renderContainer = {() => (
                 <div className="page page--gray page--main">
                   <Header isMain = {true} />
-                  {this._renderOfferScreen(currentCity, onCityClick, offersOfTown, onSortClick, sortByName)}
+                  {this._renderOfferScreen(currentCity, onCityClick, offersOfTown, sortOffersOfTown, onSortClick, sortByName)}
                 </div>
               )}>
               </PageContainer>
@@ -50,14 +52,14 @@ class App extends React.PureComponent {
     );
   }
 
-  _renderOfferScreen(currentCity, onCityClick, offersOfTown, onSortClick, sortByName) {
+  _renderOfferScreen(currentCity, onCityClick, offersOfTown, sortOffersOfTown, onSortClick, sortByName) {
     if (this.state.offer === null) {
       return (
         <Main
           currentCity = {currentCity}
           onCityClick = {onCityClick}
           onTitleClick = {this.handleTitleClick}
-          placeCards = {offersOfTown}
+          placeCards = {sortOffersOfTown}
           onSortClick = {onSortClick}
           sortByName = {sortByName}
         />
@@ -98,6 +100,8 @@ App.propTypes = {
   currentCity: currentCityType,
   offersOfTown: placeCardsType,
   onCityClick: functionClickType,
+  onSortClick: functionClickType,
+  sortByName: sortNameType,
 };
 
 export {App};
