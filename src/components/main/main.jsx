@@ -3,12 +3,13 @@ import CitiesList from "../cities-list/cities-list.jsx";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import PlacesSorting from "../places-sorting/places-sorting.jsx";
-import {currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
+import {currentCityIdType, currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
 import {OfferCardsClassesType} from "../../const";
 
 const Main = (props) => {
-  const {currentCity, onCityClick, onTitleClick, placeCards, onSortClick, sortByName} = props;
+  const {currentCity, onCityClick, onTitleClick, placeCards, onSortClick, sortByName, activeOfferId} = props;
   const emptyCityClass = !placeCards.length ? `page__main--index-empty` : ``;
+
 
   return (
     <React.Fragment>
@@ -43,8 +44,9 @@ const Main = (props) => {
                 </section>
 
                 <Map
-                  currentCity = {currentCity}
                   key={currentCity}
+                  currentCity = {currentCity}
+                  currentCityId = {activeOfferId}
                   placeCards = {placeCards}
                   renderMap = {(mapRef) => (
                     <div className="cities__right-section">
@@ -73,6 +75,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  activeOfferId: currentCityIdType,
   currentCity: currentCityType,
   onTitleClick: functionClickType,
   onCityClick: functionClickType,

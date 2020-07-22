@@ -6,7 +6,7 @@ const childrenType = PropTypes.node.isRequired;
 
 const classNameType = PropTypes.string.isRequired;
 
-const coordinateActivePinType = PropTypes.arrayOf(PropTypes.number.isRequired);
+const currentCityIdType = PropTypes.string;
 
 const currentCityType = PropTypes.string.isRequired;
 
@@ -69,7 +69,7 @@ export {
   cityCoordinateType,
   childrenType,
   classNameType,
-  coordinateActivePinType,
+  currentCityIdType,
   currentCityType,
   functionClickType,
   handleHoverType,

@@ -6,7 +6,7 @@ import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
-import {currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
+import {currentCityIdType, currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
 import {getSortedOffers} from "../../utils/common";
 
 class App extends React.PureComponent {
@@ -17,7 +17,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {currentCity, onCityClick, onSortClick, sortByName, offersOfTown} = this.props;
+    const {currentCity, onCityClick, onSortClick, sortByName, offersOfTown, activeOfferId} = this.props;
     const sortOffersOfTown = getSortedOffers(offersOfTown, sortByName);
 
     return (
@@ -28,7 +28,7 @@ class App extends React.PureComponent {
               <PageContainer renderContainer = {() => (
                 <div className="page page--gray page--main">
                   <Header isMain = {true} />
-                  {this._renderOfferScreen(currentCity, onCityClick, offersOfTown, sortOffersOfTown, onSortClick, sortByName)}
+                  {this._renderOfferScreen(currentCity, onCityClick, offersOfTown, sortOffersOfTown, onSortClick, sortByName, activeOfferId)}
                 </div>
               )}>
               </PageContainer>
@@ -52,10 +52,11 @@ class App extends React.PureComponent {
     );
   }
 
-  _renderOfferScreen(currentCity, onCityClick, offersOfTown, sortOffersOfTown, onSortClick, sortByName) {
+  _renderOfferScreen(currentCity, onCityClick, offersOfTown, sortOffersOfTown, onSortClick, sortByName, activeOfferId) {
     if (this.state.offer === null) {
       return (
         <Main
+          activeOfferId = {activeOfferId}
           currentCity = {currentCity}
           onCityClick = {onCityClick}
           onTitleClick = {this.handleTitleClick}
@@ -81,6 +82,7 @@ class App extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
+  activeOfferId: state.activeOfferId,
   currentCity: state.city,
   sortByName: state.sortByName,
   offersOfTown: state.offersOfTown,
@@ -97,6 +99,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 App.propTypes = {
+  activeOfferId: currentCityIdType,
   currentCity: currentCityType,
   offersOfTown: placeCardsType,
   onCityClick: functionClickType,

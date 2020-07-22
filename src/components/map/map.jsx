@@ -1,6 +1,6 @@
 import React, {createRef} from "react";
 import leaflet from 'leaflet';
-import {coordinateActivePinType, currentCityType, placeCardsType, renderFunctionType} from "../../types/types";
+import {currentCityIdType, currentCityType, placeCardsType, renderFunctionType} from "../../types/types";
 import {MapProps, TownCoordinates} from "../../const";
 
 
@@ -23,14 +23,14 @@ export default class Map extends React.PureComponent {
     this._city = null;
     this._map = null;
     this._mapRef = createRef();
-    this._offerCords = null;
+    this._offerProps = null;
     this._zoom = MapProps.ZOOM;
   }
 
   componentDidMount() {
-    const {placeCards, currentCity, coordinateActivePin = null} = this.props;
+    const {currentCity, placeCards} = this.props;
     this._city = TownCoordinates[currentCity];
-    this._offerCords = placeCards.map(({coordinatesItem}) => coordinatesItem);
+    this._offerProps = placeCards.map(({id, coordinatesItem}) => [id, coordinatesItem]);
     this._map = leaflet.map(this._mapRef.current, {
       center: this._city,
       zoom: this._zoom,
@@ -44,21 +44,32 @@ export default class Map extends React.PureComponent {
       })
       .addTo(this._map);
 
-    this._offerCords.forEach((coordinate) => {
-      leaflet
-        .marker(coordinate, {icon: defaultIcon})
-        .addTo(this._map);
-    });
+    this._renderMarkers();
+  }
 
-    if (coordinateActivePin) {
-      leaflet.marker(coordinateActivePin, {icon: orangeIcon}).addTo(this._map);
-    }
+  componentDidUpdate() {
+    this._renderMarkers();
   }
 
   componentWillUnmount() {
     this._city = null;
     this._map = null;
-    this._offerCords = null;
+    this._offerProps = null;
+  }
+
+  _renderMarkers() {
+    const {currentCityId = null} = this.props;
+    this._offerProps.forEach((offerProp) => {
+      if (currentCityId === offerProp[0]) {
+        leaflet
+          .marker(offerProp[1], {icon: orangeIcon})
+          .addTo(this._map);
+      } else {
+        leaflet
+          .marker(offerProp[1], {icon: defaultIcon})
+          .addTo(this._map);
+      }
+    });
   }
 
   render() {
@@ -71,7 +82,7 @@ export default class Map extends React.PureComponent {
 }
 
 Map.propTypes = {
-  coordinateActivePin: coordinateActivePinType,
+  currentCityId: currentCityIdType,
   currentCity: currentCityType,
   placeCards: placeCardsType,
   renderMap: renderFunctionType,
