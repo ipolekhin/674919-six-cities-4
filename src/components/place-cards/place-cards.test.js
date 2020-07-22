@@ -5,6 +5,7 @@ import PlaceCards from "./place-cards.jsx";
 const placeCards = [
   {
     adults: 3,
+    townName: `Amsterdam`,
     bedrooms: 2,
     cardName: `Wood and stone place`,
     cardRating: 4.6,
