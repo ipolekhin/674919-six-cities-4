@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import Main from "./main.jsx";
 
 const placeCards = [{
   adults: 3,
@@ -35,19 +37,30 @@ const placeCards = [{
   },
 }];
 
-const onTitleClick = () => {};
-const onCityClick = () => {};
-
+const activeOfferId = `1`;
 const currentCity = `Amsterdam`;
+const onCityClick = () => {};
+const onTitleClick = () => {};
+const onSortClick = () => {};
+const sortByName = `Popular`;
+const mockStore = configureStore([]);
 
 it(`Render MainScreen`, () => {
+  const store = mockStore({});
   const tree = renderer
-    .create(<Main
-      currentCity = {currentCity}
-      onCityClick = {onCityClick}
-      onTitleClick = {onTitleClick}
-      placeCards = {placeCards}
-    />)
+    .create(
+        <Provider store={store}>
+          <Main
+            activeOfferId = {activeOfferId}
+            currentCity = {currentCity}
+            onCityClick = {onCityClick}
+            onTitleClick = {onTitleClick}
+            onSortClick = {onSortClick}
+            placeCards = {placeCards}
+            sortByName = {sortByName}
+          />
+        </Provider>
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();

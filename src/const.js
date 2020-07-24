@@ -47,3 +47,17 @@ export const TownCoordinates = {
   [TownType.HAMBURG]: [53.575, 10.015],
   [TownType.PARIS]: [48.853, 2.348],
 };
+
+export const SortType = {
+  POPULAR: `Popular`,
+  PRICE_LOW: `Price: low to high`,
+  PRICE_HIGH: `Price: high to low`,
+  TOP_RATED_FIRST: `Top rated first`,
+};
+
+export const SORT_NAMES = [
+  SortType.POPULAR,
+  SortType.PRICE_LOW,
+  SortType.PRICE_HIGH,
+  SortType.TOP_RATED_FIRST,
+];

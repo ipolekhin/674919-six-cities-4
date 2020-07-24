@@ -1,11 +1,15 @@
 import {reducer, ActionCreator, ActionType, placeCards} from "./reducer.js";
+import {SortType} from "./const";
 
 const city = `Amsterdam`;
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
+    activeOfferId: null,
     city,
-    offers: placeCards.filter((place) => place.townName === city),
+    sortByName: SortType.POPULAR,
+    offers: placeCards,
+    offersOfTown: placeCards.filter((place) => place.townName === city),
   });
 });
 

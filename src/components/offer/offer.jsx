@@ -144,9 +144,9 @@ const Offer = (props) => {
           </div>
 
           <Map
-            coordinateActivePin = {placeCards[0].coordinatesItem}
+            currentCityId = {placeCards[0].id}
             currentCity = {currentCity}
-            placeCards = {nearPlaces}
+            placeCards = {placeCards}
             renderMap = {(mapRef) => (
               <section className="property__map map" ref={mapRef}></section>
             )}

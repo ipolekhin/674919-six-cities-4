@@ -6,11 +6,11 @@ const childrenType = PropTypes.node.isRequired;
 
 const classNameType = PropTypes.string.isRequired;
 
-const coordinateActivePinType = PropTypes.arrayOf(PropTypes.number.isRequired);
+const currentCityIdType = PropTypes.string;
 
 const currentCityType = PropTypes.string.isRequired;
 
-const handleHoverType = PropTypes.func.isRequired;
+const functionClickType = PropTypes.func.isRequired;
 
 const isMainType = PropTypes.bool;
 
@@ -59,7 +59,7 @@ const reviewType = PropTypes.shape({
 
 const reviewsType = PropTypes.arrayOf(reviewType).isRequired;
 
-const functionClickType = PropTypes.func.isRequired;
+const sortNameType = PropTypes.string.isRequired;
 
 const renderFunctionType = PropTypes.func.isRequired;
 
@@ -67,14 +67,14 @@ export {
   cityCoordinateType,
   childrenType,
   classNameType,
-  coordinateActivePinType,
+  currentCityIdType,
   currentCityType,
   functionClickType,
-  handleHoverType,
   isMainType,
   placeCardType,
   placeCardsType,
   renderFunctionType,
   reviewType,
   reviewsType,
+  sortNameType,
 };

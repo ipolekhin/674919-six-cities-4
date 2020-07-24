@@ -5,6 +5,7 @@ import PlaceCard from "./place-card";
 
 const placeCard = {
   adults: 3,
+  townName: `Amsterdam`,
   bedrooms: 2,
   cardName: `Wood and stone place`,
   cardRating: 4.6,
@@ -43,12 +44,12 @@ Enzyme.configure({
 
 describe(`TitleLink`, () => {
   it(`Should mouse on card and get cardID`, () => {
-    const handleHover = jest.fn((placeCardId) => placeCardId);
+    const onOptionHover = jest.fn((placeCardId) => placeCardId);
     const onTitleClick = jest.fn();
     const placeCardComponent = shallow(
         <PlaceCard
           className = {className}
-          handleHover = {handleHover}
+          onOptionHover = {onOptionHover}
           onTitleClick = {onTitleClick}
           placeCard = {placeCard}
         />
@@ -57,6 +58,6 @@ describe(`TitleLink`, () => {
     const titleLink = placeCardComponent.find(`.place-card`);
     titleLink.simulate(`mouseover`, {preventDefault() {}});
 
-    expect(handleHover.mock.calls[0][0]).toBe(placeCard.id);
+    expect(onOptionHover.mock.calls[0][0]).toBe(placeCard.id);
   });
 });

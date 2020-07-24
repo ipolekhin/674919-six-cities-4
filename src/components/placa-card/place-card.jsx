@@ -1,8 +1,9 @@
 import React from "react";
-import {classNameType, placeCardType, functionClickType, handleHoverType} from "../../types/types";
+import {classNameType, placeCardType, functionClickType} from "../../types/types";
 
 const PlaceCard = (props) => {
-  const {className, placeCard, onTitleClick, handleHover} = props;
+  const {className, onOptionHover, onTitleClick, placeCard} = props;
+  // const {className, onTitleClick, placeCard} = props;
 
   return (
     <React.Fragment>
@@ -10,7 +11,7 @@ const PlaceCard = (props) => {
         className={`${className} place-card`}
         onMouseOver={(event) => {
           event.preventDefault();
-          handleHover(placeCard.id);
+          onOptionHover(placeCard.id);
         }}
       >
 
@@ -74,7 +75,7 @@ PlaceCard.propTypes = {
   className: classNameType,
   placeCard: (placeCardType).isRequired,
   onTitleClick: functionClickType,
-  handleHover: handleHoverType,
+  onOptionHover: functionClickType,
 };
 
 export default PlaceCard;

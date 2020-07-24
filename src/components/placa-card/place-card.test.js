@@ -2,10 +2,12 @@ import React from "react";
 import renderer from "react-test-renderer";
 import PlaceCard from "./place-card.jsx";
 
-const handleHover = () => {};
-
+const className = `page`;
+const onOptionHover = () => {};
+const onTitleClick = () => {};
 const placeCard = {
   adults: 3,
+  townName: `Amsterdam`,
   bedrooms: 2,
   cardName: `Wood and stone place`,
   cardRating: 4.6,
@@ -36,17 +38,13 @@ const placeCard = {
   },
 };
 
-const className = `page`;
-
-const onTitleClick = () => {};
-
 it(`Render PlaceCard`, () => {
   const tree = renderer
     .create(<PlaceCard
       className = {className}
-      handleHover = {handleHover}
-      placeCard = {placeCard}
+      onOptionHover = {onOptionHover}
       onTitleClick = {onTitleClick}
+      placeCard = {placeCard}
     />)
     .toJSON();
 
