@@ -7,7 +7,7 @@ import {currentCityIdType, currentCityType, functionClickType, placeCardsType, s
 import {OfferCardsClassesType} from "../../const";
 
 const Main = (props) => {
-  const {currentCity, onCityClick, onTitleClick, placeCards, onSortClick, sortByName, activeOfferId} = props;
+  const {activeOfferId, currentCity, onCityClick, onTitleClick, onSortClick, placeCards, sortByName} = props;
   const emptyCityClass = !placeCards.length ? `page__main--index-empty` : ``;
 
 

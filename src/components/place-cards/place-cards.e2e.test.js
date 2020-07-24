@@ -1,11 +1,12 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import PlaceCards from "./place-cards";
+import {PlaceCards} from "./place-cards";
 
 const placeCards = [
   {
     adults: 3,
+    townName: `Amsterdam`,
     bedrooms: 2,
     cardName: `Wood and stone place`,
     cardRating: 4.6,
@@ -37,6 +38,7 @@ const placeCards = [
   },
   {
     adults: 2,
+    townName: `Amsterdam`,
     bedrooms: 1,
     cardName: `Wood and stone place`,
     cardRating: 3.6,
@@ -69,6 +71,7 @@ const placeCards = [
 ];
 
 const className = `page`;
+const onOptionHover = () => {};
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -80,6 +83,7 @@ describe(`TitleLink`, () => {
     const placeCardsComponent = shallow(
         <PlaceCards
           className = {className}
+          onOptionHover = {onOptionHover}
           onTitleClick = {onTitleClick}
           placeCards = {placeCards}
         />

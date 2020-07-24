@@ -17,7 +17,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {currentCity, onCityClick, onSortClick, sortByName, offersOfTown, activeOfferId} = this.props;
+    const {currentCity, offersOfTown, onCityClick, onSortClick, sortByName, activeOfferId} = this.props;
     const sortOffersOfTown = getSortedOffers(offersOfTown, sortByName);
 
     return (

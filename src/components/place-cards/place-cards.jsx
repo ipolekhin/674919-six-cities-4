@@ -13,13 +13,14 @@ class PlaceCards extends React.PureComponent {
 
   render() {
     const {className, placeCards, onTitleClick, onOptionHover} = this.props;
+    // const {className, placeCards, onTitleClick} = this.props;
 
     return (
       <React.Fragment>
         {placeCards.map((placeCard) => (
           <PlaceCard
             className = {className}
-            handleOptionHover = {onOptionHover}
+            onOptionHover = {onOptionHover}
             key = {placeCard.id}
             onTitleClick = {onTitleClick}
             placeCard = {placeCard}
@@ -47,5 +48,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
+// export default PlaceCards;
 export {PlaceCards};
 export default connect(null, mapDispatchToProps)(PlaceCards);

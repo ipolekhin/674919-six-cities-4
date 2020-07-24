@@ -12,8 +12,6 @@ const currentCityType = PropTypes.string.isRequired;
 
 const functionClickType = PropTypes.func.isRequired;
 
-const handleHoverType = PropTypes.func.isRequired;
-
 const isMainType = PropTypes.bool;
 
 const placeCardType = PropTypes.shape({
@@ -72,7 +70,6 @@ export {
   currentCityIdType,
   currentCityType,
   functionClickType,
-  handleHoverType,
   isMainType,
   placeCardType,
   placeCardsType,

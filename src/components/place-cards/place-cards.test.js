@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import PlaceCards from "./place-cards.jsx";
+// import {Provider} from "react-redux";
+import {PlaceCards} from "./place-cards.jsx";
 
 const placeCards = [
   {
@@ -37,6 +38,7 @@ const placeCards = [
   },
   {
     adults: 2,
+    townName: `Amsterdam`,
     bedrooms: 1,
     cardName: `Wood and stone place`,
     cardRating: 3.6,
@@ -71,15 +73,18 @@ const placeCards = [
 const className = `page`;
 
 const onTitleClick = () => {};
+const onOptionHover = () => {};
 
 it(`Render PlaceCards`, () => {
   const tree = renderer
-    .create(<PlaceCards
-      className = {className}
-      placeCards = {placeCards}
-      onTitleClick = {onTitleClick}
-    />)
+    .create(
+        <PlaceCards
+          className = {className}
+          placeCards = {placeCards}
+          onTitleClick = {onTitleClick}
+          onOptionHover = {onOptionHover}
+        />
+    )
     .toJSON();
-
   expect(tree).toMatchSnapshot();
 });

@@ -4,18 +4,40 @@ import {currentCityIdType, currentCityType, placeCardsType, renderFunctionType} 
 import {MapProps, TownCoordinates} from "../../const";
 
 
-const LeafIcon = leaflet.Icon.extend({
-  options: {
+// 111
+const iconsAll = {
+  default: leaflet.icon({
+    iconUrl: MapProps.ICON_URL,
     iconSize: MapProps.ICON_SIZE,
-  }
-});
-
-const defaultIcon = new LeafIcon({iconUrl: MapProps.ICON_URL});
-const orangeIcon = new LeafIcon({iconUrl: MapProps.ICON_ACTIVE_URL});
-
-leaflet.icon = function (options) {
-  return new leaflet.Icon(options);
+  }),
+  orangeIcons: leaflet.icon({
+    iconUrl: MapProps.ICON_ACTIVE_URL,
+    iconSize: MapProps.ICON_SIZE,
+  })
 };
+
+// 222 leaflet.icon({
+//   iconUrl: MapProps.ICON_URL,
+//   iconSize: MapProps.ICON_SIZE,
+// });
+
+// leaflet
+//   .marker(offerProp[1], {icon: defaultIcon})
+//   .addTo(this._map);
+
+// const LeafIcon = leaflet.Icon.extend({
+//   options: {
+//     iconSize: MapProps.ICON_SIZE,
+//   }
+// });
+//
+// const defaultIcon = new LeafIcon({iconUrl: MapProps.ICON_URL});
+// const orangeIcon = new LeafIcon({iconUrl: MapProps.ICON_ACTIVE_URL});
+
+// leaflet.icon = function (options) {
+//   return new leaflet.Icon(options);
+// };
+// console.log(leaflet);
 
 export default class Map extends React.PureComponent {
   constructor(props) {
@@ -38,6 +60,9 @@ export default class Map extends React.PureComponent {
       marker: true
     });
 
+    // const bbb = leaflet;
+    // console.log(bbb);
+
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
@@ -59,16 +84,24 @@ export default class Map extends React.PureComponent {
 
   _renderMarkers() {
     const {currentCityId = null} = this.props;
+    // .marker(offerProp[1], {icon: orangeIcon})
+    // .marker(offerProp[1], {icon: defaultIcon})
+    // .marker(offerProp[1], {icon: iconsAll.default})
+    // .marker(offerProp[1], {icon: iconsAll.orangeIcons})
     this._offerProps.forEach((offerProp) => {
       if (currentCityId === offerProp[0]) {
         leaflet
-          .marker(offerProp[1], {icon: orangeIcon})
+          .marker(offerProp[1], {icon: iconsAll.orangeIcons})
           .addTo(this._map);
       } else {
         leaflet
-          .marker(offerProp[1], {icon: defaultIcon})
+          .marker(offerProp[1], {icon: iconsAll.default})
           .addTo(this._map);
       }
+
+      // leaflet
+      //   .marker(offerProp[1], {icon: iconsAll.default})
+      //   .addTo(this._map);
     });
   }
 

@@ -1,9 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
 import {App} from "./app.jsx";
 
+const mockStore = configureStore([]);
 const currentCity = `Amsterdam`;
-
 const offersOfTown = [{
   adults: 3,
   townName: `Amsterdam`,
@@ -36,17 +38,26 @@ const offersOfTown = [{
     pro: true,
   },
 }];
-
 const onCityClick = () => {};
+const onSortClick = () => {};
+const sortByName = `Popular`;
 
 it(`Render App`, () => {
+  const store = mockStore({
+    activeOfferId: null,
+    sortByName: `Popular`,
+  });
   const tree = renderer
     .create(
-        <App
-          currentCity = {currentCity}
-          offersOfTown = {offersOfTown}
-          onCityClick = {onCityClick}
-        />
+        <Provider store={store}>
+          <App
+            currentCity = {currentCity}
+            offersOfTown = {offersOfTown}
+            onCityClick = {onCityClick}
+            onSortClick = {onSortClick}
+            sortByName = {sortByName}
+          />
+        </Provider>
     )
     .toJSON();
 
