@@ -56,6 +56,7 @@ it(`Render App`, () => {
             onCityClick = {onCityClick}
             onSortClick = {onSortClick}
             sortByName = {sortByName}
+            sortOffersOfTown = {offersOfTown}
           />
         </Provider>
     )

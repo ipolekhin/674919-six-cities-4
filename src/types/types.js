@@ -6,7 +6,7 @@ const childrenType = PropTypes.node.isRequired;
 
 const classNameType = PropTypes.string.isRequired;
 
-const currentCityIdType = PropTypes.string;
+const activeOfferIdType = PropTypes.string;
 
 const currentCityType = PropTypes.string.isRequired;
 
@@ -67,7 +67,7 @@ export {
   cityCoordinateType,
   childrenType,
   classNameType,
-  currentCityIdType,
+  activeOfferIdType,
   currentCityType,
   functionClickType,
   isMainType,

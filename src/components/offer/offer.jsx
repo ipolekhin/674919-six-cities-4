@@ -144,7 +144,7 @@ const Offer = (props) => {
           </div>
 
           <Map
-            currentCityId = {placeCards[0].id}
+            activeOfferId = {placeCards[0].id}
             currentCity = {currentCity}
             placeCards = {placeCards}
             renderMap = {(mapRef) => (

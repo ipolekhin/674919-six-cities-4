@@ -3,7 +3,7 @@ import CitiesList from "../cities-list/cities-list.jsx";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import PlacesSorting from "../places-sorting/places-sorting.jsx";
-import {currentCityIdType, currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
+import {activeOfferIdType, currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
 import {OfferCardsClassesType} from "../../const";
 
 const Main = (props) => {
@@ -46,7 +46,7 @@ const Main = (props) => {
                 <Map
                   key={currentCity}
                   currentCity = {currentCity}
-                  currentCityId = {activeOfferId}
+                  activeOfferId = {activeOfferId}
                   placeCards = {placeCards}
                   renderMap = {(mapRef) => (
                     <div className="cities__right-section">
@@ -75,7 +75,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  activeOfferId: currentCityIdType,
+  activeOfferId: activeOfferIdType,
   currentCity: currentCityType,
   onTitleClick: functionClickType,
   onCityClick: functionClickType,

@@ -13,7 +13,6 @@ class PlaceCards extends React.PureComponent {
 
   render() {
     const {className, placeCards, onTitleClick, onOptionHover} = this.props;
-    // const {className, placeCards, onTitleClick} = this.props;
 
     return (
       <React.Fragment>
@@ -48,6 +47,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// export default PlaceCards;
 export {PlaceCards};
 export default connect(null, mapDispatchToProps)(PlaceCards);
