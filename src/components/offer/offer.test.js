@@ -73,7 +73,7 @@ const placeCards = [
 ];
 
 const currentCity = `Amsterdam`;
-const onTitleClick = () => {};
+const onActiveItemChange = () => {};
 
 const mockStore = configureStore([]);
 
@@ -84,7 +84,7 @@ it(`Render Offer`, () => {
         <Provider store={store}>
           <Offer
             currentCity = {currentCity}
-            onTitleClick = {onTitleClick}
+            onActiveItemChange = {onActiveItemChange}
             placeCards = {placeCards}
           />
         </Provider>

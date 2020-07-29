@@ -45,12 +45,12 @@ Enzyme.configure({
 describe(`TitleLink`, () => {
   it(`Should mouse on card and get cardID`, () => {
     const onOptionHover = jest.fn((placeCardId) => placeCardId);
-    const onTitleClick = jest.fn();
+    const onActiveItemChange = jest.fn();
     const placeCardComponent = shallow(
         <PlaceCard
           className = {className}
           onOptionHover = {onOptionHover}
-          onTitleClick = {onTitleClick}
+          onActiveItemChange = {onActiveItemChange}
           placeCard = {placeCard}
         />
     );

@@ -72,7 +72,7 @@ const placeCards = [
 
 const className = `page`;
 
-const onTitleClick = () => {};
+const onActiveItemChange = () => {};
 const onOptionHover = () => {};
 
 it(`Render PlaceCards`, () => {
@@ -81,7 +81,7 @@ it(`Render PlaceCards`, () => {
         <PlaceCards
           className = {className}
           placeCards = {placeCards}
-          onTitleClick = {onTitleClick}
+          onActiveItemChange = {onActiveItemChange}
           onOptionHover = {onOptionHover}
         />
     )

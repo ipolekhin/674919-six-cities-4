@@ -40,7 +40,7 @@ const placeCards = [{
 const activeOfferId = `1`;
 const currentCity = `Amsterdam`;
 const onCityClick = () => {};
-const onTitleClick = () => {};
+const onActiveItemChange = () => {};
 const onSortClick = () => {};
 const sortByName = `Popular`;
 const mockStore = configureStore([]);
@@ -54,7 +54,7 @@ it(`Render MainScreen`, () => {
             activeOfferId = {activeOfferId}
             currentCity = {currentCity}
             onCityClick = {onCityClick}
-            onTitleClick = {onTitleClick}
+            onActiveItemChange= {onActiveItemChange}
             onSortClick = {onSortClick}
             placeCards = {placeCards}
             sortByName = {sortByName}

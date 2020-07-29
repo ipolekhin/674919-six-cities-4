@@ -5,15 +5,8 @@ import {ActionCreator} from "../../reducer.js";
 import {classNameType, placeCardsType, functionClickType} from "../../types/types";
 
 class PlaceCards extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {placeCardId: null};
-    this._handleHover = this._handleHover.bind(this);
-  }
-
   render() {
-    const {className, placeCards, onTitleClick, onOptionHover} = this.props;
-    // const {className, placeCards, onTitleClick} = this.props;
+    const {className, placeCards, onActiveItemChange, onOptionHover} = this.props;
 
     return (
       <React.Fragment>
@@ -22,23 +15,19 @@ class PlaceCards extends React.PureComponent {
             className = {className}
             onOptionHover = {onOptionHover}
             key = {placeCard.id}
-            onTitleClick = {onTitleClick}
+            onActiveItemChange = {onActiveItemChange}
             placeCard = {placeCard}
           />
         ))}
       </React.Fragment>
     );
   }
-
-  _handleHover(placeCardId) {
-    this.setState({placeCardId});
-  }
 }
 
 PlaceCards.propTypes = {
   className: classNameType,
   placeCards: placeCardsType,
-  onTitleClick: functionClickType,
+  onActiveItemChange: functionClickType,
   onOptionHover: functionClickType,
 };
 
@@ -48,6 +37,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// export default PlaceCards;
 export {PlaceCards};
 export default connect(null, mapDispatchToProps)(PlaceCards);

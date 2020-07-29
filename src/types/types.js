@@ -6,13 +6,15 @@ const childrenType = PropTypes.node.isRequired;
 
 const classNameType = PropTypes.string.isRequired;
 
-const currentCityIdType = PropTypes.string;
+const activeOfferIdType = PropTypes.string;
 
-const currentCityType = PropTypes.string.isRequired;
+const currentCityType = PropTypes.string;
 
 const functionClickType = PropTypes.func.isRequired;
 
-const isMainType = PropTypes.bool;
+const isBoolType = PropTypes.bool;
+
+const isStringType = PropTypes.string;
 
 const placeCardType = PropTypes.shape({
   adults: PropTypes.number.isRequired,
@@ -48,6 +50,8 @@ const placeCardType = PropTypes.shape({
 
 const placeCardsType = PropTypes.arrayOf(placeCardType).isRequired;
 
+const renderFunctionType = PropTypes.func.isRequired;
+
 const reviewType = PropTypes.shape({
   date: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
@@ -61,16 +65,15 @@ const reviewsType = PropTypes.arrayOf(reviewType).isRequired;
 
 const sortNameType = PropTypes.string.isRequired;
 
-const renderFunctionType = PropTypes.func.isRequired;
-
 export {
-  cityCoordinateType,
+  activeOfferIdType,
   childrenType,
+  cityCoordinateType,
   classNameType,
-  currentCityIdType,
   currentCityType,
   functionClickType,
-  isMainType,
+  isBoolType,
+  isStringType,
   placeCardType,
   placeCardsType,
   renderFunctionType,

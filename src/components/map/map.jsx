@@ -1,6 +1,6 @@
 import React, {createRef} from "react";
 import leaflet from 'leaflet';
-import {currentCityIdType, currentCityType, placeCardsType, renderFunctionType} from "../../types/types";
+import {activeOfferIdType, currentCityType, placeCardsType, renderFunctionType} from "../../types/types";
 import {MapProps, TownCoordinates} from "../../const";
 
 
@@ -45,6 +45,7 @@ export default class Map extends React.PureComponent {
     this._city = null;
     this._map = null;
     this._mapRef = createRef();
+    this._markers = null;
     this._offerProps = null;
     this._zoom = MapProps.ZOOM;
   }
@@ -73,36 +74,54 @@ export default class Map extends React.PureComponent {
   }
 
   componentDidUpdate() {
+    // this._map.removeLayer(iconsAll.default);
+    this._clearAllLayers();
     this._renderMarkers();
+
+    // this._offerProps.forEach((offerProp) => {
+    //   leaflet.removeLayer(offerProp);
+    // });
   }
 
   componentWillUnmount() {
     this._city = null;
     this._map = null;
+    this._markers = null;
     this._offerProps = null;
   }
 
   _renderMarkers() {
-    const {currentCityId = null} = this.props;
+    const {activeOfferId = null} = this.props;
     // .marker(offerProp[1], {icon: orangeIcon})
     // .marker(offerProp[1], {icon: defaultIcon})
     // .marker(offerProp[1], {icon: iconsAll.default})
     // .marker(offerProp[1], {icon: iconsAll.orangeIcons})
-    this._offerProps.forEach((offerProp) => {
-      if (currentCityId === offerProp[0]) {
+    this._markers = this._offerProps
+      .map((offerProp) => (
         leaflet
-          .marker(offerProp[1], {icon: iconsAll.orangeIcons})
-          .addTo(this._map);
-      } else {
-        leaflet
-          .marker(offerProp[1], {icon: iconsAll.default})
-          .addTo(this._map);
-      }
+          .marker(offerProp[1], {icon: activeOfferId === offerProp[0] ? iconsAll.orangeIcons : iconsAll.default})
+          .addTo(this._map)
+      ));
 
-      // leaflet
-      //   .marker(offerProp[1], {icon: iconsAll.default})
-      //   .addTo(this._map);
-    });
+    // this._markers = this._offerProps.map((offerProp) => {
+    //   if (activeOfferId === offerProp[0]) {
+    //     leaflet
+    //       .marker(offerProp[1], {icon: iconsAll.orangeIcons})
+    //       .addTo(this._map);
+    //   } else {
+    //     leaflet
+    //       .marker(offerProp[1], {icon: iconsAll.default})
+    //       .addTo(this._map);
+    //   }
+    //   // leaflet
+    //   //   .marker(offerProp[1], {icon: iconsAll.default})
+    //   //   .addTo(this._map);
+    // });
+  }
+
+  _clearAllLayers() {
+    this._markers.forEach((marker) => marker.remove());
+    this._markers = null;
   }
 
   render() {
@@ -115,7 +134,7 @@ export default class Map extends React.PureComponent {
 }
 
 Map.propTypes = {
-  currentCityId: currentCityIdType,
+  activeOfferId: activeOfferIdType,
   currentCity: currentCityType,
   placeCards: placeCardsType,
   renderMap: renderFunctionType,

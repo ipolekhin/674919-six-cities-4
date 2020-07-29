@@ -1,23 +1,16 @@
 import React from "react";
 import {SORT_NAMES} from "../../const";
-import {functionClickType, sortNameType} from "../../types/types";
+import {functionClickType, isBoolType, sortNameType} from "../../types/types";
 
 class PlacesSorting extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {isOpen: false};
-    this._handleClick = this._handleClick.bind(this);
-  }
-
   render() {
-    const {isOpen} = this.state;
-    const {onSortClick, sortByName} = this.props;
+    const {isOpen, handleClick, onSortClick, sortByName} = this.props;
 
     return (
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
 
-        <span className="places__sorting-type" tabIndex="0" onClick={this._handleClick}>
+        <span className="places__sorting-type" tabIndex="0" onClick={handleClick}>
           {sortByName}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select"></use>
@@ -34,7 +27,7 @@ class PlacesSorting extends React.PureComponent {
                 onClick={(event) => {
                   event.preventDefault();
                   onSortClick(sortName);
-                  this.setState(() => ({isOpen: !this.state.isOpen}));
+                  handleClick();
                 }}
               >
                 {sortName}
@@ -44,15 +37,13 @@ class PlacesSorting extends React.PureComponent {
       </form>
     );
   }
-
-  _handleClick() {
-    this.setState(() => ({isOpen: !this.state.isOpen}));
-  }
 }
 
 PlacesSorting.propTypes = {
-  sortByName: sortNameType,
+  handleClick: functionClickType,
+  isOpen: isBoolType,
   onSortClick: functionClickType,
+  sortByName: sortNameType,
 };
 
 export default PlacesSorting;
