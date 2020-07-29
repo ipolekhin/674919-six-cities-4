@@ -3,14 +3,16 @@ import CitiesList from "../cities-list/cities-list.jsx";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import PlacesSorting from "../places-sorting/places-sorting.jsx";
-import withSort from "../../hocs/with-sort/with-sort";
+import withActiveItem from "../../hocs/with-active-offer/with-active-item.js";
+import withSort from "../../hocs/with-sort/with-sort.js";
 import {activeOfferIdType, currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
 import {OfferCardsClassesType} from "../../const";
 
 const PlacesSortingWrapped = withSort(PlacesSorting);
+const CitiesListWrapped = withActiveItem(CitiesList);
 
 const Main = (props) => {
-  const {activeOfferId, currentCity, onCityClick, onTitleClick, onSortClick, placeCards, sortByName} = props;
+  const {activeOfferId, currentCity, onCityClick, onActiveItemChange, onSortClick, placeCards, sortByName} = props;
   const emptyCityClass = !placeCards.length ? `page__main--index-empty` : ``;
 
 
@@ -19,8 +21,7 @@ const Main = (props) => {
       <main className={`page__main page__main--index ${emptyCityClass}`}>
         <h1 className="visually-hidden">Cities</h1>
 
-        <CitiesList
-          currentCity = {currentCity}
+        <CitiesListWrapped
           onCityClick = {onCityClick}
         />
 
@@ -42,7 +43,8 @@ const Main = (props) => {
                     { <PlaceCards
                       className = {OfferCardsClassesType.MAIN_CONTAINER}
                       placeCards = {placeCards}
-                      onTitleClick = {onTitleClick} /> }
+                      onActiveItemChange = {onActiveItemChange}
+                    /> }
                   </div>
                 </section>
 
@@ -80,7 +82,7 @@ const Main = (props) => {
 Main.propTypes = {
   activeOfferId: activeOfferIdType,
   currentCity: currentCityType,
-  onTitleClick: functionClickType,
+  onActiveItemChange: functionClickType,
   onCityClick: functionClickType,
   onSortClick: functionClickType,
   placeCards: placeCardsType,

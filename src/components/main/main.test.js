@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
+import {App} from "../app/app";
 
 const placeCards = [{
   adults: 3,
@@ -40,7 +41,7 @@ const placeCards = [{
 const activeOfferId = `1`;
 const currentCity = `Amsterdam`;
 const onCityClick = () => {};
-const onTitleClick = () => {};
+const onActiveItemChange = () => {};
 const onSortClick = () => {};
 const sortByName = `Popular`;
 const mockStore = configureStore([]);
@@ -54,7 +55,7 @@ it(`Render MainScreen`, () => {
             activeOfferId = {activeOfferId}
             currentCity = {currentCity}
             onCityClick = {onCityClick}
-            onTitleClick = {onTitleClick}
+            onActiveItemChange= {onActiveItemChange}
             onSortClick = {onSortClick}
             placeCards = {placeCards}
             sortByName = {sortByName}

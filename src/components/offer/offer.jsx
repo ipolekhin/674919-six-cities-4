@@ -6,8 +6,8 @@ import {currentCityType, functionClickType, isStringType, placeCardsType} from "
 import {OfferCardsClassesType, STARS_PROPERTY} from "../../const";
 
 const Offer = (props) => {
-  const {currentCity, offerId, onTitleClick, placeCards} = props;
-  const activeOffer = offerId ? placeCards.find((card) => card.id === offerId) : placeCards[0];
+  const {currentCity, activeItem, onActiveItemChange, placeCards} = props;
+  const activeOffer = activeItem ? placeCards.find((card) => card.id === activeItem) : placeCards[0];
   const nearPlaces = placeCards.filter((place) => activeOffer.id !== place.id);
   const FIVE_STAR = [5, 4, 3, 2, 1];
 
@@ -161,7 +161,7 @@ const Offer = (props) => {
             <div className="near-places__list places__list">
               <PlaceCards
                 className = {OfferCardsClassesType.OFFER_CONTAINER}
-                onTitleClick = {onTitleClick}
+                onActiveItemChange = {onActiveItemChange}
                 placeCards = {nearPlaces}
               />
             </div>
@@ -174,8 +174,8 @@ const Offer = (props) => {
 
 Offer.propTypes = {
   currentCity: currentCityType,
-  onTitleClick: functionClickType,
-  offerId: isStringType,
+  onActiveItemChange: functionClickType,
+  activeItem: isStringType,
   placeCards: placeCardsType,
 };
 

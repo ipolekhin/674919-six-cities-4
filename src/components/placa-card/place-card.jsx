@@ -2,8 +2,7 @@ import React from "react";
 import {classNameType, placeCardType, functionClickType} from "../../types/types";
 
 const PlaceCard = (props) => {
-  const {className, onOptionHover, onTitleClick, placeCard} = props;
-  // const {className, onTitleClick, placeCard} = props;
+  const {className, onOptionHover, onActiveItemChange, placeCard} = props;
 
   return (
     <React.Fragment>
@@ -57,7 +56,7 @@ const PlaceCard = (props) => {
               href="#"
               onClick={(event) => {
                 event.preventDefault();
-                onTitleClick(placeCard.id);
+                onActiveItemChange(placeCard.id);
               }}
             >
               {placeCard.cardName}
@@ -74,7 +73,7 @@ const PlaceCard = (props) => {
 PlaceCard.propTypes = {
   className: classNameType,
   placeCard: (placeCardType).isRequired,
-  onTitleClick: functionClickType,
+  onActiveItemChange: functionClickType,
   onOptionHover: functionClickType,
 };
 

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {currentCityType, functionClickType} from "../../types/types";
 
 const CitiesItem = (props) => {
-  const {currentCity, city, onCityClick} = props;
+  const {currentCity, city, onCityClick, onActiveItemChange} = props;
   const activeCityClass = currentCity === city ? `tabs__item--active` : ``;
 
   return (
@@ -14,6 +14,7 @@ const CitiesItem = (props) => {
         onClick={(event) => {
           event.preventDefault();
           onCityClick(city);
+          onActiveItemChange(city);
         }}
       >
         <span>{city}</span>
@@ -26,6 +27,7 @@ CitiesItem.propTypes = {
   city: PropTypes.string,
   currentCity: currentCityType,
   onCityClick: functionClickType,
+  onActiveItemChange: functionClickType,
 };
 
 export default CitiesItem;

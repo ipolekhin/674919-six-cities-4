@@ -1,7 +1,6 @@
 import React from "react";
 import {SORT_NAMES} from "../../const";
 import {functionClickType, isBoolType, sortNameType} from "../../types/types";
-// import withSort from "../../hocs/with-sort/with-sort";
 
 class PlacesSorting extends React.PureComponent {
   render() {

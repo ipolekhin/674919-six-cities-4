@@ -6,7 +6,7 @@ import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
-import withActiveOffer from "../../hocs/with-active-offer/with-active-offer";
+import withActiveItem from "../../hocs/with-active-offer/with-active-item";
 import {
   activeOfferIdType,
   currentCityType,
@@ -17,8 +17,7 @@ import {
 } from "../../types/types";
 import {getSortedOffers} from "../../utils/common";
 
-// const MainWrapped = withActiveOffer(Main);
-const OfferWrapped = withActiveOffer(Offer);
+const OfferWrapped = withActiveItem(Offer);
 
 class App extends React.PureComponent {
 
@@ -57,15 +56,15 @@ class App extends React.PureComponent {
   }
 
   _renderOfferScreen(activeOfferId, currentCity, onCityClick, offersOfTown, onSortClick, sortByName, sortOffersOfTown) {
-    const {offerId, onTitleClick} = this.props;
+    const {activeItem, onActiveItemChange} = this.props;
 
-    if (offerId === null) {
+    if (activeItem === null) {
       return (
         <Main
           activeOfferId = {activeOfferId}
           currentCity = {currentCity}
           onCityClick = {onCityClick}
-          onTitleClick = {onTitleClick}
+          onActiveItemChange = {onActiveItemChange}
           placeCards = {sortOffersOfTown}
           onSortClick = {onSortClick}
           sortByName = {sortByName}
@@ -103,14 +102,14 @@ const mapDispatchToProps = (dispatch) => ({
 App.propTypes = {
   activeOfferId: activeOfferIdType,
   currentCity: currentCityType,
-  offerId: isStringType,
+  activeItem: isStringType,
   offersOfTown: placeCardsType,
   onCityClick: functionClickType,
   onSortClick: functionClickType,
-  onTitleClick: functionClickType,
+  onActiveItemChange: functionClickType,
   sortByName: sortNameType,
   sortOffersOfTown: placeCardsType,
 };
 
 export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(withActiveOffer(App));
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveItem(App));

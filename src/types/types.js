@@ -8,7 +8,7 @@ const classNameType = PropTypes.string.isRequired;
 
 const activeOfferIdType = PropTypes.string;
 
-const currentCityType = PropTypes.string.isRequired;
+const currentCityType = PropTypes.string;
 
 const functionClickType = PropTypes.func.isRequired;
 

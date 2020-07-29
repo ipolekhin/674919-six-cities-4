@@ -38,8 +38,7 @@ const offersOfTown = [{
     pro: true,
   },
 }];
-const onCityClick = () => {};
-const onSortClick = () => {};
+const onFunctionClick = () => {};
 const sortByName = `Popular`;
 
 it(`Render App`, () => {
@@ -53,8 +52,9 @@ it(`Render App`, () => {
           <App
             currentCity = {currentCity}
             offersOfTown = {offersOfTown}
-            onCityClick = {onCityClick}
-            onSortClick = {onSortClick}
+            onCityClick = {onFunctionClick}
+            onSortClick = {onFunctionClick}
+            onActiveItemChange = {onFunctionClick}
             sortByName = {sortByName}
             sortOffersOfTown = {offersOfTown}
           />

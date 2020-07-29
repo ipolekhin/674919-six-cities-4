@@ -4,7 +4,7 @@ import {currentCityType, functionClickType} from "../../types/types";
 import {TOWN_NAMES} from "../../const";
 
 const CitiesList = (props) => {
-  const {currentCity, onCityClick} = props;
+  const {activeItem, onCityClick, onActiveItemChange} = props;
 
   return (
     <div className="tabs">
@@ -14,8 +14,9 @@ const CitiesList = (props) => {
             <CitiesItem
               key = {cityName}
               city = {cityName}
-              currentCity={currentCity}
+              currentCity = {activeItem || TOWN_NAMES[0]}
               onCityClick = {onCityClick}
+              onActiveItemChange = {onActiveItemChange}
             />
           ))}
         </ul>
@@ -25,7 +26,8 @@ const CitiesList = (props) => {
 };
 
 CitiesList.propTypes = {
-  currentCity: currentCityType,
+  activeItem: currentCityType,
+  onActiveItemChange: functionClickType,
   onCityClick: functionClickType,
 };
 

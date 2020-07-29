@@ -6,7 +6,7 @@ import {classNameType, placeCardsType, functionClickType} from "../../types/type
 
 class PlaceCards extends React.PureComponent {
   render() {
-    const {className, placeCards, onTitleClick, onOptionHover} = this.props;
+    const {className, placeCards, onActiveItemChange, onOptionHover} = this.props;
 
     return (
       <React.Fragment>
@@ -15,7 +15,7 @@ class PlaceCards extends React.PureComponent {
             className = {className}
             onOptionHover = {onOptionHover}
             key = {placeCard.id}
-            onTitleClick = {onTitleClick}
+            onActiveItemChange = {onActiveItemChange}
             placeCard = {placeCard}
           />
         ))}
@@ -27,7 +27,7 @@ class PlaceCards extends React.PureComponent {
 PlaceCards.propTypes = {
   className: classNameType,
   placeCards: placeCardsType,
-  onTitleClick: functionClickType,
+  onActiveItemChange: functionClickType,
   onOptionHover: functionClickType,
 };
 

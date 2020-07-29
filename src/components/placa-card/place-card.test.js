@@ -4,7 +4,7 @@ import PlaceCard from "./place-card.jsx";
 
 const className = `page`;
 const onOptionHover = () => {};
-const onTitleClick = () => {};
+const onActiveItemChange = () => {};
 const placeCard = {
   adults: 3,
   townName: `Amsterdam`,
@@ -43,7 +43,7 @@ it(`Render PlaceCard`, () => {
     .create(<PlaceCard
       className = {className}
       onOptionHover = {onOptionHover}
-      onTitleClick = {onTitleClick}
+      onActiveItemChange = {onActiveItemChange}
       placeCard = {placeCard}
     />)
     .toJSON();
