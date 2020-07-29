@@ -2,12 +2,13 @@ import React from "react";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
-import {currentCityType, functionClickType, placeCardsType} from "../../types/types";
+import {currentCityType, functionClickType, isStringType, placeCardsType} from "../../types/types";
 import {OfferCardsClassesType, STARS_PROPERTY} from "../../const";
 
 const Offer = (props) => {
-  const {currentCity, onTitleClick, placeCards} = props;
-  const nearPlaces = placeCards.filter((place) => placeCards[0].id !== place.id);
+  const {currentCity, offerId, onTitleClick, placeCards} = props;
+  const activeOffer = offerId ? placeCards.find((card) => card.id === offerId) : placeCards[0];
+  const nearPlaces = placeCards.filter((place) => activeOffer.id !== place.id);
   const FIVE_STAR = [5, 4, 3, 2, 1];
 
   return (
@@ -16,7 +17,7 @@ const Offer = (props) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {placeCards[0].images.map((image, index) => (
+              {activeOffer.images.map((image, index) => (
                 <div className="property__image-wrapper" key={index}>
                   <img className="property__image" src={image} alt="Photo studio" />
                 </div>
@@ -25,7 +26,7 @@ const Offer = (props) => {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {placeCards[0].premiumPlace && (
+              {activeOffer.premiumPlace && (
                 <div className="property__mark">
                   <span>Premium</span>
                 </div>
@@ -33,7 +34,7 @@ const Offer = (props) => {
 
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  {placeCards[0].cardName}
+                  {activeOffer.cardName}
                 </h1>
 
                 <button className="property__bookmark-button button" type="button">
@@ -46,30 +47,30 @@ const Offer = (props) => {
 
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: placeCards[0].cardRatingStars}}></span>
+                  <span style={{width: activeOffer.cardRatingStars}}></span>
 
                   <span className="visually-hidden">Rating</span>
                 </div>
 
-                <span className="property__rating-value rating__value">{placeCards[0].cardRating}</span>
+                <span className="property__rating-value rating__value">{activeOffer.cardRating}</span>
               </div>
 
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {placeCards[0].cardType}
+                  {activeOffer.cardType}
                 </li>
 
                 <li className="property__feature property__feature--bedrooms">
-                  {placeCards[0].bedrooms} Bedrooms
+                  {activeOffer.bedrooms} Bedrooms
                 </li>
 
                 <li className="property__feature property__feature--adults">
-                  Max {placeCards[0].adults} adults
+                  Max {activeOffer.adults} adults
                 </li>
               </ul>
 
               <div className="property__price">
-                <b className="property__price-value">€{placeCards[0].price}</b>
+                <b className="property__price-value">€{activeOffer.price}</b>
 
                 <span className="property__price-text">&nbsp;night</span>
               </div>
@@ -78,7 +79,7 @@ const Offer = (props) => {
                 <h2 className="property__inside-title">What inside</h2>
 
                 <ul className="property__inside-list">
-                  {placeCards[0].insideItems.map((item, index) => (
+                  {activeOffer.insideItems.map((item, index) => (
                     <li className="property__inside-item" key={index}>
                       {item}
                     </li>
@@ -90,25 +91,25 @@ const Offer = (props) => {
                 <h2 className="property__host-title">Meet the host</h2>
 
                 <div className="property__host-user user">
-                  <div className={`property__avatar-wrapper user__avatar-wrapper ${placeCards[0].user.pro ? `property__avatar-wrapper--pro` : ``}`}>
-                    <img className="property__avatar user__avatar" src={placeCards[0].user.avatar} alt="Host avatar"
+                  <div className={`property__avatar-wrapper user__avatar-wrapper ${activeOffer.user.pro ? `property__avatar-wrapper--pro` : ``}`}>
+                    <img className="property__avatar user__avatar" src={activeOffer.user.avatar} alt="Host avatar"
                       width="74" height="74" />
                   </div>
 
-                  <span className="property__user-name">{placeCards[0].user.name}</span>
+                  <span className="property__user-name">{activeOffer.user.name}</span>
                 </div>
                 <div className="property__description">
                   <p className="property__text">
-                    {placeCards[0].description}
+                    {activeOffer.description}
                   </p>
                 </div>
               </div>
 
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{placeCards[0].reviews.length}</span></h2>
+                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{activeOffer.reviews.length}</span></h2>
 
                 <ReviewsList
-                  reviews = {placeCards[0].reviews}
+                  reviews = {activeOffer.reviews}
                 />
 
                 <form className="reviews__form form" action="#" method="post">
@@ -144,7 +145,7 @@ const Offer = (props) => {
           </div>
 
           <Map
-            activeOfferId = {placeCards[0].id}
+            activeOfferId = {activeOffer.id}
             currentCity = {currentCity}
             placeCards = {placeCards}
             renderMap = {(mapRef) => (
@@ -174,6 +175,7 @@ const Offer = (props) => {
 Offer.propTypes = {
   currentCity: currentCityType,
   onTitleClick: functionClickType,
+  offerId: isStringType,
   placeCards: placeCardsType,
 };
 

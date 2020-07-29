@@ -6,20 +6,24 @@ import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
-import {activeOfferIdType, currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
+import withActiveOffer from "../../hocs/with-active-offer/with-active-offer";
+import {
+  activeOfferIdType,
+  currentCityType,
+  functionClickType,
+  isStringType,
+  placeCardsType,
+  sortNameType
+} from "../../types/types";
 import {getSortedOffers} from "../../utils/common";
 
+// const MainWrapped = withActiveOffer(Main);
+const OfferWrapped = withActiveOffer(Offer);
+
 class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {offer: null};
-    this.handleTitleClick = this.handleTitleClick.bind(this);
-  }
 
   render() {
     const {activeOfferId, currentCity, offersOfTown, onCityClick, onSortClick, sortByName, sortOffersOfTown} = this.props;
-    // const {activeOfferId, currentCity, offersOfTown, onCityClick, onSortClick, sortByName} = this.props;
-    // const sortOffersOfTown = getSortedOffers(offersOfTown, sortByName);
 
     return (
       <React.Fragment>
@@ -30,7 +34,6 @@ class App extends React.PureComponent {
                 <div className="page page--gray page--main">
                   <Header isMain = {true} />
                   {this._renderOfferScreen(activeOfferId, currentCity, onCityClick, offersOfTown, onSortClick, sortByName, sortOffersOfTown)}
-                  {/* {this._renderOfferScreen(currentCity, onCityClick, offersOfTown, onSortClick, sortByName, activeOfferId)}*/}
                 </div>
               )}>
               </PageContainer>
@@ -39,9 +42,8 @@ class App extends React.PureComponent {
               <PageContainer renderContainer = {() => (
                 <div className="page">
                   <Header/>
-                  <Offer
+                  <OfferWrapped
                     currentCity = {currentCity}
-                    onTitleClick = {this.handleTitleClick}
                     placeCards = {offersOfTown}
                   />
                 </div>
@@ -55,14 +57,15 @@ class App extends React.PureComponent {
   }
 
   _renderOfferScreen(activeOfferId, currentCity, onCityClick, offersOfTown, onSortClick, sortByName, sortOffersOfTown) {
-  // _renderOfferScreen(currentCity, onCityClick, offersOfTown, onSortClick, sortByName, activeOfferId) {
-    if (this.state.offer === null) {
+    const {offerId, onTitleClick} = this.props;
+
+    if (offerId === null) {
       return (
         <Main
           activeOfferId = {activeOfferId}
           currentCity = {currentCity}
           onCityClick = {onCityClick}
-          onTitleClick = {this.handleTitleClick}
+          onTitleClick = {onTitleClick}
           placeCards = {sortOffersOfTown}
           onSortClick = {onSortClick}
           sortByName = {sortByName}
@@ -70,17 +73,12 @@ class App extends React.PureComponent {
       );
     } else {
       return (
-        <Offer
+        <OfferWrapped
           currentCity = {currentCity}
-          onTitleClick = {this.handleTitleClick}
           placeCards = {offersOfTown}
         />
       );
     }
-  }
-
-  handleTitleClick(offerId) {
-    this.setState({offer: this.props.offersOfTown.find((card) => card.id === offerId)});
   }
 }
 
@@ -105,12 +103,14 @@ const mapDispatchToProps = (dispatch) => ({
 App.propTypes = {
   activeOfferId: activeOfferIdType,
   currentCity: currentCityType,
+  offerId: isStringType,
   offersOfTown: placeCardsType,
-  sortOffersOfTown: placeCardsType,
   onCityClick: functionClickType,
   onSortClick: functionClickType,
+  onTitleClick: functionClickType,
   sortByName: sortNameType,
+  sortOffersOfTown: placeCardsType,
 };
 
 export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveOffer(App));

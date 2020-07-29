@@ -1,5 +1,5 @@
 import React from "react";
-import {isMainType} from "../../types/types";
+import {isBoolType} from "../../types/types";
 
 const Header = (props) => {
   const {isMain = false} = props;
@@ -43,7 +43,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  isMain: isMainType,
+  isMain: isBoolType,
 };
 
 export default Header;

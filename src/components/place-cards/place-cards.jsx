@@ -5,12 +5,6 @@ import {ActionCreator} from "../../reducer.js";
 import {classNameType, placeCardsType, functionClickType} from "../../types/types";
 
 class PlaceCards extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {placeCardId: null};
-    this._handleHover = this._handleHover.bind(this);
-  }
-
   render() {
     const {className, placeCards, onTitleClick, onOptionHover} = this.props;
 
@@ -27,10 +21,6 @@ class PlaceCards extends React.PureComponent {
         ))}
       </React.Fragment>
     );
-  }
-
-  _handleHover(placeCardId) {
-    this.setState({placeCardId});
   }
 }
 

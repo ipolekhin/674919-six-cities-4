@@ -3,8 +3,11 @@ import CitiesList from "../cities-list/cities-list.jsx";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import PlacesSorting from "../places-sorting/places-sorting.jsx";
+import withSort from "../../hocs/with-sort/with-sort";
 import {activeOfferIdType, currentCityType, functionClickType, placeCardsType, sortNameType} from "../../types/types";
 import {OfferCardsClassesType} from "../../const";
+
+const PlacesSortingWrapped = withSort(PlacesSorting);
 
 const Main = (props) => {
   const {activeOfferId, currentCity, onCityClick, onTitleClick, onSortClick, placeCards, sortByName} = props;
@@ -30,7 +33,7 @@ const Main = (props) => {
 
                   <b className="places__found">{placeCards.length} places to stay in {currentCity}</b>
 
-                  <PlacesSorting
+                  <PlacesSortingWrapped
                     onSortClick = {onSortClick}
                     sortByName = {sortByName}
                   />
