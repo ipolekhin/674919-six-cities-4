@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
-import {App} from "../app/app";
 
 const placeCards = [{
   adults: 3,
