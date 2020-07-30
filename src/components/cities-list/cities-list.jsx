@@ -1,20 +1,21 @@
 import React from "react";
-import CitiesItem from "../city-item/cities-item.jsx";
-import {currentCityType, functionClickType} from "../../types/types";
-import {TOWN_NAMES} from "../../const";
+import CityItem from "../city-item/city-item.jsx";
+import {connect} from "react-redux";
+import {citiesType, currentCityType, functionClickType} from "../../types/types";
+import {ActionCreator} from "../../reducer";
 
 const CitiesList = (props) => {
-  const {activeItem, onCityClick, onActiveItemChange} = props;
+  const {activeItem, cities, onCityClick, onActiveItemChange} = props;
 
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          {TOWN_NAMES.map((cityName) => (
-            <CitiesItem
+          {cities.map((cityName) => (
+            <CityItem
               key = {cityName}
               city = {cityName}
-              currentCity = {activeItem || TOWN_NAMES[0]}
+              currentCity = {activeItem || cities[0]}
               onCityClick = {onCityClick}
               onActiveItemChange = {onActiveItemChange}
             />
@@ -25,10 +26,25 @@ const CitiesList = (props) => {
   );
 };
 
+// const mapStateToProps = (state) => ({
+//   citiess: state.cities,
+// });
+//
+const mapDispatchToProps = (dispatch) => ({
+  onCityClick(city) {
+    dispatch(ActionCreator.changeCity(city));
+    dispatch(ActionCreator.getOffersList(city));
+  },
+});
+
 CitiesList.propTypes = {
   activeItem: currentCityType,
+  cities: citiesType,
   onActiveItemChange: functionClickType,
   onCityClick: functionClickType,
 };
 
-export default CitiesList;
+// export default CitiesList;
+
+export {CitiesList};
+export default connect(null, mapDispatchToProps)(CitiesList);

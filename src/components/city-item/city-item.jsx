@@ -1,9 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
-import {currentCityType, functionClickType} from "../../types/types";
+// import PropTypes from "prop-types";
+import {currentCityType, isStringType, functionClickType} from "../../types/types";
 
-const CitiesItem = (props) => {
-  const {currentCity, city, onCityClick, onActiveItemChange} = props;
+const CityItem = (props) => {
+  const {city, currentCity, onActiveItemChange, onCityClick} = props;
   const activeCityClass = currentCity === city ? `tabs__item--active` : ``;
 
   return (
@@ -23,11 +23,11 @@ const CitiesItem = (props) => {
   );
 };
 
-CitiesItem.propTypes = {
-  city: PropTypes.string,
+CityItem.propTypes = {
+  city: isStringType,
   currentCity: currentCityType,
   onCityClick: functionClickType,
   onActiveItemChange: functionClickType,
 };
 
-export default CitiesItem;
+export default CityItem;

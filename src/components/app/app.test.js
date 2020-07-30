@@ -5,6 +5,7 @@ import configureStore from "redux-mock-store";
 import {App} from "./app.jsx";
 
 const mockStore = configureStore([]);
+const cities = [`Amsterdam`, `Dusseldorf`];
 const currentCity = `Amsterdam`;
 const offersOfTown = [{
   adults: 3,
@@ -50,9 +51,9 @@ it(`Render App`, () => {
     .create(
         <Provider store={store}>
           <App
+            cities = {cities}
             currentCity = {currentCity}
             offersOfTown = {offersOfTown}
-            onCityClick = {onFunctionClick}
             onSortClick = {onFunctionClick}
             onActiveItemChange = {onFunctionClick}
             sortByName = {sortByName}
