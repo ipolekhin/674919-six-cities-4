@@ -1,5 +1,5 @@
 import React from "react";
-import CitiesItem from "../city-item/cities-item.jsx";
+import CityItem from "../city-item/city-item.jsx";
 import {connect} from "react-redux";
 import {citiesType, currentCityType, functionClickType} from "../../types/types";
 import {ActionCreator} from "../../reducer";
@@ -12,7 +12,7 @@ const CitiesList = (props) => {
       <section className="locations container">
         <ul className="locations__list tabs__list">
           {cities.map((cityName) => (
-            <CitiesItem
+            <CityItem
               key = {cityName}
               city = {cityName}
               currentCity = {activeItem || cities[0]}
