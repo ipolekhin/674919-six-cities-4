@@ -1,6 +1,7 @@
 import React from "react";
 import CitiesList from "../cities-list/cities-list.jsx";
 import Map from "../map/map.jsx";
+import MainEmpty from "../main-empty/main-empty.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import PlacesSorting from "../places-sorting/places-sorting.jsx";
 import withActiveItem from "../../hocs/with-active-offer/with-active-item.js";
@@ -68,16 +69,7 @@ const Main = (props) => {
                 />
               </div>
             ) || !placeCards.length && (
-              <div className="cities__places-container cities__places-container--empty container">
-                <section className="cities__no-places">
-                  <div className="cities__status-wrapper tabs__content">
-                    <b className="cities__status">No places to stay available</b>
-                    <p className="cities__status-description">We could not find any property availbale at the moment in
-                      Dusseldorf</p>
-                  </div>
-                </section>
-                <div className="cities__right-section"></div>
-              </div>
+              <MainEmpty/>
             )
           }
         </div>
