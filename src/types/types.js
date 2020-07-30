@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 
-const cityCoordinateType = PropTypes.arrayOf(PropTypes.number.isRequired).isRequired;
+const activeOfferIdType = PropTypes.string;
 
 const childrenType = PropTypes.node.isRequired;
 
-const classNameType = PropTypes.string.isRequired;
+const citiesType = PropTypes.arrayOf(PropTypes.string.isRequired).isRequired;
 
-const activeOfferIdType = PropTypes.string;
+const cityCoordinateType = PropTypes.arrayOf(PropTypes.number.isRequired).isRequired;
+
+const classNameType = PropTypes.string.isRequired;
 
 const currentCityType = PropTypes.string;
 
@@ -68,6 +70,7 @@ const sortNameType = PropTypes.string.isRequired;
 export {
   activeOfferIdType,
   childrenType,
+  citiesType,
   cityCoordinateType,
   classNameType,
   currentCityType,

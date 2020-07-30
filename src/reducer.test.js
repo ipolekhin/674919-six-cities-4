@@ -1,11 +1,13 @@
 import {reducer, ActionCreator, ActionType, placeCards} from "./reducer.js";
-import {SortType} from "./const";
+import {SortType, TOWN_NAMES} from "./const";
 
 const city = `Amsterdam`;
+const cities = TOWN_NAMES;
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     activeOfferId: null,
+    cities,
     city,
     sortByName: SortType.POPULAR,
     offers: placeCards,

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {currentCityType, functionClickType} from "../../types/types";
 
 const CitiesItem = (props) => {
-  const {currentCity, city, onCityClick, onActiveItemChange} = props;
+  const {city, currentCity, onActiveItemChange, onCityClick} = props;
   const activeCityClass = currentCity === city ? `tabs__item--active` : ``;
 
   return (
