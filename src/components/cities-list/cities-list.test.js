@@ -11,7 +11,6 @@ it(`Render CitiesList`, () => {
     .create(
         <CitiesList
           cities = {cities}
-          citiess = {cities}
           onActiveItemChange = {onActiveItemChange}
           onCityClick = {onCityClick}
         />
