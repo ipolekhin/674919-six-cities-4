@@ -6,10 +6,9 @@ import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
-import withActiveItem from "../../hocs/with-active-offer/with-active-item";
+import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import {
   activeOfferIdType,
-  citiesType,
   currentCityType,
   functionClickType,
   isStringType,
@@ -21,7 +20,16 @@ import {getSortedOffers} from "../../utils/common";
 const OfferWrapped = withActiveItem(Offer);
 
 const App = (props) => {
-  const {activeItem, activeOfferId, cities, currentCity, offersOfTown, onActiveItemChange, onSortClick, sortByName, sortOffersOfTown} = props;
+  const {
+    activeItem,
+    activeOfferId,
+    currentCity,
+    offersOfTown,
+    onActiveItemChange,
+    onSortClick,
+    sortByName,
+    sortOffersOfTown
+  } = props;
 
   return (
     <React.Fragment>
@@ -31,7 +39,16 @@ const App = (props) => {
             <PageContainer renderContainer={() => (
               <div className="page page--gray page--main">
                 <Header isMain={true}/>
-                {renderOfferScreen(activeItem, activeOfferId, cities, currentCity, onActiveItemChange, offersOfTown, onSortClick, sortByName, sortOffersOfTown)}
+                {renderOfferScreen(
+                    activeItem,
+                    activeOfferId,
+                    currentCity,
+                    onActiveItemChange,
+                    offersOfTown,
+                    onSortClick,
+                    sortByName,
+                    sortOffersOfTown
+                )}
               </div>
             )}>
             </PageContainer>
@@ -54,12 +71,19 @@ const App = (props) => {
   );
 };
 
-const renderOfferScreen = (activeItem, activeOfferId, cities, currentCity, onActiveItemChange, offersOfTown, onSortClick, sortByName, sortOffersOfTown) => {
+const renderOfferScreen = (
+    activeItem, activeOfferId,
+    currentCity,
+    onActiveItemChange,
+    offersOfTown,
+    onSortClick,
+    sortByName,
+    sortOffersOfTown
+) => {
   if (activeItem === null) {
     return (
       <Main
         activeOfferId = {activeOfferId}
-        cities = {cities}
         currentCity = {currentCity}
         onActiveItemChange = {onActiveItemChange}
         placeCards = {sortOffersOfTown}
@@ -79,7 +103,6 @@ const renderOfferScreen = (activeItem, activeOfferId, cities, currentCity, onAct
 
 const mapStateToProps = (state) => ({
   activeOfferId: state.activeOfferId,
-  cities: state.cities,
   currentCity: state.city,
   sortByName: state.sortByName,
   sortOffersOfTown: getSortedOffers(state.offersOfTown, state.sortByName),
@@ -94,7 +117,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 App.propTypes = {
   activeOfferId: activeOfferIdType,
-  cities: citiesType,
   currentCity: currentCityType,
   activeItem: isStringType,
   offersOfTown: placeCardsType,

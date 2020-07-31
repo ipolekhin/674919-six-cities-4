@@ -4,11 +4,10 @@ import Map from "../map/map.jsx";
 import MainEmpty from "../main-empty/main-empty.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import PlacesSorting from "../places-sorting/places-sorting.jsx";
-import withActiveItem from "../../hocs/with-active-offer/with-active-item.js";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import withSort from "../../hocs/with-sort/with-sort.js";
 import {
   activeOfferIdType,
-  citiesType,
   currentCityType,
   functionClickType,
   placeCardsType,
@@ -20,7 +19,14 @@ const PlacesSortingWrapped = withSort(PlacesSorting);
 const CitiesListWrapped = withActiveItem(CitiesList);
 
 const Main = (props) => {
-  const {activeOfferId, cities, currentCity, onActiveItemChange, onSortClick, placeCards, sortByName} = props;
+  const {
+    activeOfferId,
+    currentCity,
+    onActiveItemChange,
+    onSortClick,
+    placeCards,
+    sortByName
+  } = props;
   const emptyCityClass = !placeCards.length ? `page__main--index-empty` : ``;
 
 
@@ -29,9 +35,7 @@ const Main = (props) => {
       <main className={`page__main page__main--index ${emptyCityClass}`}>
         <h1 className="visually-hidden">Cities</h1>
 
-        <CitiesListWrapped
-          cities = {cities}
-        />
+        <CitiesListWrapped/>
 
         <div className="cities">
           {
@@ -80,7 +84,6 @@ const Main = (props) => {
 
 Main.propTypes = {
   activeOfferId: activeOfferIdType,
-  cities: citiesType,
   currentCity: currentCityType,
   onActiveItemChange: functionClickType,
   onSortClick: functionClickType,

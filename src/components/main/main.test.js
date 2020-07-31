@@ -45,7 +45,9 @@ const placeCards = [{
 const sortByName = `Popular`;
 
 it(`Render MainScreen`, () => {
-  const store = mockStore({});
+  const store = mockStore({
+    cities: [`Amsterdam`, `Dusseldorf`],
+  });
   const tree = renderer
     .create(
         <Provider store={store}>

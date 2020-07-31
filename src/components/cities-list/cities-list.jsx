@@ -6,7 +6,6 @@ import {ActionCreator} from "../../reducer";
 
 const CitiesList = (props) => {
   const {activeItem, cities, onCityClick, onActiveItemChange} = props;
-
   return (
     <div className="tabs">
       <section className="locations container">
@@ -26,10 +25,10 @@ const CitiesList = (props) => {
   );
 };
 
-// const mapStateToProps = (state) => ({
-//   citiess: state.cities,
-// });
-//
+const mapStateToProps = (state) => ({
+  cities: state.cities,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   onCityClick(city) {
     dispatch(ActionCreator.changeCity(city));
@@ -44,7 +43,5 @@ CitiesList.propTypes = {
   onCityClick: functionClickType,
 };
 
-// export default CitiesList;
-
 export {CitiesList};
-export default connect(null, mapDispatchToProps)(CitiesList);
+export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);

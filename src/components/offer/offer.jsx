@@ -2,7 +2,12 @@ import React from "react";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
-import {currentCityType, functionClickType, isStringType, placeCardsType} from "../../types/types";
+import {
+  currentCityType,
+  functionClickType,
+  isStringType,
+  placeCardsType
+} from "../../types/types";
 import {OfferCardsClassesType, STARS_PROPERTY} from "../../const";
 
 const Offer = (props) => {

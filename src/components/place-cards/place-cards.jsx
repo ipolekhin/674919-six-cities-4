@@ -1,5 +1,5 @@
 import React from "react";
-import PlaceCard from "../placa-card/place-card.jsx";
+import PlaceCard from "../place-card/place-card.jsx";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 import {classNameType, placeCardsType, functionClickType} from "../../types/types";
