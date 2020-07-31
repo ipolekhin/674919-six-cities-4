@@ -1,5 +1,5 @@
-import {reducer, ActionCreator, ActionType, placeCards} from "./reducer.js";
-import {SortType, TOWN_NAMES} from "./const";
+import {reducer, ActionCreator, ActionType} from "./site.js";
+import {SortType, TOWN_NAMES} from "../const";
 
 const city = `Amsterdam`;
 const cities = TOWN_NAMES;
@@ -10,8 +10,6 @@ it(`Reducer without additional parameters should return initial state`, () => {
     cities,
     city,
     sortByName: SortType.POPULAR,
-    offers: placeCards,
-    offersOfTown: placeCards.filter((place) => place.townName === city),
   });
 });
 

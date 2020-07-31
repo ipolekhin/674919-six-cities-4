@@ -2,7 +2,7 @@ import React from "react";
 import CityItem from "../city-item/city-item.jsx";
 import {connect} from "react-redux";
 import {citiesType, currentCityType, functionClickType} from "../../types/types";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "../../reducer/reducer";
 
 const CitiesList = (props) => {
   const {activeItem, cities, onCityClick, onActiveItemChange} = props;

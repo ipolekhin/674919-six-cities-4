@@ -1,25 +1,19 @@
-import {extend} from "./utils/common.js";
-import {generatePlaceCards} from "./mocks/offers";
-import {TownType} from "./const.js";
-import {TOWN_NAMES} from "./const";
-import {SortType} from "./const";
+import {extend} from "../utils/common.js";
+import {TownType} from "../const.js";
+import {TOWN_NAMES} from "../const";
+import {SortType} from "../const";
 
-const MAX_COUNT_PLACES = 24;
-const placeCards = generatePlaceCards(MAX_COUNT_PLACES);
 
 const initialState = {
   activeOfferId: null,
-  city: TownType.AMSTERDAM,
   cities: TOWN_NAMES,
+  city: TownType.AMSTERDAM,
   sortByName: SortType.POPULAR,
-  offers: placeCards,
-  offersOfTown: placeCards.filter((place) => place.townName === TownType.AMSTERDAM),
 };
 
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   CHANGE_SORT_OPTIONS: `CHANGE_SORT_OPTIONS`,
-  OFFERS_LIST: `OFFERS_LIST`,
   SET_ACTIVE_OFFER: `SET_ACTIVE_OFFER`,
 };
 
@@ -35,13 +29,6 @@ const ActionCreator = {
     return ({
       type: ActionType.CHANGE_SORT_OPTIONS,
       payload: sortByName,
-    });
-  },
-
-  getOffersList: (city) => {
-    return ({
-      type: ActionType.OFFERS_LIST,
-      payload: initialState.offers.filter((place) => place.townName === city),
     });
   },
 
@@ -63,11 +50,6 @@ const reducer = (state = initialState, action) => {
         sortByName: action.payload,
       });
 
-    case ActionType.OFFERS_LIST:
-      return extend(state, {
-        offersOfTown: action.payload,
-      });
-
     case ActionType.SET_ACTIVE_OFFER:
       return extend(state, {
         activeOfferId: action.payload,
@@ -78,4 +60,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {reducer, ActionCreator, ActionType, placeCards};
+export {reducer, ActionCreator, ActionType};

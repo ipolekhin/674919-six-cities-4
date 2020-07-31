@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/reducer.js";
 import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
