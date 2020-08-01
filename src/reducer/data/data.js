@@ -1,13 +1,15 @@
-import {extend} from "../utils/common.js";
-import {generatePlaceCards} from "../mocks/offers";
-import {TownType} from "../const.js";
+import {extend} from "../../utils/common.js";
+import {generatePlaceCards} from "../../mocks/offers.js";
+import {SortType} from "../../const.js";
 
 const MAX_COUNT_PLACES = 24;
 const placeCards = generatePlaceCards(MAX_COUNT_PLACES);
 
 const initialState = {
+  city: `Amsterdam`,
   offers: placeCards,
-  offersOfTown: placeCards.filter((place) => place.townName === TownType.AMSTERDAM),
+  offersOfTown: [],
+  sortByName: SortType.POPULAR,
 };
 
 const ActionType = {

@@ -15,7 +15,7 @@ import {
   placeCardsType,
   sortNameType
 } from "../../types/types";
-import {getSortedOffers} from "../../utils/common";
+// import {getSortedOffers} from "../../utils/common";
 
 const OfferWrapped = withActiveItem(Offer);
 
@@ -105,7 +105,8 @@ const mapStateToProps = (state) => ({
   activeOfferId: state.activeOfferId,
   currentCity: state.city,
   sortByName: state.sortByName,
-  sortOffersOfTown: getSortedOffers(state.offersOfTown, state.sortByName),
+  // sortOffersOfTown: getSortedOffers(state.offersOfTown, state.sortByName),
+  sortOffersOfTown: state.sortOffers,
   offersOfTown: state.offersOfTown,
 });
 

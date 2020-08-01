@@ -1,7 +1,5 @@
-import {extend} from "../utils/common.js";
-import {TownType} from "../const.js";
-import {TOWN_NAMES} from "../const";
-import {SortType} from "../const";
+import {extend} from "../../utils/common.js";
+import {TownType, TOWN_NAMES, SortType} from "../../const.js";
 
 
 const initialState = {
