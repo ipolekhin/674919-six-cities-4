@@ -1,4 +1,6 @@
 import {extend} from "../../utils/common.js";
+import adapterOffers from "../../apapters/offers.js";
+
 import {generatePlaceCards} from "../../apapters/offers.js";
 import {SortType} from "../../const.js";
 
@@ -7,7 +9,8 @@ const placeCards = generatePlaceCards(MAX_COUNT_PLACES);
 
 const initialState = {
   city: `Amsterdam`,
-  offers: placeCards,
+  cities: [],
+  offers: [],
   offersOfTown: [],
   sortByName: SortType.POPULAR,
 };
@@ -25,11 +28,23 @@ const ActionCreator = {
   },
 };
 
+const Operation = {
+  getOffersList: () => (dispatch, getState, api) => {
+    return api.get(`/hotels`)
+      .then((response) => {
+        const allOffers = adapterOffers(response.data);
+        const cities = Array.from(allOffers.keys());
+        dispatch(ActionCreator.getCities(cities));
+        dispatch(ActionCreator.getOffersList(allOffers));
+      });
+  },
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.OFFERS_LIST:
       return extend(state, {
-        offersOfTown: action.payload,
+        offers: action.payload,
       });
 
     default:
@@ -37,4 +52,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {reducer, ActionCreator, ActionType, placeCards};
+export {ActionCreator, ActionType, Operation, placeCards, reducer};
