@@ -1,5 +1,5 @@
 import {extend} from "../../utils/common.js";
-import {generatePlaceCards} from "../../mocks/offers.js";
+import {generatePlaceCards} from "../../apapters/offers.js";
 import {SortType} from "../../const.js";
 
 const MAX_COUNT_PLACES = 24;
