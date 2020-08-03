@@ -8,7 +8,7 @@ import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
-import withActiveItem from "../../hocs/with-active-item/with-active-item";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {
   activeOfferIdType,
   currentCityType,
@@ -31,8 +31,8 @@ const App = (props) => {
     sortByName,
     sortOffersOfTown
   } = props;
-  console.log(`App`);
-  console.log(onActiveItemChange);
+  console.log(`App - 7`);
+  console.log(activeItem);
 
   return (
     <React.Fragment>
@@ -82,7 +82,8 @@ const App = (props) => {
 };
 
 const renderOfferScreen = (
-    activeItem, activeOfferId,
+    activeItem,
+    activeOfferId,
     currentCity,
     onActiveItemChange,
     offersOfTown,
@@ -90,6 +91,7 @@ const renderOfferScreen = (
     sortByName,
     sortOffersOfTown
 ) => {
+  const bdcbsdf = `12312`;
   if (activeItem === null) {
     return (
       <Main
@@ -102,10 +104,16 @@ const renderOfferScreen = (
       />
     );
   } else {
+    console.log(`activeOfferId`);
+    console.log(activeOfferId);
+    console.log(activeItem);
     return (
       <OfferWrapped
+        activeItem = {activeOfferId}
+        activeOfferId = {activeOfferId}
         currentCity = {currentCity}
         placeCards = {offersOfTown}
+        bdcbsdf = {bdcbsdf}
       />
     );
   }
