@@ -6,15 +6,17 @@ const cities = [`Amsterdam`, `Dusseldorf`];
 const onCityClick = () => {};
 const onActiveItemChange = () => {};
 
-it(`Render CitiesList`, () => {
-  const tree = renderer
-    .create(
-        <CitiesList
-          cities = {cities}
-          onActiveItemChange = {onActiveItemChange}
-          onCityClick = {onCityClick}
-        />
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+describe(`CitiesList Test`, () => {
+  it(`Render CitiesList`, () => {
+    const tree = renderer
+      .create(
+          <CitiesList
+            cities={cities}
+            onActiveItemChange={onActiveItemChange}
+            onCityClick={onCityClick}
+          />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

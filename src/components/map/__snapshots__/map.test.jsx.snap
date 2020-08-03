@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Map 1`] = `
+exports[`Map Test Render Map 1`] = `
 <div
   className="cities__right-section"
 >

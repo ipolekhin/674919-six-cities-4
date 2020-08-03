@@ -6,12 +6,12 @@ import {getOffersOfTown} from "../data/selectors";
 const NAME_SPACE = NameSpace.SITE;
 
 export const getActiveOfferId = (state) => {
-  console.log(`Selector - getActiveOfferId`);
+  // console.log(`Selector - getActiveOfferId`);
   return state[NAME_SPACE].activeOfferId;
 };
 
 export const getSortName = (state) => {
-  console.log(`Selector - sortByName`);
+  // console.log(`Selector - sortByName`);
   return state[NAME_SPACE].sortByName;
 };
 

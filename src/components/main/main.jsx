@@ -28,8 +28,7 @@ const Main = (props) => {
     sortByName
   } = props;
   const emptyCityClass = !placeCards.length ? `page__main--index-empty` : ``;
-  console.log(`Main`);
-  // console.log(sortByName);
+  // console.log(`Main`);
 
   return (
     <React.Fragment>

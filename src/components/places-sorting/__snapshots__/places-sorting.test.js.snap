@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render PlaceCard 1`] = `
+exports[`PlacesSorting Test Render PlaceCard 1`] = `
 <form
   action="#"
   className="places__sorting"

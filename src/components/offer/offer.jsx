@@ -16,18 +16,11 @@ const Offer = (props) => {
     activeItem,
     onActiveItemChange,
     placeCards,
-    blabla,
-    bdcbsdf,
-    activeOfferId,
   } = props;
   const activeOffer = activeItem ? placeCards.find((card) => card.id === activeItem) : placeCards[0];
   const nearPlaces = placeCards.filter((place) => activeOffer.id !== place.id);
   const FIVE_STAR = [5, 4, 3, 2, 1];
-  console.log(`Offer1`);
-  console.log(activeItem, 'activeItem');
-  console.log(blabla, 'blabla');
-  console.log(bdcbsdf, 'bdcbsdf');
-  console.log(activeOfferId, 'activeOfferId');
+  // console.log(`Offer1`);
 
   return (
     <React.Fragment>

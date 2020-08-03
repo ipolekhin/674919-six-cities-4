@@ -31,8 +31,7 @@ const App = (props) => {
     sortByName,
     sortOffersOfTown
   } = props;
-  console.log(`App - 7`);
-  console.log(activeItem);
+  // console.log(`App - 7`);
 
   return (
     <React.Fragment>
@@ -91,7 +90,6 @@ const renderOfferScreen = (
     sortByName,
     sortOffersOfTown
 ) => {
-  const bdcbsdf = `12312`;
   if (activeItem === null) {
     return (
       <Main
@@ -104,16 +102,11 @@ const renderOfferScreen = (
       />
     );
   } else {
-    console.log(`activeOfferId`);
-    console.log(activeOfferId);
-    console.log(activeItem);
     return (
       <OfferWrapped
-        activeItem = {activeOfferId}
         activeOfferId = {activeOfferId}
         currentCity = {currentCity}
         placeCards = {offersOfTown}
-        bdcbsdf = {bdcbsdf}
       />
     );
   }

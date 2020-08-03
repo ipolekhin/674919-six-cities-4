@@ -1,43 +1,28 @@
 import {reducer, ActionCreator, ActionType} from "./site.js";
-import {SortType, TOWN_NAMES} from "../const";
+import {SortType} from "../../const.js";
 
-const city = `Amsterdam`;
-const cities = TOWN_NAMES;
+const sortByName = `Popular`;
+const activeOfferId = 1;
 
-it(`Reducer without additional parameters should return initial state`, () => {
-  expect(reducer(void 0, {})).toEqual({
-    activeOfferId: null,
-    cities,
-    city,
-    sortByName: SortType.POPULAR,
-  });
-});
-
-it(`Reducer should change city by a given value`, () => {
-  expect(reducer({
-    city: `Amsterdam`
-  }, {
-    type: ActionType.CHANGE_CITY,
-    payload: `Paris`,
-  })).toEqual({
-    city: `Paris`,
+describe(`Reducer Site Test`, () => {
+  it(`Reducer without additional parameters should return initial state`, () => {
+    expect(reducer(void 0, {})).toEqual({
+      activeOfferId: null,
+      sortByName: SortType.POPULAR,
+    });
   });
 
-  expect(reducer({
-    city: `Amsterdam`
-  }, {
-    type: ActionType.CHANGE_CITY,
-    payload: `Amsterdam`,
-  })).toEqual({
-    city: `Amsterdam`,
+  it(`Action creator for set sort type`, () => {
+    expect(ActionCreator.changeSortOptions(sortByName)).toEqual({
+      type: ActionType.CHANGE_SORT_OPTIONS,
+      payload: sortByName,
+    });
   });
-});
 
-describe(`Action creators work correctly`, () => {
-  it(`Action creator for incrementing step returns correct action`, () => {
-    expect(ActionCreator.changeCity(`Amsterdam`)).toEqual({
-      type: ActionType.CHANGE_CITY,
-      payload: `Amsterdam`,
+  it(`Action creator for set ative offer`, () => {
+    expect(ActionCreator.setActiveOffer(activeOfferId)).toEqual({
+      type: ActionType.SET_ACTIVE_OFFER,
+      payload: activeOfferId,
     });
   });
 });

@@ -8,12 +8,12 @@ const placeCards = [
     townName: `Amsterdam`,
     bedrooms: 2,
     cardName: `Wood and stone place`,
-    cardRating: 4.6,
+    cardRating: 4,
     cardRatingStars: `92%`,
     cardType: `Room`,
     coordinatesItem: [52.3909553943508, 4.85309666406198],
     description: `Text text....`,
-    id: `1`,
+    id: 1,
     image: `img/apartment-01.jpg`,
     images: [`img/apartment-01.jpg`, `img/apartment-02.jpg`],
     insideItems: [`wi-fi`, `bathroom`],
@@ -22,8 +22,8 @@ const placeCards = [
     reviews: [
       {
         date: new Date(2020, 7, 17),
-        id: `02`,
-        rating: `82%`,
+        id: 1,
+        rating: 4,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
         userAvatar: `img/avatar-max.jpg`,
         userName: `John`,
@@ -40,12 +40,12 @@ const placeCards = [
     townName: `Amsterdam`,
     bedrooms: 1,
     cardName: `Wood and stone place`,
-    cardRating: 3.6,
+    cardRating: 3,
     cardRatingStars: `92%`,
     cardType: `Room`,
     coordinatesItem: [52.369553943508, 4.85309666406198],
     description: `Text text....`,
-    id: `2`,
+    id: 2,
     image: `img/apartment-01.jpg`,
     images: [`img/apartment-01.jpg`, `img/apartment-02.jpg`],
     insideItems: [`bathroom`],
@@ -54,8 +54,8 @@ const placeCards = [
     reviews: [
       {
         date: new Date(2020, 7, 15),
-        id: `02`,
-        rating: `82%`,
+        id: 1,
+        rating: 4,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
         userAvatar: `img/avatar-max.jpg`,
         userName: `John`,
@@ -71,22 +71,24 @@ const placeCards = [
 
 const currentCity = `Amsterdam`;
 
-it(`Render Map`, () => {
-  const tree = renderer
-    .create(<Map
-      currentCity = {currentCity}
-      placeCards = {placeCards}
-      renderMap = {(mapRef) => (
-        <div className="cities__right-section">
-          <section className="cities__map map" ref={mapRef}></section>
-        </div>
-      )}
-    />, {
-      createNodeMock: () => {
-        return {};
-      }
-    })
-    .toJSON();
+describe(`Map Test`, () => {
+  it(`Render Map`, () => {
+    const tree = renderer
+      .create(<Map
+        currentCity={currentCity}
+        placeCards={placeCards}
+        renderMap={(mapRef) => (
+          <div className="cities__right-section">
+            <section className="cities__map map" ref={mapRef}></section>
+          </div>
+        )}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
+      .toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
 });

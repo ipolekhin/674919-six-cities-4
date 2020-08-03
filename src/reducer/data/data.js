@@ -1,11 +1,6 @@
 import {extend} from "../../utils/common.js";
 import {adapterOffers} from "../../apapters/offers.js";
 
-import {generatePlaceCards} from "../../apapters/offers.js";
-
-const MAX_COUNT_PLACES = 24;
-const placeCards = generatePlaceCards(MAX_COUNT_PLACES);
-
 const initialState = {
   city: ``,
   offers: [],
@@ -38,17 +33,8 @@ const Operation = {
     return api.get(`/hotels`)
       .then((response) => {
         const allOffers = adapterOffers(response.data);
-
-        console.log(allOffers);
-        // let cities = new Set();
-        // allOffers.forEach((offer) => cities.add(offer.townName));
-
         dispatch(ActionCreator.getOffersList(allOffers));
         dispatch(ActionCreator.changeCity(allOffers[0].townName));
-        // dispatch(ActionCreator.getCities(Array.from(cities)));
-        // console.log(Array.from(cities));
-        // const friendsNames = Array.from(allOffers, ({townName}) => townName);
-        // console.log([...new Set(friendsNames)]);
       });
   },
 };
@@ -70,4 +56,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {ActionCreator, ActionType, Operation, placeCards, reducer};
+export {ActionCreator, ActionType, Operation, reducer};

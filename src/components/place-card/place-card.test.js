@@ -15,7 +15,7 @@ const placeCard = {
   cardType: `Room`,
   coordinatesItem: [52.3909553943508, 4.85309666406198],
   description: `Text text....`,
-  id: `1`,
+  id: 1,
   image: `img/apartment-01.jpg`,
   images: [`img/apartment-01.jpg`, `img/apartment-02.jpg`],
   insideItems: [`wi-fi`, `bathroom`],
@@ -24,8 +24,8 @@ const placeCard = {
   reviews: [
     {
       date: new Date(2020, 7, 17),
-      id: `01`,
-      rating: `92%`,
+      id: 1,
+      rating: 4,
       text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
       userAvatar: `img/avatar-max.jpg`,
       userName: `Max`,
@@ -38,15 +38,17 @@ const placeCard = {
   },
 };
 
-it(`Render PlaceCard`, () => {
-  const tree = renderer
-    .create(<PlaceCard
-      className = {className}
-      onOptionHover = {onOptionHover}
-      onActiveItemChange = {onActiveItemChange}
-      placeCard = {placeCard}
-    />)
-    .toJSON();
+describe(`PlaceCard Test`, () => {
+  it(`Render PlaceCard`, () => {
+    const tree = renderer
+      .create(<PlaceCard
+        className={className}
+        onOptionHover={onOptionHover}
+        onActiveItemChange={onActiveItemChange}
+        placeCard={placeCard}
+      />)
+      .toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
 });

@@ -56,8 +56,8 @@ const renderFunctionType = PropTypes.func.isRequired;
 
 const reviewType = PropTypes.shape({
   date: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   userAvatar: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,

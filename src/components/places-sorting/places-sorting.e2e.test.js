@@ -12,22 +12,27 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Should click on options`, () => {
-  const onSortClick = jest.fn();
-  const placesOptions = shallow(
-      <PlacesSorting
-        handleClick = {handleClick}
-        isOpen = {isOpen}
-        onSortClick = {onSortClick}
-        sortByName = {sortByName}
-      />
-  );
+describe(`PlacesSorting e2e test`, () => {
+  it(`Should click on options`, () => {
+    const onSortClick = jest.fn();
+    const placesOptions = shallow(
+        <PlacesSorting
+          handleClick={handleClick}
+          isOpen={isOpen}
+          onSortClick={onSortClick}
+          sortByName={sortByName}
+        />
+    );
 
-  const titleOptions = placesOptions.find(`.places__option`);
+    const titleOptions = placesOptions.find(`.places__option`);
 
-  titleOptions.forEach((option) => {
-    option.simulate(`click`, {preventDefault() {}});
+    titleOptions.forEach((option) => {
+      option.simulate(`click`, {
+        preventDefault() {
+        }
+      });
+    });
+
+    expect(onSortClick.mock.calls.length).toBe(titleOptions.length);
   });
-
-  expect(onSortClick.mock.calls.length).toBe(titleOptions.length);
 });

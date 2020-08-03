@@ -7,7 +7,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-describe(`City list`, () => {
+describe(`CitiesList e2e test`, () => {
   it(`On city click and change active item`, () => {
     const cities = [`Amsterdam`, `Dusseldorf`, `London`];
     const onCityClick = jest.fn();

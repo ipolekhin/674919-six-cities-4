@@ -1,19 +1,19 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import CitiesItem from "./city-item.jsx";
+import CityItem from "./city-item.jsx";
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-describe(`City list`, () => {
+describe(`CityItem e2e test`, () => {
   it(`On city click and change active item`, () => {
     const city = `London`;
     const onCityClick = jest.fn();
     const onActiveItemChange = jest.fn();
     const cityItemComponent = shallow(
-        <CitiesItem
+        <CityItem
           city = {city}
           onActiveItemChange = {onActiveItemChange}
           onCityClick = {onCityClick}

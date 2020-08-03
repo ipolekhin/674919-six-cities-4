@@ -7,16 +7,18 @@ const currentCity = `Amsterdam`;
 const onCityClick = () => {};
 const onActiveItemChange = () => {};
 
-it(`Render CityItem`, () => {
-  const tree = renderer
-    .create(
-        <CityItem
-          city = {city}
-          currentCity = {currentCity}
-          onActiveItemChange = {onActiveItemChange}
-          onCityClick = {onCityClick}
-        />
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+describe(`CityItem Test`, () => {
+  it(`Render CityItem`, () => {
+    const tree = renderer
+      .create(
+          <CityItem
+            city={city}
+            currentCity={currentCity}
+            onActiveItemChange={onActiveItemChange}
+            onCityClick={onCityClick}
+          />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
