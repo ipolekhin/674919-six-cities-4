@@ -5,6 +5,7 @@ import {getSortedOffers} from "../../utils/common.js";
 const NAME_SPACE = NameSpace.DATA;
 
 export const getOffers = (state) => {
+  console.log(`Selectors - getOffers`);
   return state[NAME_SPACE].offers;
 };
 
@@ -29,13 +30,5 @@ export const getOffersOfTown = createSelector(
     getCurrentCity,
     (resultOne, resultTwo) => {
       return resultOne.filter((offer) => offer.townName === resultTwo);
-    }
-);
-
-export const getSortOffers = createSelector(
-    getOffersOfTown,
-    getSortByName,
-    (resultOne, resultTwo) => {
-      return getSortedOffers(resultOne, resultTwo);
     }
 );

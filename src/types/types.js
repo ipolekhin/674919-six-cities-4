@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const activeOfferIdType = PropTypes.string;
+const activeOfferIdType = PropTypes.number;
 
 const childrenType = PropTypes.node.isRequired;
 

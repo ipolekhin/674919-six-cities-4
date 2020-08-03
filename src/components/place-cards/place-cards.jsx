@@ -1,7 +1,7 @@
 import React from "react";
 import PlaceCard from "../place-card/place-card.jsx";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/reducer.js";
+import {ActionCreator} from "../../reducer/site/site.js";
 import {classNameType, placeCardsType, functionClickType} from "../../types/types";
 
 const PlaceCards = (props) => {

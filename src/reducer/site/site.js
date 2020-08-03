@@ -1,28 +1,18 @@
 import {extend} from "../../utils/common.js";
-import {TownType, TOWN_NAMES, SortType} from "../../const.js";
+import {SortType} from "../../const.js";
 
 
 const initialState = {
   activeOfferId: null,
-  cities: TOWN_NAMES,
-  city: TownType.AMSTERDAM,
   sortByName: SortType.POPULAR,
 };
 
 const ActionType = {
-  CHANGE_CITY: `CHANGE_CITY`,
   CHANGE_SORT_OPTIONS: `CHANGE_SORT_OPTIONS`,
   SET_ACTIVE_OFFER: `SET_ACTIVE_OFFER`,
 };
 
 const ActionCreator = {
-  changeCity: (city) => {
-    return ({
-      type: ActionType.CHANGE_CITY,
-      payload: city,
-    });
-  },
-
   changeSortOptions: (sortByName) => {
     return ({
       type: ActionType.CHANGE_SORT_OPTIONS,
@@ -38,11 +28,6 @@ const ActionCreator = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_CITY:
-      return extend(state, {
-        city: action.payload,
-      });
-
     case ActionType.CHANGE_SORT_OPTIONS:
       return extend(state, {
         sortByName: action.payload,

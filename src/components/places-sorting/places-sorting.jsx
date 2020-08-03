@@ -3,7 +3,12 @@ import {SORT_NAMES} from "../../const";
 import {functionClickType, isBoolType, sortNameType} from "../../types/types";
 
 const PlacesSorting = (props) => {
-  const {isOpen, handleClick, onSortClick, sortByName} = props;
+  const {
+    isOpen,
+    handleClick,
+    onSortClick,
+    sortByName
+  } = props;
 
   return (
     <form className="places__sorting" action="#" method="get">

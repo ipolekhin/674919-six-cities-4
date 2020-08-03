@@ -2,7 +2,6 @@ import {extend} from "../../utils/common.js";
 import {adapterOffers} from "../../apapters/offers.js";
 
 import {generatePlaceCards} from "../../apapters/offers.js";
-import {SortType} from "../../const.js";
 
 const MAX_COUNT_PLACES = 24;
 const placeCards = generatePlaceCards(MAX_COUNT_PLACES);
@@ -11,7 +10,6 @@ const initialState = {
   city: ``,
   offers: [],
   offersOfTown: [],
-  sortByName: SortType.POPULAR,
 };
 
 const ActionType = {
