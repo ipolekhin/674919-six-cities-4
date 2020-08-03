@@ -7,7 +7,7 @@ import thunk from "redux-thunk";
 import reducer from "./reducer/reducer.js";
 import App from "./components/app/app.jsx";
 import {Operation as DataOperation} from "./reducer/data/data.js";
-import {ActionCreator as SiteOperation} from "./reducer/site/site.js";
+// import {ActionCreator as SiteOperation} from "./reducer/site/site.js";
 import {createAPI} from "./api.js";
 
 const api = createAPI(() => {});

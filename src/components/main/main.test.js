@@ -5,7 +5,7 @@ import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
 
 const activeOfferId = 1;
-const cities = [`Amsterdam`, `Dusseldorf`];
+// const cities = [`Amsterdam`, `Dusseldorf`];
 const currentCity = `Amsterdam`;
 const mockStore = configureStore([]);
 const onActiveItemChange = () => {};
