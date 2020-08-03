@@ -2,10 +2,17 @@ import React from "react";
 import CityItem from "../city-item/city-item.jsx";
 import {connect} from "react-redux";
 import {citiesType, currentCityType, functionClickType} from "../../types/types";
-import {ActionCreator} from "../../reducer/reducer";
+import {ActionCreator} from "../../reducer/data/data.js";
+import {getCities} from "../../reducer/data/selectors.js";
 
 const CitiesList = (props) => {
-  const {activeItem, cities, onCityClick, onActiveItemChange} = props;
+  const {
+    activeItem,
+    cities,
+    onCityClick,
+    onActiveItemChange
+  } = props;
+
   return (
     <div className="tabs">
       <section className="locations container">
@@ -26,13 +33,13 @@ const CitiesList = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  cities: state.cities,
+  cities: getCities(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCityClick(city) {
     dispatch(ActionCreator.changeCity(city));
-    dispatch(ActionCreator.getOffersList(city));
+    // dispatch(ActionCreator.getOffersList(city));
   },
 });
 

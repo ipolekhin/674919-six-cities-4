@@ -3,32 +3,33 @@ import CitiesList from "../cities-list/cities-list.jsx";
 import Map from "../map/map.jsx";
 import MainEmpty from "../main-empty/main-empty.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
-import PlacesSorting from "../places-sorting/places-sorting.jsx";
+// import PlacesSorting from "../places-sorting/places-sorting.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
-import withSort from "../../hocs/with-sort/with-sort.js";
+// import withSort from "../../hocs/with-sort/with-sort.js";
 import {
-  activeOfferIdType,
+  // activeOfferIdType,
   currentCityType,
-  functionClickType,
+  // functionClickType,
   placeCardsType,
-  sortNameType
+  // sortNameType,
 } from "../../types/types";
 import {OfferCardsClassesType} from "../../const";
 
-const PlacesSortingWrapped = withSort(PlacesSorting);
+// const PlacesSortingWrapped = withSort(PlacesSorting);
 const CitiesListWrapped = withActiveItem(CitiesList);
 
 const Main = (props) => {
   const {
-    activeOfferId,
+    // activeOfferId,
     currentCity,
-    onActiveItemChange,
-    onSortClick,
+    // onActiveItemChange,
+    // onSortClick,
     placeCards,
-    sortByName
+    // sortByName
   } = props;
   const emptyCityClass = !placeCards.length ? `page__main--index-empty` : ``;
-
+  console.log(`Main`);
+  console.log(placeCards);
 
   return (
     <React.Fragment>
@@ -44,18 +45,18 @@ const Main = (props) => {
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
 
-                  <b className="places__found">{placeCards.length} places to stay in {currentCity}</b>
+                  {/*<b className="places__found">{placeCards.length} places to stay in {currentCity}</b>*/}
 
-                  <PlacesSortingWrapped
-                    onSortClick = {onSortClick}
-                    sortByName = {sortByName}
-                  />
+                  {/*<PlacesSortingWrapped*/}
+                  {/*  onSortClick = {onSortClick}*/}
+                  {/*  sortByName = {sortByName}*/}
+                  {/*/>*/}
 
                   <div className="cities__places-list places__list tabs__content">
                     { <PlaceCards
                       className = {OfferCardsClassesType.MAIN_CONTAINER}
                       placeCards = {placeCards}
-                      onActiveItemChange = {onActiveItemChange}
+                      // onActiveItemChange = {onActiveItemChange}
                     /> }
                   </div>
                 </section>
@@ -63,7 +64,7 @@ const Main = (props) => {
                 <Map
                   key={currentCity}
                   currentCity = {currentCity}
-                  activeOfferId = {activeOfferId}
+                  // activeOfferId = {activeOfferId}
                   placeCards = {placeCards}
                   renderMap = {(mapRef) => (
                     <div className="cities__right-section">
@@ -83,12 +84,12 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  activeOfferId: activeOfferIdType,
+  // activeOfferId: activeOfferIdType,
   currentCity: currentCityType,
-  onActiveItemChange: functionClickType,
-  onSortClick: functionClickType,
+  // onActiveItemChange: functionClickType,
+  // onSortClick: functionClickType,
   placeCards: placeCardsType,
-  sortByName: sortNameType,
+  // sortByName: sortNameType,
 };
 
 export default Main;

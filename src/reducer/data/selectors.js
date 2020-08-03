@@ -9,7 +9,15 @@ export const getOffers = (state) => {
 };
 
 export const getCurrentCity = (state) => {
+  console.log(`Selectors - getCurrentCity`);
   return state[NAME_SPACE].city;
+};
+
+export const getCities = (state) => {
+  console.log(`Selectors - getCities`);
+  const cities = Array.from(state[NAME_SPACE].offers, ({townName}) => townName);
+
+  return [...new Set(cities)];
 };
 
 export const getSortByName = (state) => {
