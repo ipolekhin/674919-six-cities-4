@@ -37,6 +37,16 @@ const adapterOffer = (offer) => {
       name: offer.host.name,
       pro: offer.host.is_pro,
     },
+    reviews: [
+      {
+        date: new Date(),
+        id: offer.id,
+        rating: offer.rating,
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        userAvatar: `img/avatar-max.jpg`,
+        userName: `Max`,
+      }
+    ],
   });
 };
 

@@ -32,7 +32,7 @@ const App = (props) => {
     sortOffersOfTown
   } = props;
   console.log(`App`);
-  console.log(activeItem);
+  console.log(sortOffersOfTown);
 
   return (
     <React.Fragment>
