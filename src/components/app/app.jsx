@@ -32,42 +32,47 @@ const App = (props) => {
     sortOffersOfTown
   } = props;
   console.log(`App`);
-  console.log(sortOffersOfTown);
+  console.log(onActiveItemChange);
 
   return (
     <React.Fragment>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            <PageContainer renderContainer={() => (
-              <div className="page page--gray page--main">
-                <Header isMain={true}/>
-                {
-                  renderOfferScreen(
-                      activeItem,
-                      activeOfferId,
-                      currentCity,
-                      onActiveItemChange,
-                      offersOfTown,
-                      onSortClick,
-                      sortByName,
-                      sortOffersOfTown
-                  )
-                }
-              </div>
-            )}>
+            <PageContainer
+              offersOfTown = {offersOfTown}
+              renderContainer={() => (
+                <div className="page page--gray page--main">
+                  <Header isMain={true}/>
+                  {
+                    renderOfferScreen(
+                        activeItem,
+                        activeOfferId,
+                        currentCity,
+                        onActiveItemChange,
+                        offersOfTown,
+                        onSortClick,
+                        sortByName,
+                        sortOffersOfTown
+                    )
+                  }
+                </div>
+              )}>
             </PageContainer>
           </Route>
           <Route exact path="/dev-offer">
-            <PageContainer renderContainer={() => (
-              <div className="page">
-                <Header/>
-                <OfferWrapped
-                  currentCity = {currentCity}
-                  placeCards = {offersOfTown}
-                />
-              </div>
-            )}>
+            <PageContainer
+              offersOfTown = {offersOfTown}
+              renderContainer={() => (
+                <div className="page">
+                  <Header/>
+                  <OfferWrapped
+                    currentCity = {currentCity}
+                    placeCards = {offersOfTown}
+                  />
+                </div>
+              )}
+            >
             </PageContainer>
           </Route>
         </Switch>
