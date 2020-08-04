@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render ReviewsList 1`] = `
+exports[`ReviewsList Test Render ReviewsList 1`] = `
 <ul
   className="reviews__list"
 >
@@ -42,7 +42,7 @@ exports[`Render ReviewsList 1`] = `
             <span
               style={
                 Object {
-                  "width": "92%",
+                  "width": 4,
                 }
               }
             />
@@ -105,7 +105,7 @@ exports[`Render ReviewsList 1`] = `
             <span
               style={
                 Object {
-                  "width": "91%",
+                  "width": 4,
                 }
               }
             />

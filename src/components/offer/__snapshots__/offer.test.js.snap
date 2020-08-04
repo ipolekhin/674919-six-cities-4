@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Offer 1`] = `
+exports[`Offer Test Render Offer 1`] = `
 <main
   className="page__main page__main--property"
 >
@@ -251,7 +251,7 @@ exports[`Render Offer 1`] = `
                       <span
                         style={
                           Object {
-                            "width": "92%",
+                            "width": 4,
                           }
                         }
                       />

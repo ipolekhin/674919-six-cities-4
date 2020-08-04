@@ -2,14 +2,25 @@ import React from "react";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
-import {currentCityType, functionClickType, isStringType, placeCardsType} from "../../types/types";
+import {
+  currentCityType,
+  functionClickType,
+  isStringType,
+  placeCardsType
+} from "../../types/types";
 import {OfferCardsClassesType, STARS_PROPERTY} from "../../const";
 
 const Offer = (props) => {
-  const {currentCity, activeItem, onActiveItemChange, placeCards} = props;
+  const {
+    currentCity,
+    activeItem,
+    onActiveItemChange,
+    placeCards,
+  } = props;
   const activeOffer = activeItem ? placeCards.find((card) => card.id === activeItem) : placeCards[0];
   const nearPlaces = placeCards.filter((place) => activeOffer.id !== place.id);
   const FIVE_STAR = [5, 4, 3, 2, 1];
+  // console.log(`Offer1`);
 
   return (
     <React.Fragment>

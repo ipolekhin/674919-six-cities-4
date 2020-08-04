@@ -1,14 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
+import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
-import {reducer} from "./reducer.js";
+import thunk from "redux-thunk";
+import reducer from "./reducer/reducer.js";
 import App from "./components/app/app.jsx";
+import {Operation as DataOperation} from "./reducer/data/data.js";
+// import {ActionCreator as SiteOperation} from "./reducer/site/site.js";
+import {createAPI} from "./api.js";
 
+const api = createAPI(() => {});
 const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
+    // window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
+
+store.dispatch(DataOperation.getOffersList());
 
 ReactDOM.render(
     <Provider

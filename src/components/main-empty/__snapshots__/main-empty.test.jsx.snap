@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render MainEmpty 1`] = `
+exports[`MainEmpty Test Render MainEmpty 1`] = `
 <div
   className="cities__places-container cities__places-container--empty container"
 >

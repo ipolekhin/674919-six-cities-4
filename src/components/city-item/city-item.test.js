@@ -1,17 +1,19 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {CitiesList} from "./cities-list.jsx";
+import CityItem from "./city-item.jsx";
 
-const cities = [`Amsterdam`, `Dusseldorf`];
+const city = `Amsterdam`;
+const currentCity = `Amsterdam`;
 const onCityClick = () => {};
 const onActiveItemChange = () => {};
 
-describe(`CitiesList Test`, () => {
-  it(`Render CitiesList`, () => {
+describe(`CityItem Test`, () => {
+  it(`Render CityItem`, () => {
     const tree = renderer
       .create(
-          <CitiesList
-            cities={cities}
+          <CityItem
+            city={city}
+            currentCity={currentCity}
             onActiveItemChange={onActiveItemChange}
             onCityClick={onCityClick}
           />

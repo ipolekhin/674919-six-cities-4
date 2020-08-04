@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render PlaceCards 1`] = `
+exports[`PlaceCards Test Render PlaceCards 1`] = `
 Array [
   <article
     className="page place-card"

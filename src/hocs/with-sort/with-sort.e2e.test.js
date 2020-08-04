@@ -10,12 +10,14 @@ Enzyme.configure({
 const MockComponent = () => <div />;
 const MockComponentWrapped = withSort(MockComponent);
 
-it(`Should menu state init, menu click open it and correct menu close`, () => {
-  const wrapper = shallow(<MockComponentWrapped />);
+describe(`withSort HOC Test`, () => {
+  it(`Should menu state init, menu click open it and correct menu close`, () => {
+    const wrapper = shallow(<MockComponentWrapped/>);
 
-  expect(wrapper.props().isOpen).toEqual(false);
-  wrapper.props().handleClick();
-  expect(wrapper.props().isOpen).toEqual(true);
-  wrapper.props().handleClick();
-  expect(wrapper.props().isOpen).toEqual(false);
+    expect(wrapper.props().isOpen).toEqual(false);
+    wrapper.props().handleClick();
+    expect(wrapper.props().isOpen).toEqual(true);
+    wrapper.props().handleClick();
+    expect(wrapper.props().isOpen).toEqual(false);
+  });
 });

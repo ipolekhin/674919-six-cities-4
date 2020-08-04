@@ -1,14 +1,16 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Map from "./map.jsx";
+// import {reducer, ActionType, Operation} from "./data.js";
+import {reducer, ActionType} from "./data.js";
+// import MockAdapter from "axios-mock-adapter";
+// import {createAPI} from "../../api.js";
 
-const placeCards = [
+// const api = createAPI(() => {});
+const offersOfTown = [
   {
     adults: 3,
     townName: `Amsterdam`,
     bedrooms: 2,
     cardName: `Wood and stone place`,
-    cardRating: 4,
+    cardRating: 4.6,
     cardRatingStars: `92%`,
     cardType: `Room`,
     coordinatesItem: [52.3909553943508, 4.85309666406198],
@@ -37,10 +39,10 @@ const placeCards = [
   },
   {
     adults: 2,
-    townName: `Amsterdam`,
+    townName: `Dusseldorf`,
     bedrooms: 1,
     cardName: `Wood and stone place`,
-    cardRating: 3,
+    cardRating: 3.6,
     cardRatingStars: `92%`,
     cardType: `Room`,
     coordinatesItem: [52.369553943508, 4.85309666406198],
@@ -69,26 +71,56 @@ const placeCards = [
   },
 ];
 
-const currentCity = `Amsterdam`;
-
-describe(`Map Test`, () => {
-  it(`Render Map`, () => {
-    const tree = renderer
-      .create(<Map
-        currentCity={currentCity}
-        placeCards={placeCards}
-        renderMap={(mapRef) => (
-          <div className="cities__right-section">
-            <section className="cities__map map" ref={mapRef}></section>
-          </div>
-        )}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      })
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
+describe(`Reducer Data Test`, () => {
+  it(`Reducer without additional parameters should return initial state`, () => {
+    expect(reducer(void 0, {})).toEqual({
+      city: ``,
+      offers: [],
+      offersOfTown: [],
+    });
   });
+
+  it(`Reducer should load offers`, () => {
+    expect(reducer({
+      city: ``,
+      offers: [],
+    }, {
+      type: ActionType.OFFERS_LIST,
+      payload: offersOfTown,
+    })).toEqual({
+      city: ``,
+      offers: offersOfTown,
+    });
+  });
+
+  it(`Reducer should change city name by a given value`, () => {
+    expect(reducer({
+      city: ``,
+      offersOfTown,
+    }, {
+      type: ActionType.CHANGE_CITY,
+      payload: `Dusseldorf`,
+    })).toEqual({
+      city: `Dusseldorf`,
+      offersOfTown,
+    });
+  });
+
+  // it(`Should make a correct API call to /hotels`, function () {
+  //   const apiMock = new MockAdapter(api);
+  //   const dispatch = jest.fn();
+  //   const offersList = Operation.getOffersList();
+  //   apiMock
+  //     .onGet(`/hotels`)
+  //     .reply(200, [{fake: true}]);
+  //
+  //   return offersList(dispatch, () => {}, api)
+  //     .then(() => {
+  //       expect(dispatch).toHaveBeenCalledTimes(2);
+  //       expect(dispatch).toHaveBeenNthCalledWith(1, {
+  //         type: ActionType.OFFERS_LIST,
+  //         payload: [{fake: true}],
+  //       });
+  //     });
+  // });
 });

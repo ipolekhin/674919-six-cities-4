@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const activeOfferIdType = PropTypes.string;
+const activeOfferIdType = PropTypes.number;
 
 const childrenType = PropTypes.node.isRequired;
 
@@ -27,7 +27,7 @@ const placeCardType = PropTypes.shape({
   cardRatingStars: PropTypes.string.isRequired,
   coordinatesItem: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
   description: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   image: PropTypes.string.isRequired,
   insideItems: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
@@ -36,8 +36,8 @@ const placeCardType = PropTypes.shape({
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
         date: PropTypes.object.isRequired,
-        id: PropTypes.string.isRequired,
-        rating: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
         text: PropTypes.string.isRequired,
         userAvatar: PropTypes.string.isRequired,
         userName: PropTypes.string.isRequired,
@@ -56,8 +56,8 @@ const renderFunctionType = PropTypes.func.isRequired;
 
 const reviewType = PropTypes.shape({
   date: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   userAvatar: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
