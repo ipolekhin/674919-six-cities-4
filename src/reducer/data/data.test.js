@@ -124,7 +124,7 @@ describe(`Reducer Data Test`, () => {
 
     return offersList(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.OFFERS_LIST,
           payload: adapterOffers(offerRaw),
