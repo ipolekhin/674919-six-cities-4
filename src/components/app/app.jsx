@@ -2,8 +2,10 @@ import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/site/site.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {getOffersOfTown, getCurrentCity} from "../../reducer/data/selectors.js";
 import {getActiveOfferId, getSortName, getSortOffers} from "../../reducer/site/selectors.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
@@ -11,6 +13,7 @@ import Offer from "../offer/offer.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {
   activeOfferIdType,
+  authorizationStatusType,
   currentCityType,
   functionClickType,
   isStringType,
@@ -24,6 +27,7 @@ const App = (props) => {
   const {
     activeItem,
     activeOfferId,
+    // authoriz ationStatus,
     currentCity,
     offersOfTown,
     onActiveItemChange,
@@ -32,6 +36,7 @@ const App = (props) => {
     sortOffersOfTown
   } = props;
   // console.log(`App - 7`);
+  // console.log(authorizationStatus);
 
   return (
     <React.Fragment>
@@ -115,6 +120,7 @@ const renderOfferScreen = (
 const mapStateToProps = (state) => {
   return ({
     activeOfferId: getActiveOfferId(state),
+    authorizationStatus: getAuthorizationStatus(state),
     currentCity: getCurrentCity(state),
     offersOfTown: getOffersOfTown(state),
     sortByName: getSortName(state),
@@ -126,10 +132,14 @@ const mapDispatchToProps = (dispatch) => ({
   onSortClick(sortName) {
     dispatch(ActionCreator.changeSortOptions(sortName));
   },
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+  },
 });
 
 App.propTypes = {
   activeOfferId: activeOfferIdType,
+  authorizationStatus: authorizationStatusType,
   currentCity: currentCityType,
   activeItem: isStringType,
   offersOfTown: placeCardsType,

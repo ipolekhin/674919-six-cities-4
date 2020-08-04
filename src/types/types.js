@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 
 const activeOfferIdType = PropTypes.number;
 
+const authorizationStatusType = PropTypes.string.isRequired;
+
 const childrenType = PropTypes.node.isRequired;
 
 const citiesType = PropTypes.arrayOf(PropTypes.string.isRequired).isRequired;
@@ -69,6 +71,7 @@ const sortNameType = PropTypes.string.isRequired;
 
 export {
   activeOfferIdType,
+  authorizationStatusType,
   childrenType,
   citiesType,
   cityCoordinateType,

@@ -4,6 +4,9 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {App} from "./app.jsx";
 
+const AuthorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+};
 const mockStore = configureStore([]);
 // const cities = [`Amsterdam`, `Dusseldorf`];
 const currentCity = `Amsterdam`;
@@ -54,6 +57,7 @@ describe(`App Test`, () => {
           <Provider store={store}>
             <App
               // cities = {cities}
+              authorizationStatus = {AuthorizationStatus.NO_AUTH}
               currentCity = {currentCity}
               offers = {offersOfTown}
               offersOfTown = {offersOfTown}
