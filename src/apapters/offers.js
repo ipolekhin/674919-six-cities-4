@@ -39,7 +39,7 @@ const adapterOffer = (offer) => {
     },
     reviews: [
       {
-        date: new Date(),
+        date: new Date(20, 3, 15),
         id: offer.id,
         rating: offer.rating,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,

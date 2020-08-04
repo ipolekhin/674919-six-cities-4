@@ -1,9 +1,9 @@
-// import {reducer, ActionType, Operation} from "./data.js";
-import {reducer, ActionType} from "./data.js";
-// import MockAdapter from "axios-mock-adapter";
-// import {createAPI} from "../../api.js";
+import {reducer, ActionType, Operation} from "./data.js";
+import MockAdapter from "axios-mock-adapter";
+import {createAPI} from "../../api.js";
+import {adapterOffers} from "../../apapters/offers.js";
 
-// const api = createAPI(() => {});
+const api = createAPI(() => {});
 const offersOfTown = [
   {
     adults: 3,
@@ -71,6 +71,14 @@ const offersOfTown = [
   },
 ];
 
+const offerRaw = [
+  {
+    city: {},
+    location: {},
+    host: {},
+  }
+];
+
 describe(`Reducer Data Test`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
@@ -106,21 +114,21 @@ describe(`Reducer Data Test`, () => {
     });
   });
 
-  // it(`Should make a correct API call to /hotels`, function () {
-  //   const apiMock = new MockAdapter(api);
-  //   const dispatch = jest.fn();
-  //   const offersList = Operation.getOffersList();
-  //   apiMock
-  //     .onGet(`/hotels`)
-  //     .reply(200, [{fake: true}]);
-  //
-  //   return offersList(dispatch, () => {}, api)
-  //     .then(() => {
-  //       expect(dispatch).toHaveBeenCalledTimes(2);
-  //       expect(dispatch).toHaveBeenNthCalledWith(1, {
-  //         type: ActionType.OFFERS_LIST,
-  //         payload: [{fake: true}],
-  //       });
-  //     });
-  // });
+  it(`Should make a correct API call to /hotels`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const offersList = Operation.getOffersList();
+    apiMock
+      .onGet(`/hotels`)
+      .reply(200, offerRaw);
+
+    return offersList(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.OFFERS_LIST,
+          payload: adapterOffers(offerRaw),
+        });
+      });
+  });
 });

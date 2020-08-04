@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
+import NameSpace from "../../reducer/name-space.js";
 
 const activeOfferId = 1;
 // const cities = [`Amsterdam`, `Dusseldorf`];
@@ -47,7 +48,9 @@ const sortByName = `Popular`;
 describe(`Main Test`, () => {
   it(`Render MainScreen`, () => {
     const store = mockStore({
-      offers: [],
+      [NameSpace.DATA]: {
+        offers: [],
+      },
     });
     const tree = renderer
       .create(
