@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 
 const activeOfferIdType = PropTypes.number;
 
+const authorizationStatusType = PropTypes.string.isRequired;
+
 const childrenType = PropTypes.node.isRequired;
 
 const citiesType = PropTypes.arrayOf(PropTypes.string.isRequired).isRequired;
@@ -12,11 +14,15 @@ const classNameType = PropTypes.string.isRequired;
 
 const currentCityType = PropTypes.string;
 
+const functionType = PropTypes.func.isRequired;
+
 const functionClickType = PropTypes.func.isRequired;
 
 const isBoolType = PropTypes.bool;
 
 const isStringType = PropTypes.string;
+
+const loginType = PropTypes.func.isRequired;
 
 const placeCardType = PropTypes.shape({
   adults: PropTypes.number.isRequired,
@@ -67,20 +73,26 @@ const reviewsType = PropTypes.arrayOf(reviewType).isRequired;
 
 const sortNameType = PropTypes.string.isRequired;
 
+const userType = PropTypes.string;
+
 export {
   activeOfferIdType,
+  authorizationStatusType,
   childrenType,
   citiesType,
   cityCoordinateType,
   classNameType,
   currentCityType,
+  functionType,
   functionClickType,
   isBoolType,
   isStringType,
+  loginType,
   placeCardType,
   placeCardsType,
   renderFunctionType,
   reviewType,
   reviewsType,
   sortNameType,
+  userType,
 };

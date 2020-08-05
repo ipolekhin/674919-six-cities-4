@@ -5,6 +5,9 @@ import configureStore from "redux-mock-store";
 import Offer from "./offer.jsx";
 
 // const mockStore = configureStore([]);
+const authorizationStatus = {
+  NO_AUTH: `NO_AUTH`,
+};
 const placeCards = [
   {
     adults: 3,
@@ -71,10 +74,8 @@ const placeCards = [
     },
   },
 ];
-
 const currentCity = `Amsterdam`;
 const onActiveItemChange = () => {};
-
 const mockStore = configureStore([]);
 
 describe(`Offer Test`, () => {
@@ -84,9 +85,10 @@ describe(`Offer Test`, () => {
       .create(
           <Provider store={store}>
             <Offer
-              currentCity={currentCity}
-              onActiveItemChange={onActiveItemChange}
-              placeCards={placeCards}
+              authorizationStatus = {authorizationStatus.NO_AUTH}
+              currentCity = {currentCity}
+              onActiveItemChange = {onActiveItemChange}
+              placeCards = {placeCards}
             />
           </Provider>
       )

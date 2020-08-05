@@ -10,6 +10,7 @@ const initialState = {
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   OFFERS_LIST: `OFFERS_LIST`,
+  OFFERS_OF_TOWN: `OFFERS_OF_TOWN`,
 };
 
 const ActionCreator = {
@@ -22,8 +23,13 @@ const ActionCreator = {
   getOffersList: (offers) => {
     return ({
       type: ActionType.OFFERS_LIST,
-      // payload: initialState.offers.filter((place) => place.townName === city),
       payload: offers,
+    });
+  },
+  getOffersOfTown: (city) => {
+    return ({
+      type: ActionType.OFFERS_OF_TOWN,
+      payload: city,
     });
   },
 };
@@ -35,6 +41,7 @@ const Operation = {
         const allOffers = adapterOffers(response.data);
         dispatch(ActionCreator.getOffersList(allOffers));
         dispatch(ActionCreator.changeCity(allOffers[0].townName));
+        dispatch(ActionCreator.getOffersOfTown(allOffers));
       });
   },
 };
@@ -49,6 +56,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.OFFERS_LIST:
       return extend(state, {
         offers: action.payload,
+      });
+
+    case ActionType.OFFERS_OF_TOWN:
+      return extend(state, {
+        offersOfTown: action.payload.filter((offer) => offer.townName === state.city),
       });
 
     default:

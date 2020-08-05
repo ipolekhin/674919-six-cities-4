@@ -1,8 +1,9 @@
 import React from "react";
-import {isBoolType} from "../../types/types";
+import {authorizationStatusType, isBoolType, userType} from "../../types/types";
+import {AuthorizationStatus} from "../../const";
 
 const Header = (props) => {
-  const {isMain = false} = props;
+  const {authorizationStatus, isMain = false, user} = props;
   const getLogoElement = () => {
     return (
       isMain
@@ -30,7 +31,14 @@ const Header = (props) => {
                   <a className="header__nav-link header__nav-link--profile" href="#">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                    {
+                      AuthorizationStatus.NO_AUTH === authorizationStatus && (
+                        <span className="header__login">Sign in</span>
+                      ) || (
+                        <span className="header__user-name user__name">{user}</span>
+                      )
+                    }
+
                   </a>
                 </li>
               </ul>
@@ -43,7 +51,9 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
+  authorizationStatus: authorizationStatusType,
   isMain: isBoolType,
+  user: userType,
 };
 
 export default Header;

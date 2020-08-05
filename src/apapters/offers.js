@@ -1,18 +1,4 @@
-import {CARD_IMAGES, CARD_NAMES, INSIDE_ITEMS} from "./const";
-import {CARD_TYPES, Ratings, TOWN_NAMES} from "../const";
-import {
-  getRandomBooleanValue,
-  getRandomCoordinateOffer,
-  getRandomIntegerNumber,
-  getRandomItem,
-  reshuffle,
-} from "../utils/common";
-
-const MIN_RATING = 1;
-const MAX_RATING = 5;
-const MAX_PRICE = 300;
-const MAX_BEDROOMS = 5;
-const MAX_ADULTS = 8;
+import {Ratings} from "../const";
 
 const adapterOffer = (offer) => {
   return ({
@@ -39,7 +25,7 @@ const adapterOffer = (offer) => {
     },
     reviews: [
       {
-        date: new Date(),
+        date: new Date(20, 3, 15),
         id: offer.id,
         rating: offer.rating,
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
@@ -51,68 +37,7 @@ const adapterOffer = (offer) => {
 };
 
 const adapterOffers = (offers) => {
-  // return (offers);
   return (offers.map((offer) => adapterOffer(offer)));
 };
 
-const generatePlaceCard = () => {
-  const adults = getRandomIntegerNumber(1, MAX_ADULTS);
-  const date = new Date();
-  const description = `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`;
-  const bedrooms = getRandomIntegerNumber(1, MAX_BEDROOMS);
-  const cardName = getRandomItem(CARD_NAMES);
-  const cardType = getRandomItem(CARD_TYPES);
-  const cardRating = getRandomIntegerNumber(MIN_RATING, MAX_RATING);
-  const cardRatingStars = Ratings[cardRating - 1];
-  const rating = Ratings[cardRating - 1];
-  const townName = getRandomItem(TOWN_NAMES);
-  const coordinatesItem = getRandomCoordinateOffer(townName);
-  const id = String(Math.random());
-  const images = reshuffle(CARD_IMAGES, CARD_IMAGES.length);
-  const image = getRandomItem(images);
-  const insideItems = reshuffle(INSIDE_ITEMS, INSIDE_ITEMS.length);
-  const premiumPlace = getRandomBooleanValue();
-  const price = getRandomIntegerNumber(0, MAX_PRICE);
-  const userPro = getRandomBooleanValue();
-
-  return {
-    adults,
-    townName,
-    bedrooms,
-    cardName,
-    cardRating,
-    cardRatingStars,
-    cardType,
-    coordinatesItem,
-    description,
-    id,
-    image,
-    images,
-    insideItems,
-    premiumPlace,
-    price,
-
-    reviews: [
-      {
-        date,
-        id,
-        rating,
-        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        userAvatar: `img/avatar-max.jpg`,
-        userName: `Max`,
-      }
-    ],
-    user: {
-      name: `Angelina`,
-      avatar: `img/avatar-angelina.jpg`,
-      pro: userPro,
-    },
-  };
-};
-
-const generatePlaceCards = (count) => {
-  return new Array(count).fill(``)
-    .map(generatePlaceCard);
-};
-
-export {adapterOffers, generatePlaceCards};
+export {adapterOffers};
