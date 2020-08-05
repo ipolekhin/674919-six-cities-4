@@ -2,10 +2,16 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Header from "./header.jsx";
 
+const authorizationStatus = `NO_AUTH`;
+
 describe(`Header Test`, () => {
   it(`Render Header`, () => {
     const tree = renderer
-      .create(<Header/>)
+      .create(
+          <Header
+            authorizationStatus = {authorizationStatus}
+          />
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();

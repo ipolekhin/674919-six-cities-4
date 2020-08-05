@@ -17,6 +17,7 @@ import {
   currentCityType,
   functionClickType,
   isStringType,
+  // loginType,
   placeCardsType,
   sortNameType
 } from "../../types/types";
@@ -27,8 +28,9 @@ const App = (props) => {
   const {
     activeItem,
     activeOfferId,
-    // authoriz ationStatus,
+    authorizationStatus,
     currentCity,
+    // login,
     offersOfTown,
     onActiveItemChange,
     onSortClick,
@@ -47,7 +49,10 @@ const App = (props) => {
               offersOfTown = {offersOfTown}
               renderContainer={() => (
                 <div className="page page--gray page--main">
-                  <Header isMain={true}/>
+                  <Header
+                    isMain = {true}
+                    authorizationStatus = {authorizationStatus}
+                  />
                   {
                     renderOfferScreen(
                         activeItem,
@@ -69,7 +74,9 @@ const App = (props) => {
               offersOfTown = {offersOfTown}
               renderContainer={() => (
                 <div className="page">
-                  <Header/>
+                  <Header
+                    authorizationStatus = {authorizationStatus}
+                  />
                   <OfferWrapped
                     currentCity = {currentCity}
                     placeCards = {offersOfTown}
@@ -140,8 +147,9 @@ const mapDispatchToProps = (dispatch) => ({
 App.propTypes = {
   activeOfferId: activeOfferIdType,
   authorizationStatus: authorizationStatusType,
-  currentCity: currentCityType,
   activeItem: isStringType,
+  currentCity: currentCityType,
+  // login: loginType,
   offersOfTown: placeCardsType,
   onSortClick: functionClickType,
   onActiveItemChange: functionClickType,

@@ -20,6 +20,8 @@ const isBoolType = PropTypes.bool;
 
 const isStringType = PropTypes.string;
 
+const loginType = PropTypes.func.isRequired;
+
 const placeCardType = PropTypes.shape({
   adults: PropTypes.number.isRequired,
   bedrooms: PropTypes.number.isRequired,
@@ -80,6 +82,7 @@ export {
   functionClickType,
   isBoolType,
   isStringType,
+  loginType,
   placeCardType,
   placeCardsType,
   renderFunctionType,
