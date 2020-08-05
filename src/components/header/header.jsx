@@ -1,9 +1,9 @@
 import React from "react";
-import {authorizationStatusType, isBoolType} from "../../types/types";
+import {authorizationStatusType, isBoolType, userType} from "../../types/types";
 import {AuthorizationStatus} from "../../const";
 
 const Header = (props) => {
-  const {authorizationStatus, isMain = false} = props;
+  const {authorizationStatus, isMain = false, user} = props;
   const getLogoElement = () => {
     return (
       isMain
@@ -15,7 +15,6 @@ const Header = (props) => {
         </a>
     );
   };
-  const email = `Oliver.conner@gmail.com`;
 
   return (
     <React.Fragment>
@@ -36,7 +35,7 @@ const Header = (props) => {
                       AuthorizationStatus.NO_AUTH === authorizationStatus && (
                         <span className="header__login">Sign in</span>
                       ) || (
-                        <span className="header__user-name user__name">{email}</span>
+                        <span className="header__user-name user__name">{user}</span>
                       )
                     }
 
@@ -54,6 +53,7 @@ const Header = (props) => {
 Header.propTypes = {
   authorizationStatus: authorizationStatusType,
   isMain: isBoolType,
+  user: userType,
 };
 
 export default Header;

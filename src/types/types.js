@@ -73,6 +73,8 @@ const reviewsType = PropTypes.arrayOf(reviewType).isRequired;
 
 const sortNameType = PropTypes.string.isRequired;
 
+const userType = PropTypes.string;
+
 export {
   activeOfferIdType,
   authorizationStatusType,
@@ -92,4 +94,5 @@ export {
   reviewType,
   reviewsType,
   sortNameType,
+  userType,
 };
