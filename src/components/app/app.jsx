@@ -10,6 +10,7 @@ import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
+import SignIn from "../sign-in/sign-in.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {
   activeOfferIdType,
@@ -17,7 +18,7 @@ import {
   currentCityType,
   functionClickType,
   isStringType,
-  // loginType,
+  loginType,
   placeCardsType,
   sortNameType
 } from "../../types/types";
@@ -30,7 +31,7 @@ const App = (props) => {
     activeOfferId,
     authorizationStatus,
     currentCity,
-    // login,
+    login,
     offersOfTown,
     onActiveItemChange,
     onSortClick,
@@ -85,6 +86,11 @@ const App = (props) => {
               )}
             >
             </PageContainer>
+          </Route>
+          <Route exact path="/dev-sign-in">
+            <SignIn
+              onSubmit = {login}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -149,7 +155,7 @@ App.propTypes = {
   authorizationStatus: authorizationStatusType,
   activeItem: isStringType,
   currentCity: currentCityType,
-  // login: loginType,
+  login: loginType,
   offersOfTown: placeCardsType,
   onSortClick: functionClickType,
   onActiveItemChange: functionClickType,

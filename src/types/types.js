@@ -14,6 +14,8 @@ const classNameType = PropTypes.string.isRequired;
 
 const currentCityType = PropTypes.string;
 
+const functionType = PropTypes.func.isRequired;
+
 const functionClickType = PropTypes.func.isRequired;
 
 const isBoolType = PropTypes.bool;
@@ -79,6 +81,7 @@ export {
   cityCoordinateType,
   classNameType,
   currentCityType,
+  functionType,
   functionClickType,
   isBoolType,
   isStringType,

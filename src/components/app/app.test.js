@@ -59,6 +59,7 @@ describe(`App Test`, () => {
               // cities = {cities}
               authorizationStatus = {AuthorizationStatus.NO_AUTH}
               currentCity = {currentCity}
+              login={() => {}}
               offers = {offersOfTown}
               offersOfTown = {offersOfTown}
               onSortClick = {onFunctionClick}
