@@ -197,6 +197,9 @@ exports[`Offer Test Render Offer 1`] = `
             </p>
           </div>
         </div>
+        <div>
+          1
+        </div>
         <section
           className="property__reviews reviews"
         >

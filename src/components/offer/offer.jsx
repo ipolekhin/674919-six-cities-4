@@ -1,8 +1,7 @@
 import React from "react";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
-import ReviewsList from "../reviews-list/reviews-list.jsx";
-import ReviewForm from "../review-form/review-form.jsx";
+import Reviews from "../reviews/reviews.jsx";
 import {
   authorizationStatusType,
   currentCityType,
@@ -11,7 +10,6 @@ import {
   placeCardsType
 } from "../../types/types";
 import {
-  AuthorizationStatus,
   OfferCardsClassesType
 } from "../../const.js";
 
@@ -121,19 +119,11 @@ const Offer = (props) => {
                 </div>
               </div>
 
-              <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{activeOffer.reviews.length}</span></h2>
-
-                <ReviewsList
-                  reviews = {activeOffer.reviews}
-                />
-
-                {authorizationStatus === AuthorizationStatus.AUTH && (
-                  <ReviewForm
-                    onSubmit = {() => {}}
-                  />
-                )}
-              </section>
+              <Reviews
+                authorizationStatus = {authorizationStatus}
+                offerId = {activeOffer.id}
+                reviews = {activeOffer.reviews}
+              />
             </div>
           </div>
 

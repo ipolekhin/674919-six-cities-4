@@ -20,6 +20,8 @@ const functionClickType = PropTypes.func.isRequired;
 
 const isBoolType = PropTypes.bool;
 
+const isNumberType = PropTypes.number;
+
 const isStringType = PropTypes.string;
 
 const loginType = PropTypes.func.isRequired;
@@ -86,6 +88,7 @@ export {
   functionType,
   functionClickType,
   isBoolType,
+  isNumberType,
   isStringType,
   loginType,
   placeCardType,
