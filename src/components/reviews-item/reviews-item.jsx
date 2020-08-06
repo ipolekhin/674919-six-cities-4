@@ -1,9 +1,9 @@
 import React from "react";
 import {reviewType} from "../../types/types";
-import {getDateTime, getMonthYear} from "../../utils/common";
+import {getDateTime, getMonthYear} from "../../utils/common.js";
 
 const ReviewsItem = (props) => {
-  const {date, text, rating, userAvatar, userName} = props.review;
+  const {date, comment, rating, userAvatar, userName} = props.review;
   const dateFormatted = getMonthYear(date);
   const dateTime = getDateTime(date);
 
@@ -28,7 +28,7 @@ const ReviewsItem = (props) => {
             </div>
 
             <p className="reviews__text">
-              {text}
+              {comment}
             </p>
             <time className="reviews__time" dateTime={dateTime}>{dateFormatted}</time>
           </div>

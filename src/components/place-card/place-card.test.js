@@ -3,8 +3,7 @@ import renderer from "react-test-renderer";
 import PlaceCard from "./place-card.jsx";
 
 const className = `page`;
-const onOptionHover = () => {};
-const onActiveItemChange = () => {};
+const noop = () => {};
 const placeCard = {
   adults: 3,
   townName: `Amsterdam`,
@@ -43,8 +42,9 @@ describe(`PlaceCard Test`, () => {
     const tree = renderer
       .create(<PlaceCard
         className={className}
-        onOptionHover={onOptionHover}
-        onActiveItemChange={onActiveItemChange}
+        onOptionHover={noop}
+        onActiveItemChange={noop}
+        onTitleClick={noop}
         placeCard={placeCard}
       />)
       .toJSON();

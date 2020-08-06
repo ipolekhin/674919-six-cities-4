@@ -1,17 +1,21 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Reviews from "./reviews.jsx";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import {Reviews} from "./reviews.jsx";
 
 const authorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
+const mockStore = configureStore([]);
 const offerId = 1;
+const noop = () => {};
 const reviews = [
   {
-    date: new Date(20, 3, 15),
+    date: `2020-06-21T16:06:01.820Z`,
     id: offerId,
-    rating: 4,
-    text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    rating: `80%`,
+    comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
     userAvatar: `img/avatar-max.jpg`,
     userName: `Max`,
   }
@@ -19,12 +23,16 @@ const reviews = [
 
 describe(`Reviews Test`, () => {
   it(`AuthScreen component render correctly`, () => {
+    const store = mockStore({});
     const tree = renderer.create(
-        <Reviews
-          authorizationStatus = {authorizationStatus.NO_AUTH}
-          offerId = {offerId}
-          reviews = {reviews}
-        />
+        <Provider store={store}>
+          <Reviews
+            authorizationStatus = {authorizationStatus.NO_AUTH}
+            offerId = {offerId}
+            onSubmitReview = {noop}
+            reviews = {reviews}
+          />
+        </Provider>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

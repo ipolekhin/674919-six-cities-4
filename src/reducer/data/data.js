@@ -1,5 +1,5 @@
 import {extend} from "../../utils/common.js";
-import {adapterOffers} from "../../apapters/offers.js";
+import {adapterOffers} from "../../adapters/offers.js";
 
 const initialState = {
   city: ``,

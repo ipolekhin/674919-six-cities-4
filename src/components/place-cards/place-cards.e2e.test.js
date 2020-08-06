@@ -80,11 +80,13 @@ Enzyme.configure({
 describe(`PlaceCards e2e test`, () => {
   it(`Should title click handler be pressed`, () => {
     const onActiveItemChange = jest.fn();
+    const onTitleClick = jest.fn();
     const placeCardsComponent = shallow(
         <PlaceCards
           className = {className}
-          onOptionHover = {onOptionHover}
           onActiveItemChange = {onActiveItemChange}
+          onOptionHover = {onOptionHover}
+          onTitleClick = {onTitleClick}
           placeCards = {placeCards}
         />
     );

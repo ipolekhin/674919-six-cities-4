@@ -10,6 +10,8 @@ export const CARD_TYPES = [
   `Hotel`,
 ];
 
+export const FIVE_STAR = [5, 4, 3, 2, 1];
+
 export const MapProps = {
   ICON_SIZE: [27, 39],
   ICON_URL: `img/pin.svg`,
@@ -66,3 +68,9 @@ export const SORT_NAMES = [
   SortType.PRICE_HIGH,
   SortType.TOP_RATED_FIRST,
 ];
+
+export const valid = {
+  MIN_LENGTH_REVIEW: 50,
+  MAX_LENGTH_REVIEW: 300,
+  TEXT_WRONG: `Текст отзыва должен содержать от 50 до 300 символов.`,
+};

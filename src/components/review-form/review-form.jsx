@@ -1,20 +1,33 @@
 import React, {createRef} from "react";
-import {STARS_PROPERTY} from "../../const.js";
-import {functionType} from "../../types/types.js";
+import {FIVE_STAR, STARS_PROPERTY} from "../../const.js";
+import {
+  functionType,
+  isBoolType,
+  isNumberType,
+  isStringType,
+} from "../../types/types.js";
 
 const ReviewForm = (props) => {
-  const {onSubmit} = props;
-  const textareaRef = createRef();
-  const ratingRef = createRef();
-  const FIVE_STAR = [5, 4, 3, 2, 1];
+  const {isFormBlocked, comment, offerId, onSubmitReview, onReviewFormChange, isActive, rating} = props;
+  const formRef = createRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({
-      textarea: textareaRef.current.value,
-      rating: ratingRef.current.value,
+    onSubmitReview(offerId, {
+      comment,
+      rating,
     });
   };
+
+  const onChange = (event) => {
+    onReviewFormChange(event);
+  };
+
+  // console.log(`isActive`);
+  // console.log(isActive);
+  // console.log(rating);
+  // console.log(`isFormBlocked`);
+  // console.log(isFormBlocked);
 
   return (
     <React.Fragment>
@@ -23,6 +36,8 @@ const ReviewForm = (props) => {
         action="#"
         method="post"
         onSubmit={handleSubmit}
+        onChange={onChange}
+        ref={formRef}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
@@ -36,7 +51,7 @@ const ReviewForm = (props) => {
                     value={value}
                     id={`${value}-stars`}
                     type="radio"
-                    ref={ratingRef}
+                    disabled={isFormBlocked}
                   />
                   <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={STARS_PROPERTY[value - 1]}>
                     <svg className="form__star-image" width="37" height="33">
@@ -54,7 +69,11 @@ const ReviewForm = (props) => {
           id="review"
           name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
-          ref={textareaRef}
+          // minLength="3"
+          minLength="50"
+          maxLength="300"
+          required=""
+          disabled={isFormBlocked}
         >
         </textarea>
 
@@ -63,7 +82,13 @@ const ReviewForm = (props) => {
             To submit review please make sure to set <span className="reviews__star">rating</span> and
             describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
           </p>
-          <button className="reviews__submit form__submit button" type="submit" disabled="">Submit</button>
+          <button
+            className="reviews__submit form__submit button"
+            type="submit"
+            disabled={!isActive || isFormBlocked}
+          >
+              Submit
+          </button>
         </div>
       </form>
     </React.Fragment>
@@ -71,7 +96,13 @@ const ReviewForm = (props) => {
 };
 
 ReviewForm.propTypes = {
-  onSubmit: functionType,
+  isFormBlocked: isBoolType,
+  comment: isStringType,
+  isActive: isBoolType,
+  offerId: isNumberType,
+  onSubmitReview: functionType,
+  onReviewFormChange: functionType,
+  rating: isNumberType,
 };
 
 export default ReviewForm;

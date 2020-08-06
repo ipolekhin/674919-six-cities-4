@@ -24,6 +24,7 @@ const Offer = (props) => {
   const activeOffer = activeItem ? placeCards.find((card) => card.id === activeItem) : placeCards[0];
   const nearPlaces = placeCards.filter((place) => activeOffer.id !== place.id);
   // console.log(`Offer1`);
+  // console.log(activeItem);
 
   return (
     <React.Fragment>
@@ -122,7 +123,7 @@ const Offer = (props) => {
               <Reviews
                 authorizationStatus = {authorizationStatus}
                 offerId = {activeOffer.id}
-                reviews = {activeOffer.reviews}
+                // reviews = {activeOffer.reviews}
               />
             </div>
           </div>

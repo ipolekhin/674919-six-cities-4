@@ -1,7 +1,7 @@
 import {reducer, ActionType, Operation} from "./data.js";
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api.js";
-import {adapterOffers} from "../../apapters/offers.js";
+import {adapterOffers} from "../../adapters/offers.js";
 
 const api = createAPI(() => {});
 const offersOfTown = [

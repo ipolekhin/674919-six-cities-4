@@ -39,7 +39,7 @@ exports[`ReviewsItem Test Render ReviewsItem 1`] = `
           <span
             style={
               Object {
-                "width": 4,
+                "width": "80%",
               }
             }
           />
@@ -57,9 +57,9 @@ exports[`ReviewsItem Test Render ReviewsItem 1`] = `
       </p>
       <time
         className="reviews__time"
-        dateTime="2020-08-17"
+        dateTime="2020-06-21"
       >
-        August 2020
+        June 2020
       </time>
     </div>
   </li>
