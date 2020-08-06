@@ -9,7 +9,7 @@ import {
   isStringType,
   placeCardsType
 } from "../../types/types";
-import {AuthorizationStatus, OfferCardsClassesType, STARS_PROPERTY} from "../../const";
+import {AuthorizationStatus, OfferCardsClassesType, STARS_PROPERTY} from "../../const.js";
 
 const Offer = (props) => {
   const {
