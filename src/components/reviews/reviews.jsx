@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmitReview(offerId, data) {
-    dispatch(ReviewOperation.postReview(offerId, data));
+    return dispatch(ReviewOperation.postReview(offerId, data));
   },
 });
 

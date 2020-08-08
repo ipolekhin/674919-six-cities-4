@@ -8,7 +8,7 @@ import {
 } from "../../types/types.js";
 
 const ReviewForm = (props) => {
-  const {isFormBlocked, comment, offerId, onSubmitReview, onReviewFormChange, isActive, rating} = props;
+  const {isFormBlocked, comment, offerId, onSubmitReview, onReviewFormChange, isActive, rating, resetState} = props;
   const formRef = createRef();
 
   const handleSubmit = (event) => {
@@ -16,6 +16,9 @@ const ReviewForm = (props) => {
     onSubmitReview(offerId, {
       comment,
       rating,
+    }).then(() => {
+      formRef.current.reset();
+      resetState();
     });
   };
 
@@ -37,7 +40,6 @@ const ReviewForm = (props) => {
         method="post"
         onSubmit={handleSubmit}
         onChange={onChange}
-        ref={formRef}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
@@ -69,11 +71,12 @@ const ReviewForm = (props) => {
           id="review"
           name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
-          // minLength="3"
-          minLength="50"
+          minLength="5"
+          // minLength="50"
           maxLength="300"
           required=""
           disabled={isFormBlocked}
+          value={comment}
         >
         </textarea>
 

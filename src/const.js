@@ -70,7 +70,7 @@ export const SORT_NAMES = [
 ];
 
 export const valid = {
-  MIN_LENGTH_REVIEW: 50,
-  MAX_LENGTH_REVIEW: 300,
+  MIN_LENGTH_REVIEW: 5,
+  MAX_LENGTH_REVIEW: 30,
   TEXT_WRONG: `Текст отзыва должен содержать от 50 до 300 символов.`,
 };

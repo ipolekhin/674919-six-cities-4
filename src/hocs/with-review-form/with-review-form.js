@@ -8,9 +8,9 @@ const withReviewForm = (Component) => {
       this.state = {
         review: ``,
         rating: 0,
-        isActive: false,
       };
       this.handleReviewFormChange = this.handleReviewFormChange.bind(this);
+      this.resetState = this.resetState.bind(this);
     }
 
     validateForm() {
@@ -23,8 +23,15 @@ const withReviewForm = (Component) => {
       // console.log(review.length);
       // console.log(reviewIsValid);
       // console.log(isActive);
+      return isActive;
+      // this.setState(() => ({isActive}));
+    }
 
-      this.setState(() => ({isActive}));
+    resetState() {
+      this.setState({
+        review: ``,
+        rating: 0,
+      });
     }
 
     validateTextarea(event) {
@@ -42,20 +49,23 @@ const withReviewForm = (Component) => {
       // console.log(event.target.name);
       // this.setState(() => ({[event.target.name]: event.target.value}));
       this.setState(() => ({[name]: value}));
-      setTimeout(() => {
-        this.validateForm();
-      }, 500);
+
+      // setTimeout(() => {
+      //   this.validateForm();
+      // }, 500);
+
       this.validateTextarea(event);
     }
 
     render() {
-      const {isActive, rating, review} = this.state;
+      const {rating, review} = this.state;
 
       return (
         <Component
           {...this.props}
           onReviewFormChange={this.handleReviewFormChange}
-          isActive={isActive}
+          resetState={this.resetState}
+          isActive={this.validateForm()}
           rating={+rating}
           comment={review}
         />

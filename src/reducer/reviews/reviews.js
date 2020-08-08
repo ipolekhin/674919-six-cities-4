@@ -60,6 +60,7 @@ const Operation = {
         dispatch(ActionCreator.changeBlocked(false));
       })
       .catch((err) => {
+        dispatch(ActionCreator.changeBlocked(false));
         throw err;
       });
   },
