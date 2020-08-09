@@ -33,8 +33,10 @@ const Operation = {
         const allOffers = adapterOffers(response.data);
         dispatch(ActionCreator.getOffersList(allOffers));
         dispatch(ActionCreator.changeCity(allOffers[0].townName));
+      })
+      .catch((err) => {
+        throw err;
       });
-    // todo catch
   },
 };
 

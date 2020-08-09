@@ -30,7 +30,7 @@ const Offer = (props) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {activeOffer.images.map((image, index) => (
+              {activeOffer.images.slice(0, 6).map((image, index) => (
                 <div className="property__image-wrapper" key={index}>
                   <img className="property__image" src={image} alt="Photo studio" />
                 </div>
@@ -129,7 +129,7 @@ const Offer = (props) => {
           <Map
             activeOfferId = {activeOffer.id}
             currentCity = {currentCity}
-            placeCards = {placeCards}
+            placeCards = {placeCards.slice(0, 4)}
             renderMap = {(mapRef) => (
               <section className="property__map map" ref={mapRef}></section>
             )}
@@ -144,7 +144,7 @@ const Offer = (props) => {
               <PlaceCards
                 className = {OfferCardsClassesType.OFFER_CONTAINER}
                 onActiveItemChange = {onActiveItemChange}
-                placeCards = {nearPlaces}
+                placeCards = {nearPlaces.slice(0, 3)}
               />
             </div>
           </section>

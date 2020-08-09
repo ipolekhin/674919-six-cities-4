@@ -9,14 +9,14 @@ import {
 
 const ReviewForm = (props) => {
   const {
-    isFormBlocked,
     comment,
+    isActive,
+    isFormBlocked,
     messageError,
     // offerId,
     // onSubmitReview,
     onReviewFormChange,
     onReviewFormSubmit,
-    isActive,
     rating,
     // resetState,
   } = props;
