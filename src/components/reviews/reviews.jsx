@@ -16,7 +16,13 @@ import {
 const ReviewFormWrapped = withReviewForm(ReviewForm);
 
 const Reviews = (props) => {
-  const {authorizationStatus, isFormBlocked, offerId, onSubmitReview, reviews} = props;
+  const {
+    authorizationStatus,
+    isFormBlocked,
+    offerId,
+    onSubmitReview,
+    reviews
+  } = props;
   // console.log(offerId, `offerId`);
   // console.log(reviews, `reviews`);
 
@@ -42,7 +48,6 @@ const Reviews = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log(`mapStateToProps`);
   return ({
     isFormBlocked: blockedForm(state),
     reviews: getReviews(state),
@@ -51,6 +56,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmitReview(offerId, data) {
+    // dispatch(ReviewOperation.postReview(offerId, data));
     return dispatch(ReviewOperation.postReview(offerId, data));
   },
 });

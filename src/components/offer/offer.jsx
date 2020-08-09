@@ -9,9 +9,7 @@ import {
   isStringType,
   placeCardsType
 } from "../../types/types";
-import {
-  OfferCardsClassesType
-} from "../../const.js";
+import {OfferCardsClassesType} from "../../const.js";
 
 const Offer = (props) => {
   const {

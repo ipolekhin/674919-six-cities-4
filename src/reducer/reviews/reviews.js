@@ -45,21 +45,26 @@ const Operation = {
   },
   // postReview: () => (dispatch) => {
   postReview: (offerId, postReview) => (dispatch, getState, api) => {
-  //   console.log(`Отправка на сервер, начало`);
+    // console.log(`Отправка на сервер, начало`);
     dispatch(ActionCreator.changeBlocked(true));
     // console.log(offerId);
     // console.log(postReview);
 
+    // return 1;
     return api.post(`/comments/${offerId}`, postReview)
       .then((response) => {
       // .then(() => {
-        // console.log(`Отправка на сервер`);
+      //   console.log(`Отправка на сервер`);
+
+        // console.log(offerId);
+        // console.log(postReview);
         if (response.status === 200) {
           dispatch(ActionCreator.addReview(adapterReviews(response.data)));
         }
         dispatch(ActionCreator.changeBlocked(false));
       })
       .catch((err) => {
+        // console.log(`Ошибка отправки на сервер 999`);
         dispatch(ActionCreator.changeBlocked(false));
         throw err;
       });

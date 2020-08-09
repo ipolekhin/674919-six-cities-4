@@ -1,4 +1,4 @@
-import React, {createRef} from "react";
+import React from "react";
 import {FIVE_STAR, STARS_PROPERTY} from "../../const.js";
 import {
   functionType,
@@ -8,29 +8,43 @@ import {
 } from "../../types/types.js";
 
 const ReviewForm = (props) => {
-  const {isFormBlocked, comment, offerId, onSubmitReview, onReviewFormChange, isActive, rating, resetState} = props;
-  const formRef = createRef();
+  const {
+    isFormBlocked,
+    comment,
+    messageError,
+    // offerId,
+    // onSubmitReview,
+    onReviewFormChange,
+    onReviewFormSubmit,
+    isActive,
+    rating,
+    // resetState,
+  } = props;
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmitReview(offerId, {
-      comment,
-      rating,
-    }).then(() => {
-      formRef.current.reset();
-      resetState();
-    });
-  };
+  // const handleSubmit = (event) => {
+  // const handleSubmit = (event) => {
+  //   onReviewFormSubmit(event);
+  //   // event.preventDefault();
+  //   // onSubmitReview(offerId, {
+  //   //   comment,
+  //   //   rating,
+  //   // }).then(() => {
+  //   //   formRef.current.reset();
+  //   //   resetState();
+  //   // });
+  // };
 
-  const onChange = (event) => {
-    onReviewFormChange(event);
-  };
+  // const onChange = (event) => {
+  //   onReviewFormChange(event);
+  // };
 
   // console.log(`isActive`);
   // console.log(isActive);
   // console.log(rating);
   // console.log(`isFormBlocked`);
   // console.log(isFormBlocked);
+  // console.log(`ReviewForm`);
+  // console.log(messageError, `- messageError 777`);
 
   return (
     <React.Fragment>
@@ -38,8 +52,8 @@ const ReviewForm = (props) => {
         className="reviews__form form"
         action="#"
         method="post"
-        onSubmit={handleSubmit}
-        onChange={onChange}
+        onSubmit={onReviewFormSubmit}
+        onChange={onReviewFormChange}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
@@ -53,6 +67,7 @@ const ReviewForm = (props) => {
                     value={value}
                     id={`${value}-stars`}
                     type="radio"
+                    checked={rating === value}
                     disabled={isFormBlocked}
                   />
                   <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={STARS_PROPERTY[value - 1]}>
@@ -93,6 +108,16 @@ const ReviewForm = (props) => {
               Submit
           </button>
         </div>
+        {messageError && (
+          <div
+            className="field_error_message"
+            style={{
+              margin: `10 0`,
+              fontWeight: `bold`,
+              color: `#f05242`,
+            }}
+          >{messageError}</div>)
+        }
       </form>
     </React.Fragment>
   );
@@ -102,9 +127,9 @@ ReviewForm.propTypes = {
   isFormBlocked: isBoolType,
   comment: isStringType,
   isActive: isBoolType,
-  offerId: isNumberType,
-  onSubmitReview: functionType,
+  messageError: isStringType,
   onReviewFormChange: functionType,
+  onReviewFormSubmit: functionType,
   rating: isNumberType,
 };
 
