@@ -1,5 +1,6 @@
 import React from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Route, Router, Switch} from "react-router-dom";
+import history from "../../history.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/site/site.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
@@ -48,7 +49,9 @@ const App = (props) => {
 
   return (
     <React.Fragment>
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <Switch>
           <Route exact path="/">
             <PageContainer
@@ -131,7 +134,7 @@ const App = (props) => {
             }
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     </React.Fragment>
   );
 };
