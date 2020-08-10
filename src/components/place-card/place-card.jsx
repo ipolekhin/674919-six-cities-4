@@ -1,21 +1,30 @@
 import React from "react";
-import {classNameType, placeCardType, functionClickType} from "../../types/types";
+import {classNameType, placeCardType, functionClickType, isBoolType} from "../../types/types";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
+import history from "../../history.js";
 
 const PlaceCard = (props) => {
   const {
+    authorizationStatus,
     className,
+    onFavoriteClick,
     onOptionHover,
     // onActiveItemChange,
-    onTitleClick,
+    // onTitleClick,
     placeCard
   } = props;
+  console.log(authorizationStatus);
 
-  const onClick = (event) => {
+  // const onClick = (event) => {
+  //   event.preventDefault();
+  //   // onActiveItemChange(placeCard.id);
+  //   onTitleClick(placeCard.id);
+  // };
+
+  const onFavoriteButtonClick = (event) => {
     event.preventDefault();
-    // onActiveItemChange(placeCard.id);
-    onTitleClick(placeCard.id);
+    return (authorizationStatus ? onFavoriteClick(placeCard.id, placeCard.favoritePlace) : history.push(AppRoute.SIGN_IN));
   };
 
   return (
@@ -35,9 +44,9 @@ const PlaceCard = (props) => {
         )}
 
         <div className="cities__image-wrapper place-card__image-wrapper">
-          <a href="#">
+          <Link to={`/offer/${placeCard.id}`}>
             <img className="place-card__image" src={placeCard.image} width="260" height="200" alt="Place image" />
-          </a>
+          </Link>
         </div>
 
         <div className="place-card__info">
@@ -48,7 +57,11 @@ const PlaceCard = (props) => {
               <span className="place-card__price-text">&#47;&nbsp;night</span>
             </div>
 
-            <button className="place-card__bookmark-button button" type="button">
+            <button
+              className={`place-card__bookmark-button button ${placeCard.favoritePlace ? `place-card__bookmark-button--active` : ``} ${placeCard.favoritePlace}`}
+              type="button"
+              onClick={onFavoriteButtonClick}
+            >
               <svg className="place-card__bookmark-icon" width="18" height="19">
                 <use xlinkHref="#icon-bookmark"></use>
               </svg>
@@ -82,11 +95,13 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
+  authorizationStatus: isBoolType,
   className: classNameType,
-  placeCard: (placeCardType).isRequired,
   // onActiveItemChange: functionClickType,
-  onTitleClick: functionClickType,
+  onFavoriteClick: functionClickType,
+  // onTitleClick: functionClickType,
   onOptionHover: functionClickType,
+  placeCard: (placeCardType).isRequired,
 };
 
 export default PlaceCard;

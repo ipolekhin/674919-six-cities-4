@@ -38,6 +38,15 @@ const Operation = {
         throw err;
       });
   },
+  setFavoriteOffer: (id, status) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${id}/${+!status}`)
+      .then(() => {
+        dispatch(Operation.getOffersList());
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
 };
 
 const reducer = (state = initialState, action) => {
