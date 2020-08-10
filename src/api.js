@@ -18,19 +18,15 @@ export const createAPI = (onUnauthorized) => {
   const onFail = (err) => {
     const {response, request} = err;
 
-    // console.log(`fail1`);
+    if (!request.status) {
+      throw err;
+    }
 
     if (response.status === Error.UNAUTHORIZED) {
       onUnauthorized();
 
       // Бросаем ошибку, потому что нам важно прервать цепочку промисов после запроса авторизации.
       // Запрос авторизации - это особый случай и важно дать понять приложению, что запрос был неудачным.
-      throw err;
-    }
-
-    if (!request.status) {
-      console.log(`fail2`);
-      // console.log(request.status);
       throw err;
     }
 

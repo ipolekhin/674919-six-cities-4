@@ -53,28 +53,22 @@ const withReviewForm = (Component) => {
 
       onSubmitReview(offerId, {rating, comment: review})
         .then(() => {
-          // console.log(`Ответ от сервера 200`);
           this.resetState();
         })
         .catch((err) => {
           if (err.response) {
-            // console.log(`Ошибка отправки на сервер 888`);
-            // console.log(err.request);
-            // console.log(err.response);
-            // console.log(err.response.status);
-            // console.log(err.response.statusText);
-            // this.messageError = err.response.statusText;
             const statusError = errorMessageList[err.response.status];
             this.setState(() => ({messageError: statusError ? statusError : err.response.statusText}));
           } else {
-            this.setState(() => ({messageError: errorMessageList[`undefined`]}));
+            this.setState(() => ({messageError: errorMessageList[err.request.status]}));
           }
+
+          throw err;
         });
     }
 
     render() {
       const {messageError, rating, review} = this.state;
-      // console.log(`текст 777`);
 
       return (
         <Component
@@ -93,7 +87,6 @@ const withReviewForm = (Component) => {
   WithReviewForm.propTypes = {
     offerId: isNumberType,
     onSubmitReview: functionType,
-    // messageServer: isStringType,
   };
 
   return WithReviewForm;
