@@ -1,3 +1,10 @@
+export const AppRoute = {
+  FAVORITES: `/favorites`,
+  ROOM: `/offer/:id?`,
+  ROOT: `/`,
+  SIGN_IN: `/login`,
+};
+
 export const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
