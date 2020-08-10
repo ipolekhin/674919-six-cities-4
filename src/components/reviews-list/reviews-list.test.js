@@ -4,18 +4,18 @@ import ReviewsList from "./reviews-list.jsx";
 
 const reviews = [
   {
-    date: new Date(2020, 7, 17),
+    date: `2020-06-21T16:06:01.820Z`,
     id: 1,
-    rating: 4,
-    text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    rating: `80%`,
+    comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
     userAvatar: `img/avatar-max.jpg`,
     userName: `Max`,
   },
   {
-    date: new Date(2020, 7, 15),
+    date: `2020-06-13T16:06:01.820Z`,
     id: 2,
-    rating: 4,
-    text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    rating: `80%`,
+    comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
     userAvatar: `img/avatar-max.jpg`,
     userName: `John`,
   }

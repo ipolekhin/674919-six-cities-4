@@ -20,6 +20,8 @@ const functionClickType = PropTypes.func.isRequired;
 
 const isBoolType = PropTypes.bool;
 
+const isNumberType = PropTypes.number;
+
 const isStringType = PropTypes.string;
 
 const loginType = PropTypes.func.isRequired;
@@ -61,10 +63,10 @@ const placeCardsType = PropTypes.arrayOf(placeCardType).isRequired;
 const renderFunctionType = PropTypes.func.isRequired;
 
 const reviewType = PropTypes.shape({
-  date: PropTypes.object.isRequired,
+  date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired,
+  comment: PropTypes.string.isRequired,
   userAvatar: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
 }).isRequired;
@@ -86,6 +88,7 @@ export {
   functionType,
   functionClickType,
   isBoolType,
+  isNumberType,
   isStringType,
   loginType,
   placeCardType,

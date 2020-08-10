@@ -3,12 +3,12 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {App} from "./app.jsx";
+import NameSpace from "../../reducer/name-space.js";
 
 const authorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 const mockStore = configureStore([]);
-// const cities = [`Amsterdam`, `Dusseldorf`];
 const currentCity = `Amsterdam`;
 const offersOfTown = [{
   adults: 3,
@@ -42,7 +42,7 @@ const offersOfTown = [{
     pro: true,
   },
 }];
-const onFunctionClick = () => {};
+const noop = () => {};
 const sortByName = `Popular`;
 
 describe(`App Test`, () => {
@@ -51,21 +51,23 @@ describe(`App Test`, () => {
       activeOfferId: null,
       offers: [],
       sortByName: `Popular`,
+      [NameSpace.REVIEWS]: {
+        reviews: [],
+      },
     });
     const tree = renderer
       .create(
           <Provider store={store}>
             <App
-              // cities = {cities}
-              authorizationStatus = {authorizationStatus.NO_AUTH}
-              currentCity = {currentCity}
-              login={() => {}}
-              offers = {offersOfTown}
-              offersOfTown = {offersOfTown}
-              onSortClick = {onFunctionClick}
-              onActiveItemChange = {onFunctionClick}
-              sortByName = {sortByName}
-              sortOffersOfTown = {offersOfTown}
+              authorizationStatus={authorizationStatus.NO_AUTH}
+              currentCity={currentCity}
+              login={noop}
+              offers={offersOfTown}
+              offersOfTown={offersOfTown}
+              onSortClick={noop}
+              onActiveItemChange={noop}
+              sortByName={sortByName}
+              sortOffersOfTown={offersOfTown}
             />
           </Provider>
       )

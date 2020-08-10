@@ -1,7 +1,7 @@
 import {reducer, ActionType, Operation} from "./data.js";
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api.js";
-import {adapterOffers} from "../../apapters/offers.js";
+import {adapterOffers} from "../../adapters/offers.js";
 
 const api = createAPI(() => {});
 const offersOfTown = [
@@ -84,7 +84,6 @@ describe(`Reducer Data Test`, () => {
     expect(reducer(void 0, {})).toEqual({
       city: ``,
       offers: [],
-      offersOfTown: [],
     });
   });
 
@@ -124,7 +123,7 @@ describe(`Reducer Data Test`, () => {
 
     return offersList(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.OFFERS_LIST,
           payload: adapterOffers(offerRaw),

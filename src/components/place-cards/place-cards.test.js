@@ -1,6 +1,5 @@
 import React from "react";
 import renderer from "react-test-renderer";
-// import {Provider} from "react-redux";
 import {PlaceCards} from "./place-cards.jsx";
 
 const placeCards = [
@@ -72,8 +71,7 @@ const placeCards = [
 
 const className = `page`;
 
-const onActiveItemChange = () => {};
-const onOptionHover = () => {};
+const noop = () => {};
 
 describe(`PlaceCards Test`, () => {
   it(`Render PlaceCards`, () => {
@@ -82,8 +80,9 @@ describe(`PlaceCards Test`, () => {
           <PlaceCards
             className={className}
             placeCards={placeCards}
-            onActiveItemChange={onActiveItemChange}
-            onOptionHover={onOptionHover}
+            onActiveItemChange={noop}
+            onOptionHover={noop}
+            onTitleClick = {noop}
           />
       )
       .toJSON();

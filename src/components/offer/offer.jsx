@@ -1,7 +1,7 @@
 import React from "react";
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
-import ReviewsList from "../reviews-list/reviews-list.jsx";
+import Reviews from "../reviews/reviews.jsx";
 import {
   authorizationStatusType,
   currentCityType,
@@ -9,7 +9,7 @@ import {
   isStringType,
   placeCardsType
 } from "../../types/types";
-import {AuthorizationStatus, OfferCardsClassesType, STARS_PROPERTY} from "../../const";
+import {OfferCardsClassesType} from "../../const.js";
 
 const Offer = (props) => {
   const {
@@ -21,8 +21,8 @@ const Offer = (props) => {
   } = props;
   const activeOffer = activeItem ? placeCards.find((card) => card.id === activeItem) : placeCards[0];
   const nearPlaces = placeCards.filter((place) => activeOffer.id !== place.id);
-  const FIVE_STAR = [5, 4, 3, 2, 1];
   // console.log(`Offer1`);
+  // console.log(activeItem);
 
   return (
     <React.Fragment>
@@ -30,7 +30,7 @@ const Offer = (props) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {activeOffer.images.map((image, index) => (
+              {activeOffer.images.slice(0, 6).map((image, index) => (
                 <div className="property__image-wrapper" key={index}>
                   <img className="property__image" src={image} alt="Photo studio" />
                 </div>
@@ -118,51 +118,18 @@ const Offer = (props) => {
                 </div>
               </div>
 
-              <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{activeOffer.reviews.length}</span></h2>
-
-                <ReviewsList
-                  reviews = {activeOffer.reviews}
-                />
-
-                {authorizationStatus === AuthorizationStatus.AUTH && (
-                  <form className="reviews__form form" action="#" method="post">
-                    <label className="reviews__label form__label" htmlFor="review">Your review</label>
-                    <div className="reviews__rating-form form__rating">
-                      {
-                        FIVE_STAR.map((value) => {
-                          return (
-                            <React.Fragment key={value}>
-                              <input className="form__rating-input visually-hidden" name="rating" value={value} id={`${value}-stars`} type="radio" />
-                              <label htmlFor={`${value}-stars`} className="reviews__rating-label form__rating-label" title={STARS_PROPERTY[value - 1]}>
-                                <svg className="form__star-image" width="37" height="33">
-                                  <use xlinkHref="#icon-star"></use>
-                                </svg>
-                              </label>
-                            </React.Fragment>
-                          );
-                        })
-                      }
-                    </div>
-
-                    <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
-                    <div className="reviews__button-wrapper">
-                      <p className="reviews__help">
-                        To submit review please make sure to set <span className="reviews__star">rating</span> and
-                        describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
-                      </p>
-                      <button className="reviews__submit form__submit button" type="submit" disabled="">Submit</button>
-                    </div>
-                  </form>
-                )}
-              </section>
+              <Reviews
+                authorizationStatus = {authorizationStatus}
+                offerId = {activeOffer.id}
+                // reviews = {activeOffer.reviews}
+              />
             </div>
           </div>
 
           <Map
             activeOfferId = {activeOffer.id}
             currentCity = {currentCity}
-            placeCards = {placeCards}
+            placeCards = {placeCards.slice(0, 4)}
             renderMap = {(mapRef) => (
               <section className="property__map map" ref={mapRef}></section>
             )}
@@ -177,7 +144,7 @@ const Offer = (props) => {
               <PlaceCards
                 className = {OfferCardsClassesType.OFFER_CONTAINER}
                 onActiveItemChange = {onActiveItemChange}
-                placeCards = {nearPlaces}
+                placeCards = {nearPlaces.slice(0, 3)}
               />
             </div>
           </section>

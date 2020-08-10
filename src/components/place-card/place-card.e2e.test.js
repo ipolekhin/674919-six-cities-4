@@ -46,12 +46,14 @@ describe(`PlaceCard e2e test`, () => {
   it(`Should mouse on card and get cardID`, () => {
     const onOptionHover = jest.fn((placeCardId) => placeCardId);
     const onActiveItemChange = jest.fn();
+    const onTitleClick = jest.fn();
     const placeCardComponent = shallow(
         <PlaceCard
-          className = {className}
-          onOptionHover = {onOptionHover}
-          onActiveItemChange = {onActiveItemChange}
-          placeCard = {placeCard}
+          className={className}
+          onOptionHover={onOptionHover}
+          onActiveItemChange={onActiveItemChange}
+          onTitleClick={onTitleClick}
+          placeCard={placeCard}
         />
     );
 

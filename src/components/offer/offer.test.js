@@ -3,8 +3,8 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Offer from "./offer.jsx";
+import NameSpace from "../../reducer/name-space.js";
 
-// const mockStore = configureStore([]);
 const authorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
@@ -75,19 +75,23 @@ const placeCards = [
   },
 ];
 const currentCity = `Amsterdam`;
-const onActiveItemChange = () => {};
+const noop = () => {};
 const mockStore = configureStore([]);
 
 describe(`Offer Test`, () => {
   it(`Render Offer`, () => {
-    const store = mockStore({});
+    const store = mockStore({
+      [NameSpace.REVIEWS]: {
+        reviews: [],
+      },
+    });
     const tree = renderer
       .create(
           <Provider store={store}>
             <Offer
               authorizationStatus = {authorizationStatus.NO_AUTH}
               currentCity = {currentCity}
-              onActiveItemChange = {onActiveItemChange}
+              onActiveItemChange = {noop}
               placeCards = {placeCards}
             />
           </Provider>
