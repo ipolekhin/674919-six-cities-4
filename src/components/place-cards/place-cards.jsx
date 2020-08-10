@@ -6,7 +6,13 @@ import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
 import {classNameType, placeCardsType, functionClickType} from "../../types/types";
 
 const PlaceCards = (props) => {
-  const {className, placeCards, onActiveItemChange, onOptionHover, onTitleClick} = props;
+  const {
+    className,
+    placeCards,
+    // onActiveItemChange,
+    onOptionHover,
+    onTitleClick
+  } = props;
 
   return (
     <React.Fragment>
@@ -15,7 +21,7 @@ const PlaceCards = (props) => {
           className = {className}
           onOptionHover = {onOptionHover}
           key = {placeCard.id}
-          onActiveItemChange = {onActiveItemChange}
+          // onActiveItemChange = {onActiveItemChange}
           onTitleClick = {onTitleClick}
           placeCard = {placeCard}
         />
@@ -27,7 +33,7 @@ const PlaceCards = (props) => {
 PlaceCards.propTypes = {
   className: classNameType,
   placeCards: placeCardsType,
-  onActiveItemChange: functionClickType,
+  // onActiveItemChange: functionClickType,
   onOptionHover: functionClickType,
   onTitleClick: functionClickType,
 };

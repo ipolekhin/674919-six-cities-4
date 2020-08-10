@@ -2,11 +2,17 @@ import React from "react";
 import {classNameType, placeCardType, functionClickType} from "../../types/types";
 
 const PlaceCard = (props) => {
-  const {className, onOptionHover, onActiveItemChange, onTitleClick, placeCard} = props;
+  const {
+    className,
+    onOptionHover,
+    // onActiveItemChange,
+    onTitleClick,
+    placeCard
+  } = props;
 
   const onClick = (event) => {
     event.preventDefault();
-    onActiveItemChange(placeCard.id);
+    // onActiveItemChange(placeCard.id);
     onTitleClick(placeCard.id);
   };
 
@@ -76,7 +82,7 @@ const PlaceCard = (props) => {
 PlaceCard.propTypes = {
   className: classNameType,
   placeCard: (placeCardType).isRequired,
-  onActiveItemChange: functionClickType,
+  // onActiveItemChange: functionClickType,
   onTitleClick: functionClickType,
   onOptionHover: functionClickType,
 };

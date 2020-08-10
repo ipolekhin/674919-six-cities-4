@@ -13,6 +13,7 @@ import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
+import Favorites from "../favorites/favorites.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {
   activeOfferIdType,
@@ -20,25 +21,25 @@ import {
   currentCityType,
   functionClickType,
   // functionType,
-  isStringType,
+  // isStringType,
   loginType,
   placeCardsType,
   sortNameType, userType
 } from "../../types/types";
-import {AuthorizationStatus} from "../../const";
+import {AppRoute, AuthorizationStatus} from "../../const.js";
 
 const OfferWrapped = withActiveItem(Offer);
 
 const App = (props) => {
   const {
-    activeItem,
+    // activeItem,
     activeOfferId,
     authorizationStatus,
     currentCity,
     // loadReviews,
     login,
     offersOfTown,
-    onActiveItemChange,
+    // onActiveItemChange,
     onSortClick,
     sortByName,
     sortOffersOfTown,
@@ -53,7 +54,7 @@ const App = (props) => {
         history={history}
       >
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.ROOT}>
             <PageContainer
               offersOfTown={offersOfTown}
               renderContainer={() => (
@@ -63,117 +64,115 @@ const App = (props) => {
                     authorizationStatus={authorizationStatus}
                     user={user}
                   />
-                  {
-                    renderOfferScreen(
-                        activeItem,
-                        activeOfferId,
-                        authorizationStatus,
-                        currentCity,
-                        // loadReviews,
-                        onActiveItemChange,
-                        offersOfTown,
-                        onSortClick,
-                        sortByName,
-                        sortOffersOfTown
-                    )
-                  }
+                  <Main
+                    activeOfferId={activeOfferId}
+                    currentCity={currentCity}
+                    // onActiveItemChange={onActiveItemChange}
+                    placeCards={sortOffersOfTown}
+                    onSortClick={onSortClick}
+                    sortByName={sortByName}
+                  />
+                  {/*{*/}
+                  {/*  renderOfferScreen(*/}
+                  {/*      activeItem,*/}
+                  {/*      activeOfferId,*/}
+                  {/*      authorizationStatus,*/}
+                  {/*      currentCity,*/}
+                  {/*      // loadReviews,*/}
+                  {/*      onActiveItemChange,*/}
+                  {/*      offersOfTown,*/}
+                  {/*      onSortClick,*/}
+                  {/*      sortByName,*/}
+                  {/*      sortOffersOfTown*/}
+                  {/*  )*/}
+                  {/*}*/}
                 </div>
               )}>
             </PageContainer>
           </Route>
-          <Route exact path="/dev-offer">
-            <PageContainer
-              offersOfTown={offersOfTown}
-              renderContainer={() => (
-                <div className="page">
-                  <Header
-                    authorizationStatus={authorizationStatus}
-                    user={user}
-                  />
-                  <OfferWrapped
-                    authorizationStatus={authorizationStatus}
-                    currentCity={currentCity}
-                    // loadReviews={loadReviews}
-                    placeCards={offersOfTown}
-                  />
-                </div>
-              )}
-            >
-            </PageContainer>
-          </Route>
-          <Route exact path="/dev-sign-in">
+          <Route exact path={AppRoute.SIGN_IN}>
             {
-              authorizationStatus === AuthorizationStatus.NO_AUTH && (
-                <SignIn onSubmit = {login}/>
-              ) || (
-                <PageContainer
-                  offersOfTown={offersOfTown}
-                  renderContainer={() => (
-                    <div className="page page--gray page--main">
-                      <Header
-                        isMain={true}
-                        authorizationStatus={authorizationStatus}
-                        user={user}
-                      />
-                      {
-                        renderOfferScreen(
-                            activeItem,
-                            activeOfferId,
-                            currentCity,
-                            onActiveItemChange,
-                            offersOfTown,
-                            onSortClick,
-                            sortByName,
-                            sortOffersOfTown
-                        )
-                      }
-                    </div>
-                  )}>
-                </PageContainer>
-              )
+              <SignIn
+                onSubmit = {login}
+              />
             }
           </Route>
+          <Route exact path={AppRoute.OFFER}>
+            {
+              <Offer
+                currentCity={currentCity}
+              />
+            }
+          </Route>
+          <Route exact path={AppRoute.FAVORITES}>
+            {
+              <Favorites
+                onSubmit = {login}
+              />
+            }
+          </Route>
+
+          {/*<Route exact path="/dev-offer">*/}
+          {/*  <PageContainer*/}
+          {/*    offersOfTown={offersOfTown}*/}
+          {/*    renderContainer={() => (*/}
+          {/*      <div className="page">*/}
+          {/*        <Header*/}
+          {/*          authorizationStatus={authorizationStatus}*/}
+          {/*          user={user}*/}
+          {/*        />*/}
+          {/*        <OfferWrapped*/}
+          {/*          authorizationStatus={authorizationStatus}*/}
+          {/*          currentCity={currentCity}*/}
+          {/*          // loadReviews={loadReviews}*/}
+          {/*          placeCards={offersOfTown}*/}
+          {/*        />*/}
+          {/*      </div>*/}
+          {/*    )}*/}
+          {/*  >*/}
+          {/*  </PageContainer>*/}
+          {/*</Route>*/}
         </Switch>
       </Router>
     </React.Fragment>
   );
 };
 
-const renderOfferScreen = (
-    activeItem,
-    activeOfferId,
-    authorizationStatus,
-    currentCity,
-    // loadReviews,
-    onActiveItemChange,
-    offersOfTown,
-    onSortClick,
-    sortByName,
-    sortOffersOfTown
-) => {
-  if (activeItem === null) {
-    return (
-      <Main
-        activeOfferId={activeOfferId}
-        currentCity={currentCity}
-        onActiveItemChange={onActiveItemChange}
-        placeCards={sortOffersOfTown}
-        onSortClick={onSortClick}
-        sortByName={sortByName}
-      />
-    );
-  } else {
-    return (
-      <OfferWrapped
-        activeOfferId={activeOfferId}
-        authorizationStatus={authorizationStatus}
-        currentCity={currentCity}
-        // loadReviews={loadReviews}
-        placeCards={offersOfTown}
-      />
-    );
-  }
-};
+// const renderOfferScreen = (
+//     activeItem,
+//     activeOfferId,
+//     authorizationStatus,
+//     currentCity,
+//     // loadReviews,
+//     onActiveItemChange,
+//     offersOfTown,
+//     onSortClick,
+//     sortByName,
+//     sortOffersOfTown
+// ) => {
+//   if (activeItem === null) {
+//     return (
+//       <Main
+//         activeOfferId={activeOfferId}
+//         currentCity={currentCity}
+//         onActiveItemChange={onActiveItemChange}
+//         placeCards={sortOffersOfTown}
+//         onSortClick={onSortClick}
+//         sortByName={sortByName}
+//       />
+//     );
+//   } else {
+//     return (
+//       <OfferWrapped
+//         activeOfferId={activeOfferId}
+//         authorizationStatus={authorizationStatus}
+//         currentCity={currentCity}
+//         // loadReviews={loadReviews}
+//         placeCards={offersOfTown}
+//       />
+//     );
+//   }
+// };
 
 const mapStateToProps = (state) => {
   return ({
@@ -202,18 +201,18 @@ const mapDispatchToProps = (dispatch) => ({
 App.propTypes = {
   activeOfferId: activeOfferIdType,
   authorizationStatus: authorizationStatusType,
-  activeItem: isStringType,
+  // activeItem: isStringType,
   currentCity: currentCityType,
   // loadReviews: functionType,
   login: loginType,
   offersOfTown: placeCardsType,
   onSortClick: functionClickType,
-  onActiveItemChange: functionClickType,
+  // onActiveItemChange: functionClickType,
   sortByName: sortNameType,
   sortOffersOfTown: placeCardsType,
   user: userType,
 };
 
 export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(withActiveItem(App));
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 // export default connect(mapStateToProps, mapDispatchToProps)(App);

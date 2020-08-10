@@ -22,7 +22,7 @@ const Main = (props) => {
   const {
     activeOfferId,
     currentCity,
-    onActiveItemChange,
+    // onActiveItemChange,
     onSortClick,
     placeCards,
     sortByName
@@ -55,7 +55,7 @@ const Main = (props) => {
                     { <PlaceCards
                       className = {OfferCardsClassesType.MAIN_CONTAINER}
                       placeCards = {placeCards}
-                      onActiveItemChange = {onActiveItemChange}
+                      // onActiveItemChange = {onActiveItemChange}
                     /> }
                   </div>
                 </section>
@@ -85,7 +85,7 @@ const Main = (props) => {
 Main.propTypes = {
   activeOfferId: activeOfferIdType,
   currentCity: currentCityType,
-  onActiveItemChange: functionClickType,
+  // onActiveItemChange: functionClickType,
   onSortClick: functionClickType,
   placeCards: placeCardsType,
   sortByName: sortNameType,
