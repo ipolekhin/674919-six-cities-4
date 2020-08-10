@@ -57,15 +57,18 @@ const withReviewForm = (Component) => {
           this.resetState();
         })
         .catch((err) => {
-          // console.log(`Ошибка отправки на сервер 888`);
-          // console.log(err);
-          // console.log(err.response);
-          // console.log(err.response.status);
-          // console.log(err.response.statusText);
-          // this.messageError = err.response.statusText;
-          const statusError = errorMessageList[err.response.status];
-          this.setState(() => ({messageError: statusError ? statusError : err.response.statusText}));
-          throw err;
+          if (err.response) {
+            // console.log(`Ошибка отправки на сервер 888`);
+            // console.log(err.request);
+            // console.log(err.response);
+            // console.log(err.response.status);
+            // console.log(err.response.statusText);
+            // this.messageError = err.response.statusText;
+            const statusError = errorMessageList[err.response.status];
+            this.setState(() => ({messageError: statusError ? statusError : err.response.statusText}));
+          } else {
+            this.setState(() => ({messageError: errorMessageList[`undefined`]}));
+          }
         });
     }
 

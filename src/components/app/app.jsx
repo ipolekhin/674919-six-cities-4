@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/site/site.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {getOffersOfTown, getCurrentCity} from "../../reducer/data/selectors.js";
+import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
 import {getActiveOfferId, getSortName, getSortOffers} from "../../reducer/site/selectors.js";
 import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors.js";
 import PageContainer from "../page-container/page-container.jsx";
@@ -17,6 +18,7 @@ import {
   authorizationStatusType,
   currentCityType,
   functionClickType,
+  functionType,
   isStringType,
   loginType,
   placeCardsType,
@@ -32,6 +34,7 @@ const App = (props) => {
     activeOfferId,
     authorizationStatus,
     currentCity,
+    loadReviews,
     login,
     offersOfTown,
     onActiveItemChange,
@@ -49,13 +52,13 @@ const App = (props) => {
         <Switch>
           <Route exact path="/">
             <PageContainer
-              offersOfTown = {offersOfTown}
+              offersOfTown={offersOfTown}
               renderContainer={() => (
                 <div className="page page--gray page--main">
                   <Header
-                    isMain = {true}
-                    authorizationStatus = {authorizationStatus}
-                    user = {user}
+                    isMain={true}
+                    authorizationStatus={authorizationStatus}
+                    user={user}
                   />
                   {
                     renderOfferScreen(
@@ -63,6 +66,7 @@ const App = (props) => {
                         activeOfferId,
                         authorizationStatus,
                         currentCity,
+                        loadReviews,
                         onActiveItemChange,
                         offersOfTown,
                         onSortClick,
@@ -76,17 +80,18 @@ const App = (props) => {
           </Route>
           <Route exact path="/dev-offer">
             <PageContainer
-              offersOfTown = {offersOfTown}
+              offersOfTown={offersOfTown}
               renderContainer={() => (
                 <div className="page">
                   <Header
-                    authorizationStatus = {authorizationStatus}
-                    user = {user}
+                    authorizationStatus={authorizationStatus}
+                    user={user}
                   />
                   <OfferWrapped
-                    authorizationStatus = {authorizationStatus}
-                    currentCity = {currentCity}
-                    placeCards = {offersOfTown}
+                    authorizationStatus={authorizationStatus}
+                    currentCity={currentCity}
+                    loadReviews={loadReviews}
+                    placeCards={offersOfTown}
                   />
                 </div>
               )}
@@ -99,13 +104,13 @@ const App = (props) => {
                 <SignIn onSubmit = {login}/>
               ) || (
                 <PageContainer
-                  offersOfTown = {offersOfTown}
+                  offersOfTown={offersOfTown}
                   renderContainer={() => (
                     <div className="page page--gray page--main">
                       <Header
-                        isMain = {true}
-                        authorizationStatus = {authorizationStatus}
-                        user = {user}
+                        isMain={true}
+                        authorizationStatus={authorizationStatus}
+                        user={user}
                       />
                       {
                         renderOfferScreen(
@@ -136,6 +141,7 @@ const renderOfferScreen = (
     activeOfferId,
     authorizationStatus,
     currentCity,
+    loadReviews,
     onActiveItemChange,
     offersOfTown,
     onSortClick,
@@ -145,21 +151,22 @@ const renderOfferScreen = (
   if (activeItem === null) {
     return (
       <Main
-        activeOfferId = {activeOfferId}
-        currentCity = {currentCity}
-        onActiveItemChange = {onActiveItemChange}
-        placeCards = {sortOffersOfTown}
-        onSortClick = {onSortClick}
-        sortByName = {sortByName}
+        activeOfferId={activeOfferId}
+        currentCity={currentCity}
+        onActiveItemChange={onActiveItemChange}
+        placeCards={sortOffersOfTown}
+        onSortClick={onSortClick}
+        sortByName={sortByName}
       />
     );
   } else {
     return (
       <OfferWrapped
-        activeOfferId = {activeOfferId}
-        authorizationStatus = {authorizationStatus}
-        currentCity = {currentCity}
-        placeCards = {offersOfTown}
+        activeOfferId={activeOfferId}
+        authorizationStatus={authorizationStatus}
+        currentCity={currentCity}
+        loadReviews={loadReviews}
+        placeCards={offersOfTown}
       />
     );
   }
@@ -184,6 +191,9 @@ const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
   },
+  loadReviews(offerId) {
+    dispatch(ReviewOperation.getReviews(offerId));
+  },
 });
 
 App.propTypes = {
@@ -191,6 +201,7 @@ App.propTypes = {
   authorizationStatus: authorizationStatusType,
   activeItem: isStringType,
   currentCity: currentCityType,
+  loadReviews: functionType,
   login: loginType,
   offersOfTown: placeCardsType,
   onSortClick: functionClickType,

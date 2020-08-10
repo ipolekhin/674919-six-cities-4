@@ -13,6 +13,7 @@ export const CARD_TYPES = [
 export const errorMessageList = {
   '400': `Сервер не понимает запрос из-за неверного синтаксиса.`,
   '404': `Сервер не может найти запрашиваемый ресурс.`,
+  'undefined': `Сервер не отвечает.`,
 };
 
 export const FIVE_STAR = [5, 4, 3, 2, 1];
