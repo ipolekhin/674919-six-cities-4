@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import App from "./app.jsx";
+import {App} from "./app.jsx";
 import NameSpace from "../../reducer/name-space.js";
 
 const authorizationStatus = {
@@ -44,7 +44,6 @@ const offersOfTown = [{
 }];
 const noop = () => {};
 const sortByName = `Popular`;
-const activeOfferId = 1;
 
 describe(`App Test`, () => {
   it(`Render App`, () => {
@@ -55,25 +54,13 @@ describe(`App Test`, () => {
       [NameSpace.REVIEWS]: {
         reviews: [],
       },
-      [NameSpace.SITE]: {
-        activeOfferId: 1,
-      },
-      [NameSpace.USER]: {
-        authorizationStatus: false,
-      },
-      [NameSpace.DATA]: {
-        city: `Amstardam`,
-      },
     });
     const tree = renderer
       .create(
           <Provider store={store}>
             <App
-              activeOfferId={activeOfferId}
               authorizationStatus={authorizationStatus.NO_AUTH}
-              city={currentCity}
               currentCity={currentCity}
-              loadReviews={noop}
               login={noop}
               offers={offersOfTown}
               offersOfTown={offersOfTown}
