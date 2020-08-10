@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Router, Switch} from "react-router-dom";
+import {Link, Redirect, Route, Router, Switch} from "react-router-dom";
 import history from "../../history.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/site/site.js";
@@ -20,8 +20,9 @@ import {
   authorizationStatusType,
   currentCityType,
   functionClickType,
+  isBoolType,
   // functionType,
-  // isStringType,
+  isStringType,
   loginType,
   placeCardsType,
   sortNameType, userType
@@ -46,7 +47,7 @@ const App = (props) => {
     user,
   } = props;
   // console.log(`App - 7`);
-  // console.log(user);
+  // console.log(authorizationStatus);
 
   return (
     <React.Fragment>
@@ -90,19 +91,28 @@ const App = (props) => {
               )}>
             </PageContainer>
           </Route>
-          <Route exact path={AppRoute.SIGN_IN}>
-            {
-              <SignIn
-                onSubmit = {login}
-              />
-            }
-          </Route>
-          <Route exact path={AppRoute.OFFER}>
-            {
-              <Offer
-                currentCity={currentCity}
-              />
-            }
+          <Route
+            path={AppRoute.SIGN_IN}
+            exact
+            render={() => {
+              return (
+                !authorizationStatus
+                  ? <SignIn
+                    onSubmit = {login}
+                  />
+                  : <Redirect to={AppRoute.ROOT} />
+              );
+            }}
+          />
+          <Route
+            exact
+            path={AppRoute.OFFER}
+            component={Offer}
+          >
+            {/*<Offer*/}
+            {/*  placeCards={offersOfTown}*/}
+            {/*  currentCity={currentCity}*/}
+            {/*/>*/}
           </Route>
           <Route exact path={AppRoute.FAVORITES}>
             {
@@ -111,6 +121,18 @@ const App = (props) => {
               />
             }
           </Route>
+          <Route
+            render={() => (
+              <React.Fragment>
+                <h1>
+                  404.
+                  <br />
+                  <small>Page not found</small>
+                </h1>
+                <Link to={AppRoute.ROOT}>Go to main page</Link>
+              </React.Fragment>
+            )}
+          />
 
           {/*<Route exact path="/dev-offer">*/}
           {/*  <PageContainer*/}
@@ -200,7 +222,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 App.propTypes = {
   activeOfferId: activeOfferIdType,
-  authorizationStatus: authorizationStatusType,
+  authorizationStatus: isBoolType,
   // activeItem: isStringType,
   currentCity: currentCityType,
   // loadReviews: functionType,

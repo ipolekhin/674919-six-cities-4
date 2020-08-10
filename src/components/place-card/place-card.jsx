@@ -1,5 +1,7 @@
 import React from "react";
 import {classNameType, placeCardType, functionClickType} from "../../types/types";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const";
 
 const PlaceCard = (props) => {
   const {
@@ -64,12 +66,12 @@ const PlaceCard = (props) => {
           </div>
 
           <h2 className="place-card__name">
-            <a
-              href="#"
-              onClick={onClick}
+            <Link
+              to={`/offer/${placeCard.id}`}
+              // onClick={onClick}
             >
               {placeCard.cardName}
-            </a>
+            </Link>
           </h2>
 
           <p className="place-card__type">{placeCard.cardType}</p>

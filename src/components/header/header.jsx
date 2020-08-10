@@ -1,6 +1,7 @@
 import React from "react";
-import {authorizationStatusType, isBoolType, userType} from "../../types/types";
-import {AuthorizationStatus} from "../../const";
+import {Link} from "react-router-dom";
+import {isBoolType, userType} from "../../types/types.js";
+import {AppRoute} from "../../const.js";
 
 const Header = (props) => {
   const {authorizationStatus, isMain = false, user} = props;
@@ -10,9 +11,9 @@ const Header = (props) => {
         ? <a className="header__logo-link header__logo-link--active">
           <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
         </a>
-        : <a className="header__logo-link" href="main.html">
+        : <Link className="header__logo-link" to={AppRoute.ROOT}>
           <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-        </a>
+        </Link>
     );
   };
 
@@ -28,18 +29,17 @@ const Header = (props) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <Link className="header__nav-link header__nav-link--profile" to={!authorizationStatus ? AppRoute.SIGN_IN : AppRoute.FAVORITES}>
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     {
-                      AuthorizationStatus.NO_AUTH === authorizationStatus && (
+                      !authorizationStatus && (
                         <span className="header__login">Sign in</span>
                       ) || (
                         <span className="header__user-name user__name">{user}</span>
                       )
                     }
-
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -51,7 +51,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  authorizationStatus: authorizationStatusType,
+  authorizationStatus: isBoolType,
   isMain: isBoolType,
   user: userType,
 };
