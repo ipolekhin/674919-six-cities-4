@@ -77,6 +77,7 @@ const placeCards = [
 const currentCity = `Amsterdam`;
 const noop = () => {};
 const mockStore = configureStore([]);
+const offerId = 1;
 
 describe(`Offer Test`, () => {
   it(`Render Offer`, () => {
@@ -91,6 +92,8 @@ describe(`Offer Test`, () => {
             <Offer
               authorizationStatus = {authorizationStatus.NO_AUTH}
               currentCity = {currentCity}
+              loadReviews={noop}
+              offerId={offerId}
               onActiveItemChange = {noop}
               placeCards = {placeCards}
             />

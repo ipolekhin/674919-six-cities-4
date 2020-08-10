@@ -53,7 +53,6 @@ const ReviewForm = (props) => {
         action="#"
         method="post"
         onSubmit={onReviewFormSubmit}
-        onChange={onReviewFormChange}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
@@ -67,6 +66,7 @@ const ReviewForm = (props) => {
                     value={value}
                     id={`${value}-stars`}
                     type="radio"
+                    onChange={onReviewFormChange}
                     checked={rating === value}
                     disabled={isFormBlocked}
                   />
@@ -90,6 +90,7 @@ const ReviewForm = (props) => {
           // minLength="50"
           maxLength="300"
           required=""
+          onChange={onReviewFormChange}
           disabled={isFormBlocked}
           value={comment}
         >
