@@ -6,6 +6,7 @@ import {ActionCreator} from "../../reducer/site/site.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {getOffersOfTown, getCurrentCity} from "../../reducer/data/selectors.js";
 // import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
+import PrivateRoute from "../private-route/private-route.jsx";
 import {getActiveOfferId, getSortName, getSortOffers} from "../../reducer/site/selectors.js";
 import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors.js";
 import PageContainer from "../page-container/page-container.jsx";
@@ -17,7 +18,6 @@ import Favorites from "../favorites/favorites.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {
   activeOfferIdType,
-  authorizationStatusType,
   currentCityType,
   functionClickType,
   isBoolType,
@@ -27,7 +27,7 @@ import {
   placeCardsType,
   sortNameType, userType
 } from "../../types/types";
-import {AppRoute, AuthorizationStatus} from "../../const.js";
+import {AppRoute} from "../../const.js";
 
 const OfferWrapped = withActiveItem(Offer);
 
@@ -114,13 +114,16 @@ const App = (props) => {
             {/*  currentCity={currentCity}*/}
             {/*/>*/}
           </Route>
-          <Route exact path={AppRoute.FAVORITES}>
-            {
-              <Favorites
-                onSubmit = {login}
-              />
-            }
-          </Route>
+          <PrivateRoute
+            exact
+            path={AppRoute.FAVORITES}
+            render={() => {
+              return (<Favorites/>);
+            }}
+          />
+          {/*<Route exact path={AppRoute.FAVORITES}>*/}
+          {/*  <Favorites/>*/}
+          {/*</Route>*/}
           <Route
             render={() => (
               <React.Fragment>
