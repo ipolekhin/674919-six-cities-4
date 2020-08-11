@@ -4,9 +4,7 @@ import history from "../../history.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/site/site.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
-import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {getOffersOfTown, getCurrentCity} from "../../reducer/data/selectors.js";
-// import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
 import PrivateRoute from "../private-route/private-route.jsx";
 import {getActiveOfferId, getSortName, getSortOffers} from "../../reducer/site/selectors.js";
 import {getAuthorizationStatus, getLoadingStatus, getUser} from "../../reducer/user/selectors.js";
@@ -16,41 +14,30 @@ import Main from "../main/main.jsx";
 import Offer from "../offer/offer.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 import Favorites from "../favorites/favorites.jsx";
-import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import {
   activeOfferIdType,
   currentCityType,
   functionClickType,
   isBoolType,
-  // functionType,
-  isStringType,
   loginType,
   placeCardsType,
   sortNameType, userType
 } from "../../types/types";
 import {AppRoute} from "../../const.js";
 
-const OfferWrapped = withActiveItem(Offer);
-
 const App = (props) => {
   const {
-    // activeItem,
     activeOfferId,
     authorizationStatus,
     currentCity,
-    favoritesOffers,
-    // loadReviews,
     loading,
     login,
     offersOfTown,
-    // onActiveItemChange,
     onSortClick,
     sortByName,
     sortOffersOfTown,
     user,
   } = props;
-  // console.log(`App - 7`);
-  console.log(currentCity);
 
   return (
     <React.Fragment>
@@ -71,7 +58,6 @@ const App = (props) => {
                   <Main
                     activeOfferId={activeOfferId}
                     currentCity={currentCity}
-                    // onActiveItemChange={onActiveItemChange}
                     placeCards={sortOffersOfTown}
                     onSortClick={onSortClick}
                     sortByName={sortByName}
@@ -124,7 +110,6 @@ const App = (props) => {
               return (
                 <Favorites
                   authorizationStatus={authorizationStatus}
-                  favoritesOffers={favoritesOffers}
                   user={user}
                 />
               );
@@ -142,27 +127,6 @@ const App = (props) => {
               </React.Fragment>
             )}
           />
-
-          {/*<Route exact path="/dev-offer">*/}
-          {/*  <PageContainer*/}
-          {/*    offersOfTown={offersOfTown}*/}
-          {/*    renderContainer={() => (*/}
-          {/*      <div className="page">*/}
-          {/*        <Header*/}
-          {/*          authorizationStatus={authorizationStatus}*/}
-          {/*          user={user}*/}
-          {/*        />*/}
-          {/*        <OfferWrapped*/}
-          {/*          authorizationStatus={authorizationStatus}*/}
-          {/*          currentCity={currentCity}*/}
-          {/*          // loadReviews={loadReviews}*/}
-          {/*          placeCards={offersOfTown}*/}
-          {/*        />*/}
-          {/*      </div>*/}
-          {/*    )}*/}
-          {/*  >*/}
-          {/*  </PageContainer>*/}
-          {/*</Route>*/}
         </Switch>
       </Router>
     </React.Fragment>
@@ -174,7 +138,6 @@ const mapStateToProps = (state) => {
     activeOfferId: getActiveOfferId(state),
     authorizationStatus: getAuthorizationStatus(state),
     currentCity: getCurrentCity(state),
-    // favoritesOffers: getFavoritesOffers(state),
     loading: getLoadingStatus(state),
     offersOfTown: getOffersOfTown(state),
     sortByName: getSortName(state),
@@ -190,21 +153,16 @@ const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
   },
-  // loadReviews(offerId) {
-  //   dispatch(ReviewOperation.getReviews(offerId));
-  // },
 });
 
 App.propTypes = {
   activeOfferId: activeOfferIdType,
   authorizationStatus: isBoolType,
-  // activeItem: isStringType,
   currentCity: currentCityType,
-  // loadReviews: functionType,
+  loading: isBoolType,
   login: loginType,
   offersOfTown: placeCardsType,
   onSortClick: functionClickType,
-  // onActiveItemChange: functionClickType,
   sortByName: sortNameType,
   sortOffersOfTown: placeCardsType,
   user: userType,
@@ -212,4 +170,3 @@ App.propTypes = {
 
 export {App};
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-// export default connect(mapStateToProps, mapDispatchToProps)(App);

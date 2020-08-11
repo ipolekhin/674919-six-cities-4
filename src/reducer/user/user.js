@@ -43,6 +43,7 @@ const Operation = {
         dispatch(ActionCreator.checkLoading(false));
       })
       .catch((err) => {
+        dispatch(ActionCreator.checkLoading(false));
         throw err;
       });
   },

@@ -13,7 +13,6 @@ import {
   placeCardsType,
   sortNameType,
 } from "../../types/types";
-import {OfferCardsClassesType} from "../../const";
 
 const PlacesSortingWrapped = withSort(PlacesSorting);
 const CitiesListWrapped = withActiveItem(CitiesList);
@@ -22,13 +21,11 @@ const Main = (props) => {
   const {
     activeOfferId,
     currentCity,
-    // onActiveItemChange,
     onSortClick,
     placeCards,
     sortByName
   } = props;
   const emptyCityClass = !placeCards.length ? `page__main--index-empty` : ``;
-  // console.log(`Main`);
 
   return (
     <React.Fragment>
@@ -54,7 +51,6 @@ const Main = (props) => {
                   <div className="cities__places-list places__list tabs__content">
                     { <PlaceCards
                       placeCards = {placeCards}
-                      // onActiveItemChange = {onActiveItemChange}
                     /> }
                   </div>
                 </section>
@@ -84,7 +80,6 @@ const Main = (props) => {
 Main.propTypes = {
   activeOfferId: activeOfferIdType,
   currentCity: currentCityType,
-  // onActiveItemChange: functionClickType,
   onSortClick: functionClickType,
   placeCards: placeCardsType,
   sortByName: sortNameType,

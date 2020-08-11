@@ -13,7 +13,6 @@ const PlaceCards = (props) => {
     className,
     placeCards,
     onFavoriteClick,
-    // onActiveItemChange,
     onOptionHover,
     onTitleClick
   } = props;
@@ -27,7 +26,6 @@ const PlaceCards = (props) => {
           onFavoriteClick={onFavoriteClick}
           onOptionHover={onOptionHover}
           key={placeCard.id}
-          // onActiveItemChange={onActiveItemChange}
           onTitleClick={onTitleClick}
           placeCard={placeCard}
         />
@@ -39,7 +37,6 @@ const PlaceCards = (props) => {
 PlaceCards.propTypes = {
   authorizationStatus: isBoolType,
   className: classNameType,
-  // onActiveItemChange: functionClickType,
   onFavoriteClick: functionClickType,
   onOptionHover: functionClickType,
   onTitleClick: functionClickType,

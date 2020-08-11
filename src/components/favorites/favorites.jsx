@@ -21,7 +21,6 @@ class Favorites extends React.PureComponent {
 
   render() {
     const {authorizationStatus, favoritesOffers, sortedFavoritesOffers, user} = this.props;
-    console.log(sortedFavoritesOffers);
 
     return (
       <React.Fragment>

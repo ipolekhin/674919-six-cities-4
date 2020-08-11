@@ -10,7 +10,7 @@ const citiesType = PropTypes.arrayOf(PropTypes.string.isRequired).isRequired;
 
 const cityCoordinateType = PropTypes.arrayOf(PropTypes.number.isRequired).isRequired;
 
-const classNameType = PropTypes.string.isRequired;
+const classNameType = PropTypes.string;
 
 const currentCityType = PropTypes.string;
 

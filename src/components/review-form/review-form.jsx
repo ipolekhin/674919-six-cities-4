@@ -13,38 +13,10 @@ const ReviewForm = (props) => {
     isActive,
     isFormBlocked,
     messageError,
-    // offerId,
-    // onSubmitReview,
     onReviewFormChange,
     onReviewFormSubmit,
     rating,
-    // resetState,
   } = props;
-
-  // const handleSubmit = (event) => {
-  // const handleSubmit = (event) => {
-  //   onReviewFormSubmit(event);
-  //   // event.preventDefault();
-  //   // onSubmitReview(offerId, {
-  //   //   comment,
-  //   //   rating,
-  //   // }).then(() => {
-  //   //   formRef.current.reset();
-  //   //   resetState();
-  //   // });
-  // };
-
-  // const onChange = (event) => {
-  //   onReviewFormChange(event);
-  // };
-
-  // console.log(`isActive`);
-  // console.log(isActive);
-  // console.log(rating);
-  // console.log(`isFormBlocked`);
-  // console.log(isFormBlocked);
-  // console.log(`ReviewForm`);
-  // console.log(messageError, `- messageError 777`);
 
   return (
     <React.Fragment>
@@ -86,8 +58,7 @@ const ReviewForm = (props) => {
           id="review"
           name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
-          minLength="5"
-          // minLength="50"
+          minLength="50"
           maxLength="300"
           required=""
           onChange={onReviewFormChange}
