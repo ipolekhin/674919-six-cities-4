@@ -1,23 +1,19 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
 import Map from "../map/map.jsx";
 import PlaceCards from "../place-cards/place-cards.jsx";
 import Reviews from "../reviews/reviews.jsx";
 import {
-  // authorizationStatusType,
-  currentCityType,
   functionClickType,
   isBoolType,
   isNumberType,
-  isStringType,
   placeCardsType
 } from "../../types/types";
-// import {blockedForm, getReviews} from "../../reducer/reviews/selectors.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
 import {getNearOffers, getOffers} from "../../reducer/data/selectors.js";
-import {Operation as DataOperation} from "../../reducer/data/data";
-import history from "../../history";
-import {AppRoute} from "../../const";
+import history from "../../history.js";
+import {AppRoute} from "../../const.js";
 import {OfferCardsClassesType} from "../../const.js";
 
 const MAX_IMAGES = 6;
@@ -26,7 +22,6 @@ const MAX_NEAR_OFFERS = 3;
 class Offer extends React.PureComponent {
   constructor(props) {
     super(props);
-    // this.offersOfTown = null;
   }
 
   componentDidMount() {
@@ -45,16 +40,12 @@ class Offer extends React.PureComponent {
 
   render() {
     const {
-      // activeItem,
       authorizationStatus,
-      currentCity,
-      // onActiveItemChange,
       nearOffers,
       offerId,
       onFavoriteClick,
       placeCards,
     } = this.props;
-    console.log(nearOffers);
     const activeOffer = placeCards.find((card) => card.id === offerId);
     const onFavoriteButtonClick = (event) => {
       event.preventDefault();
@@ -66,12 +57,6 @@ class Offer extends React.PureComponent {
         : history.push(AppRoute.SIGN_IN));
     };
 
-    // const nearPlaces = placeCards.filter((place) => activeOffer.id !== place.id);
-    console.log(`Offer1`);
-    console.log(placeCards);
-    // console.log(this.props);
-    // console.log(offerId);
-    // console.log(authorizationStatus);
     return (
       <React.Fragment>
         <main className="page__main page__main--property">
@@ -177,14 +162,18 @@ class Offer extends React.PureComponent {
               </div>
             </div>
 
-            <Map
-              activeOfferId = {offerId}
-              currentCity = {activeOffer.townName}
-              placeCards = {nearOffers.slice(0, MAX_NEAR_OFFERS)}
-              renderMap = {(mapRef) => (
-                <section className="property__map map" ref={mapRef}></section>
-              )}
-            />
+            {nearOffers.length
+              ? (<Map
+                activeOfferId={offerId}
+                currentCity={activeOffer.townName}
+                placeCards={nearOffers.slice(0, MAX_NEAR_OFFERS)}
+                activeOffer={activeOffer}
+                renderMap={(mapRef) => (
+                  <section className="property__map map" ref={mapRef}></section>
+                )}
+              />)
+              : (<div>Загрузка...</div>)
+            }
           </section>
 
           <div className="container">
@@ -194,7 +183,6 @@ class Offer extends React.PureComponent {
               <div className="near-places__list places__list">
                 <PlaceCards
                   className = {OfferCardsClassesType.OFFER_CONTAINER}
-                  // onActiveItemChange = {onActiveItemChange}
                   placeCards = {nearOffers.slice(0, MAX_NEAR_OFFERS)}
                 />
               </div>
@@ -207,11 +195,9 @@ class Offer extends React.PureComponent {
 }
 
 Offer.propTypes = {
-  activeItem: isStringType,
   authorizationStatus: isBoolType,
-  currentCity: currentCityType,
   offerId: isNumberType,
-  // onActiveItemChange: functionClickType,
+  onFavoriteClick: functionClickType,
   loadNearByOffer: functionClickType,
   loadReviews: functionClickType,
   placeCards: placeCardsType,

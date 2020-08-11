@@ -27,8 +27,8 @@ export const FIVE_STAR = [5, 4, 3, 2, 1];
 
 export const MapProps = {
   ICON_SIZE: [27, 39],
-  ICON_URL: `img/pin.svg`,
-  ICON_ACTIVE_URL: `img/pin-active.svg`,
+  ICON_URL: `/img/pin.svg`,
+  ICON_ACTIVE_URL: `/img/pin-active.svg`,
   ZOOM: 12,
 };
 
