@@ -65,9 +65,7 @@ const PlaceCard = (props) => {
 
             <button
               className={`place-card__bookmark-button button
-              ${placeCard.favoritePlace
-                ? `place-card__bookmark-button--active`
-                : ``} ${placeCard.favoritePlace}`}
+              ${placeCard.favoritePlace ? `place-card__bookmark-button--active` : ``}`}
               type="button"
               onClick={onFavoriteButtonClick}
             >

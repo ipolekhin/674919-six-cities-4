@@ -3,13 +3,15 @@ import {adapterOffers} from "../../adapters/offers.js";
 
 const initialState = {
   city: `Amsterdam`,
-  offers: [],
   favoriteOffers: [],
+  nearOffers: [],
+  offers: [],
 };
 
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   FAVORITE_OFFERS_LIST: `FAVORITE_OFFERS_LIST`,
+  NEAR_OFFERS_LIST: `NEAR_OFFERS_LIST`,
   OFFERS_LIST: `OFFERS_LIST`,
 };
 
@@ -23,6 +25,10 @@ const ActionCreator = {
   getFavoriteOffers: (offers) => ({
     type: ActionType.FAVORITE_OFFERS_LIST,
     payload: offers
+  }),
+  getNearOffers: (nearOffers) => ({
+    type: ActionType.NEAR_OFFERS_LIST,
+    payload: nearOffers
   }),
   getOffersList: (offers) => {
     return ({
@@ -48,6 +54,12 @@ const Operation = {
         dispatch(ActionCreator.getFavoriteOffers(adapterOffers(response.data)));
       });
   },
+  loadNearOffer: (id) => (dispatch, getState, api) => {
+    return api.get(`/hotels/${id}/nearby`)
+      .then((response) => {
+        dispatch(ActionCreator.getNearOffers(adapterOffers(response.data)));
+      });
+  },
   setFavoriteOffer: (id, status) => (dispatch, getState, api) => {
     return api.post(`/favorite/${id}/${status}`)
       .then(() => {
@@ -68,6 +80,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.FAVORITE_OFFERS_LIST:
       return extend(state, {
         favoriteOffers: action.payload
+      });
+    case ActionType.NEAR_OFFERS_LIST:
+      return extend(state, {
+        nearOffers: action.payload
       });
     case ActionType.OFFERS_LIST:
       return extend(state, {

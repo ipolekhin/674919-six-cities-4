@@ -96,13 +96,25 @@ const App = (props) => {
           <Route
             exact
             path={AppRoute.OFFER}
-            component={Offer}
-          >
-            {/*<Offer*/}
-            {/*  placeCards={offersOfTown}*/}
-            {/*  currentCity={currentCity}*/}
-            {/*/>*/}
-          </Route>
+            render={({match}) => {
+              return (<PageContainer
+                offersOfTown={offersOfTown}
+                renderContainer={() => (
+                  <div className="page">
+                    <Header
+                      authorizationStatus={authorizationStatus}
+                      user={user}
+                    />
+                    <Offer
+                      authorizationStatus={authorizationStatus}
+                      offerId={+match.params.id}
+                    />
+                  </div>
+                )}>
+              </PageContainer>);
+            }}
+          />
+
           <PrivateRoute
             exact
             path={AppRoute.FAVORITES}
@@ -118,9 +130,6 @@ const App = (props) => {
               );
             }}
           />
-          {/*<Route exact path={AppRoute.FAVORITES}>*/}
-          {/*  <Favorites/>*/}
-          {/*</Route>*/}
           <Route
             render={() => (
               <React.Fragment>
@@ -159,42 +168,6 @@ const App = (props) => {
     </React.Fragment>
   );
 };
-
-// const renderOfferScreen = (
-//     activeItem,
-//     activeOfferId,
-//     authorizationStatus,
-//     currentCity,
-//     // loadReviews,
-//     onActiveItemChange,
-//     offersOfTown,
-//     onSortClick,
-//     sortByName,
-//     sortOffersOfTown
-// ) => {
-//   if (activeItem === null) {
-//     return (
-//       <Main
-//         activeOfferId={activeOfferId}
-//         currentCity={currentCity}
-//         onActiveItemChange={onActiveItemChange}
-//         placeCards={sortOffersOfTown}
-//         onSortClick={onSortClick}
-//         sortByName={sortByName}
-//       />
-//     );
-//   } else {
-//     return (
-//       <OfferWrapped
-//         activeOfferId={activeOfferId}
-//         authorizationStatus={authorizationStatus}
-//         currentCity={currentCity}
-//         // loadReviews={loadReviews}
-//         placeCards={offersOfTown}
-//       />
-//     );
-//   }
-// };
 
 const mapStateToProps = (state) => {
   return ({

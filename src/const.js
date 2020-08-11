@@ -83,6 +83,10 @@ export const SORT_NAMES = [
   SortType.TOP_RATED_FIRST,
 ];
 
+export const Sort = {
+  BY_DATE: `BY_DATE`,
+};
+
 export const valid = {
   // MIN_LENGTH_REVIEW: 5,
   MIN_LENGTH_REVIEW: 50,

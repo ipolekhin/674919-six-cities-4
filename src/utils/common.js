@@ -1,5 +1,5 @@
 import moment from "moment";
-import {SortType, TownCoordinates} from "../const.js";
+import {Sort, SortType, TownCoordinates} from "../const.js";
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -52,6 +52,19 @@ const getSortedOffers = (offers, sortType) => {
   return sortedOffers;
 };
 
+const getSortedList = (offers, sortType) => {
+  let sortedList = [];
+  const showingList = offers.slice();
+
+  switch (sortType) {
+    case Sort.BY_DATE:
+      sortedList = showingList.sort((a, b) => new Date(b.date) - new Date(a.date));
+      break;
+  }
+
+  return sortedList;
+};
+
 const getRebuildFavoriteOffers = (offers, towns) => {
   return towns.map(
       (town) => {
@@ -78,6 +91,7 @@ export {
   getRandomIntegerNumber,
   getRandomItem,
   getRebuildFavoriteOffers,
+  getSortedList,
   getSortedOffers,
   reshuffle,
 };

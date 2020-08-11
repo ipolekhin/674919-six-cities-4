@@ -5,14 +5,15 @@ import ReviewForm from "../review-form/review-form.jsx";
 import withReviewForm from '../../hocs/with-review-form/with-review-form.js';
 import {blockedForm, getReviews} from "../../reducer/reviews/selectors.js";
 import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
-import {AuthorizationStatus} from "../../const";
+// import {AuthorizationStatus} from "../../const";
 import {
-  authorizationStatusType,
   functionType,
   isBoolType,
   isNumberType,
   reviewsType,
 } from "../../types/types";
+import {getSortedList} from "../../utils/common.js";
+import {Sort} from "../../const.js";
 const ReviewFormWrapped = withReviewForm(ReviewForm);
 
 const Reviews = (props) => {
@@ -23,8 +24,9 @@ const Reviews = (props) => {
     onSubmitReview,
     reviews
   } = props;
+  const MAX_REVIEWS = 10;
   // console.log(offerId, `offerId`);
-  // console.log(reviews, `reviews`);
+  const sortedReviews = getSortedList(reviews, Sort.BY_DATE);
 
   return (
     <React.Fragment>
@@ -32,10 +34,10 @@ const Reviews = (props) => {
         <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviews.length}</span></h2>
 
         <ReviewsList
-          reviews = {reviews}
+          reviews = {sortedReviews.slice(0, MAX_REVIEWS)}
         />
 
-        {authorizationStatus === AuthorizationStatus.AUTH && (
+        {authorizationStatus && (
           <ReviewFormWrapped
             isFormBlocked={isFormBlocked}
             offerId={offerId}
@@ -56,13 +58,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmitReview(offerId, data) {
-    // dispatch(ReviewOperation.postReview(offerId, data));
     return dispatch(ReviewOperation.postReview(offerId, data));
   },
 });
 
 Reviews.propTypes = {
-  authorizationStatus: authorizationStatusType,
+  authorizationStatus: isBoolType,
   isFormBlocked: isBoolType,
   offerId: isNumberType,
   onSubmitReview: functionType,
