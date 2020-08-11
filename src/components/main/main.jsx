@@ -53,7 +53,6 @@ const Main = (props) => {
 
                   <div className="cities__places-list places__list tabs__content">
                     { <PlaceCards
-                      className = {OfferCardsClassesType.MAIN_CONTAINER}
                       placeCards = {placeCards}
                       // onActiveItemChange = {onActiveItemChange}
                     /> }

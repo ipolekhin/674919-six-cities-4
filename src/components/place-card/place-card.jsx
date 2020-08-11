@@ -1,7 +1,7 @@
 import React from "react";
 import {classNameType, placeCardType, functionClickType, isBoolType} from "../../types/types";
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../const";
+import {AppRoute, OfferCardsClassesType} from "../../const";
 import history from "../../history.js";
 
 const PlaceCard = (props) => {
@@ -21,16 +21,22 @@ const PlaceCard = (props) => {
   //   // onActiveItemChange(placeCard.id);
   //   onTitleClick(placeCard.id);
   // };
-
   const onFavoriteButtonClick = (event) => {
     event.preventDefault();
-    return (authorizationStatus ? onFavoriteClick(placeCard.id, placeCard.favoritePlace) : history.push(AppRoute.SIGN_IN));
+    return (authorizationStatus
+      ? (() => {
+        onFavoriteClick(placeCard.id, +!placeCard.favoritePlace);
+        placeCard.favoritePlace = !placeCard.favoritePlace;
+      })()
+      : history.push(AppRoute.SIGN_IN));
   };
+  const imageWidth = className === OfferCardsClassesType.FAVORITES_CONTAINER ? 150 : 260;
+  const imageHeight = className === OfferCardsClassesType.FAVORITES_CONTAINER ? 110 : 200;
 
   return (
     <React.Fragment>
       <article
-        className={`${className} place-card`}
+        className={(className ? `${className}__card place-card` : `${OfferCardsClassesType.MAIN_CONTAINER} place-card`)}
         onMouseOver={(event) => {
           event.preventDefault();
           onOptionHover(placeCard.id);
@@ -43,9 +49,9 @@ const PlaceCard = (props) => {
           </div>
         )}
 
-        <div className="cities__image-wrapper place-card__image-wrapper">
+        <div className={`${className}__image-wrapper place-card__image-wrapper`}>
           <Link to={`/offer/${placeCard.id}`}>
-            <img className="place-card__image" src={placeCard.image} width="260" height="200" alt="Place image" />
+            <img className="place-card__image" src={placeCard.image} width={imageWidth} height={imageHeight} alt="Place image" />
           </Link>
         </div>
 
@@ -58,7 +64,10 @@ const PlaceCard = (props) => {
             </div>
 
             <button
-              className={`place-card__bookmark-button button ${placeCard.favoritePlace ? `place-card__bookmark-button--active` : ``} ${placeCard.favoritePlace}`}
+              className={`place-card__bookmark-button button
+              ${placeCard.favoritePlace
+                ? `place-card__bookmark-button--active`
+                : ``} ${placeCard.favoritePlace}`}
               type="button"
               onClick={onFavoriteButtonClick}
             >

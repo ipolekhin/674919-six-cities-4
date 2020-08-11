@@ -1,5 +1,7 @@
 import {createSelector} from "reselect";
 import NameSpace from "../name-space.js";
+import {getRebuildFavoriteOffers} from "../../utils/common.js";
+import {SortByType} from "../../const";
 
 const NAME_SPACE = NameSpace.DATA;
 
@@ -20,9 +22,21 @@ export const getCities = (state) => {
   return [...new Set(cities)];
 };
 
-export const getFavoritesOffers = (state) => {
+export const getFavoriteOffers = (state) => {
   return state[NAME_SPACE].favoriteOffers;
 };
+
+export const getSortByTown = () => {
+  return SortByType.TOWN;
+};
+
+export const getSortedFavoriteOffers = createSelector(
+    getFavoriteOffers,
+    getCities,
+    (resultOne, resultTwo) => {
+      return getRebuildFavoriteOffers(resultOne, resultTwo);
+    }
+);
 
 export const getSortByName = (state) => {
   return state[NAME_SPACE].sortByName;

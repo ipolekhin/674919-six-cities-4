@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/site/site.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
-import {getOffersOfTown, getCurrentCity, getFavoritesOffers} from "../../reducer/data/selectors.js";
+import {getOffersOfTown, getCurrentCity} from "../../reducer/data/selectors.js";
 // import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
 import PrivateRoute from "../private-route/private-route.jsx";
 import {getActiveOfferId, getSortName, getSortOffers} from "../../reducer/site/selectors.js";
@@ -50,7 +50,7 @@ const App = (props) => {
     user,
   } = props;
   // console.log(`App - 7`);
-  // console.log(loading);
+  console.log(currentCity);
 
   return (
     <React.Fragment>
@@ -76,20 +76,6 @@ const App = (props) => {
                     onSortClick={onSortClick}
                     sortByName={sortByName}
                   />
-                  {/*{*/}
-                  {/*  renderOfferScreen(*/}
-                  {/*      activeItem,*/}
-                  {/*      activeOfferId,*/}
-                  {/*      authorizationStatus,*/}
-                  {/*      currentCity,*/}
-                  {/*      // loadReviews,*/}
-                  {/*      onActiveItemChange,*/}
-                  {/*      offersOfTown,*/}
-                  {/*      onSortClick,*/}
-                  {/*      sortByName,*/}
-                  {/*      sortOffersOfTown*/}
-                  {/*  )*/}
-                  {/*}*/}
                 </div>
               )}>
             </PageContainer>
@@ -125,6 +111,7 @@ const App = (props) => {
             render={() => {
               return (
                 <Favorites
+                  authorizationStatus={authorizationStatus}
                   favoritesOffers={favoritesOffers}
                   user={user}
                 />
@@ -214,7 +201,7 @@ const mapStateToProps = (state) => {
     activeOfferId: getActiveOfferId(state),
     authorizationStatus: getAuthorizationStatus(state),
     currentCity: getCurrentCity(state),
-    favoritesOffers: getFavoritesOffers(state),
+    // favoritesOffers: getFavoritesOffers(state),
     loading: getLoadingStatus(state),
     offersOfTown: getOffersOfTown(state),
     sortByName: getSortName(state),

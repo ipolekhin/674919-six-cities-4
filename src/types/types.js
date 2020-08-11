@@ -60,6 +60,13 @@ const placeCardType = PropTypes.shape({
 
 const placeCardsType = PropTypes.arrayOf(placeCardType).isRequired;
 
+const sortedFavoritesOffersType = PropTypes.arrayOf(
+    PropTypes.shape({
+      town: PropTypes.string.isRequired,
+      offers: PropTypes.arrayOf(placeCardType),
+    }).isRequired
+).isRequired;
+
 const renderFunctionType = PropTypes.func.isRequired;
 
 const reviewType = PropTypes.shape({
@@ -97,5 +104,6 @@ export {
   reviewType,
   reviewsType,
   sortNameType,
+  sortedFavoritesOffersType,
   userType,
 };

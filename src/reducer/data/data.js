@@ -2,7 +2,7 @@ import {extend} from "../../utils/common.js";
 import {adapterOffers} from "../../adapters/offers.js";
 
 const initialState = {
-  city: ``,
+  city: `Amsterdam`,
   offers: [],
   favoriteOffers: [],
 };
@@ -36,9 +36,7 @@ const Operation = {
   getOffersList: () => (dispatch, getState, api) => {
     return api.get(`/hotels`)
       .then((response) => {
-        const allOffers = adapterOffers(response.data);
-        dispatch(ActionCreator.getOffersList(allOffers));
-        dispatch(ActionCreator.changeCity(allOffers[0].townName));
+        dispatch(ActionCreator.getOffersList(adapterOffers(response.data)));
       })
       .catch((err) => {
         throw err;
@@ -47,11 +45,11 @@ const Operation = {
   loadFavoritesOffers: () => (dispatch, getState, api) => {
     return api.get(`/favorite`)
       .then((response) => {
-        dispatch(ActionCreator.getFavoriteOffers(response.data));
+        dispatch(ActionCreator.getFavoriteOffers(adapterOffers(response.data)));
       });
   },
   setFavoriteOffer: (id, status) => (dispatch, getState, api) => {
-    return api.post(`/favorite/${id}/${+!status}`)
+    return api.post(`/favorite/${id}/${status}`)
       .then(() => {
         dispatch(Operation.getOffersList());
       })

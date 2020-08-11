@@ -33,8 +33,9 @@ export const MapProps = {
 };
 
 export const OfferCardsClassesType = {
+  FAVORITES_CONTAINER: `favorites`,
   MAIN_CONTAINER: `cities__place-card`,
-  OFFER_CONTAINER: `near-places__card`,
+  OFFER_CONTAINER: `near-places`,
 };
 
 export const Ratings = [`20%`, `40%`, `60%`, `80%`, `100%`];
@@ -83,8 +84,8 @@ export const SORT_NAMES = [
 ];
 
 export const valid = {
-  MIN_LENGTH_REVIEW: 5,
-  // MIN_LENGTH_REVIEW: 50,
+  // MIN_LENGTH_REVIEW: 5,
+  MIN_LENGTH_REVIEW: 50,
   MAX_LENGTH_REVIEW: 300,
   TEXT_WRONG: `Текст отзыва должен содержать от 50 до 300 символов.`,
 };

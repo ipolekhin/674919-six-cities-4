@@ -1,6 +1,5 @@
 import moment from "moment";
-import {TownCoordinates} from "../const";
-import {SortType} from "../const";
+import {SortType, TownCoordinates} from "../const.js";
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -53,6 +52,17 @@ const getSortedOffers = (offers, sortType) => {
   return sortedOffers;
 };
 
+const getRebuildFavoriteOffers = (offers, towns) => {
+  return towns.map(
+      (town) => {
+        return {
+          town,
+          offers: offers.filter((offer) => offer.townName === town),
+        };
+      }
+  );
+};
+
 const reshuffle = (data, maxNumber) => {
   const shuffle = data.slice().sort(() => Math.random() - 0.5);
   shuffle.length = getRandomIntegerNumber(1, maxNumber);
@@ -67,6 +77,7 @@ export {
   getRandomCoordinateOffer,
   getRandomIntegerNumber,
   getRandomItem,
+  getRebuildFavoriteOffers,
   getSortedOffers,
   reshuffle,
 };
