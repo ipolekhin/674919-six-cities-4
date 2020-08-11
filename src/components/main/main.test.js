@@ -4,13 +4,14 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
 import NameSpace from "../../reducer/name-space.js";
+import {Router} from 'react-router-dom';
+import history from '../../history';
 
 const activeOfferId = 1;
-// const cities = [`Amsterdam`, `Dusseldorf`];
+const authorizationStatus = false;
 const currentCity = `Amsterdam`;
 const mockStore = configureStore([]);
-const onActiveItemChange = () => {};
-const onSortClick = () => {};
+const noop = () => {};
 const placeCards = [{
   adults: 3,
   townName: `Amsterdam`,
@@ -51,19 +52,25 @@ describe(`Main Test`, () => {
       [NameSpace.DATA]: {
         offers: [],
       },
+      [NameSpace.USER]: {
+        authorizationStatus: false,
+      },
     });
     const tree = renderer
       .create(
           <Provider store={store}>
-            <Main
-              activeOfferId = {activeOfferId}
-              currentCity = {currentCity}
-              offers = {placeCards}
-              onActiveItemChange = {onActiveItemChange}
-              onSortClick = {onSortClick}
-              placeCards = {placeCards}
-              sortByName = {sortByName}
-            />
+            <Router
+              history={history}
+            >
+              <Main
+                authorizationStatus={authorizationStatus}
+                activeOfferId = {activeOfferId}
+                currentCity = {currentCity}
+                onSortClick = {noop}
+                placeCards = {placeCards}
+                sortByName = {sortByName}
+              />
+            </Router>
           </Provider>
       )
       .toJSON();

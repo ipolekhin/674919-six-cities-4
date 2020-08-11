@@ -1,7 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {PlaceCards} from "./place-cards.jsx";
+import {Router} from 'react-router-dom';
+import history from '../../history';
 
+const authorizationStatus = false;
+const className = `page`;
+const noop = () => {};
 const placeCards = [
   {
     adults: 3,
@@ -69,21 +74,22 @@ const placeCards = [
   },
 ];
 
-const className = `page`;
-
-const noop = () => {};
-
 describe(`PlaceCards Test`, () => {
   it(`Render PlaceCards`, () => {
     const tree = renderer
       .create(
-          <PlaceCards
-            className={className}
-            placeCards={placeCards}
-            onActiveItemChange={noop}
-            onOptionHover={noop}
-            onTitleClick = {noop}
-          />
+          <Router
+            history={history}
+          >
+            <PlaceCards
+              authorizationStatus={authorizationStatus}
+              className={className}
+              onFavoriteClick = {noop}
+              onOptionHover={noop}
+              onTitleClick={noop}
+              placeCards={placeCards}
+            />
+          </Router>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

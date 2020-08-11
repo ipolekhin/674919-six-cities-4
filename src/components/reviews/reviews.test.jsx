@@ -4,12 +4,10 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {Reviews} from "./reviews.jsx";
 
-const authorizationStatus = {
-  NO_AUTH: `NO_AUTH`,
-};
+const authorizationStatus = false;
 const mockStore = configureStore([]);
-const offerId = 1;
 const noop = () => {};
+const offerId = 1;
 const reviews = [
   {
     date: `2020-06-21T16:06:01.820Z`,

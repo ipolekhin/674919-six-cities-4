@@ -5,7 +5,6 @@ import ReviewForm from "../review-form/review-form.jsx";
 import withReviewForm from '../../hocs/with-review-form/with-review-form.js';
 import {blockedForm, getReviews} from "../../reducer/reviews/selectors.js";
 import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
-// import {AuthorizationStatus} from "../../const";
 import {
   functionType,
   isBoolType,
@@ -25,7 +24,6 @@ const Reviews = (props) => {
     reviews
   } = props;
   const MAX_REVIEWS = 10;
-  // console.log(offerId, `offerId`);
   const sortedReviews = getSortedList(reviews, Sort.BY_DATE);
 
   return (

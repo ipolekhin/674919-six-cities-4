@@ -82,27 +82,29 @@ const offerRaw = [
 describe(`Reducer Data Test`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
-      city: ``,
+      city: `Amsterdam`,
+      favoriteOffers: [],
+      nearOffers: [],
       offers: [],
     });
   });
 
   it(`Reducer should load offers`, () => {
     expect(reducer({
-      city: ``,
+      city: `Amsterdam`,
       offers: [],
     }, {
       type: ActionType.OFFERS_LIST,
       payload: offersOfTown,
     })).toEqual({
-      city: ``,
+      city: `Amsterdam`,
       offers: offersOfTown,
     });
   });
 
   it(`Reducer should change city name by a given value`, () => {
     expect(reducer({
-      city: ``,
+      city: `Amsterdam`,
       offersOfTown,
     }, {
       type: ActionType.CHANGE_CITY,
@@ -123,7 +125,7 @@ describe(`Reducer Data Test`, () => {
 
     return offersList(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.OFFERS_LIST,
           payload: adapterOffers(offerRaw),

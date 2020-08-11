@@ -2,12 +2,10 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import Offer from "./offer.jsx";
+import {Offer} from "./offer.jsx";
 import NameSpace from "../../reducer/name-space.js";
 
-const authorizationStatus = {
-  NO_AUTH: `NO_AUTH`,
-};
+const authorizationStatus = false;
 const placeCards = [
   {
     adults: 3,
@@ -74,6 +72,39 @@ const placeCards = [
     },
   },
 ];
+const activeOffer = {
+  adults: 2,
+  townName: `Amsterdam`,
+  bedrooms: 1,
+  cardName: `Wood and stone place`,
+  cardRating: 3.6,
+  cardRatingStars: `92%`,
+  cardType: `Room`,
+  coordinatesItem: [52.369553943508, 4.85309666406198],
+  description: `Text text....`,
+  id: 2,
+  image: `img/apartment-01.jpg`,
+  images: [`img/apartment-01.jpg`, `img/apartment-02.jpg`],
+  insideItems: [`wi-fi`, `bathroom`],
+  premiumPlace: true,
+  price: 120,
+  reviews: [
+    {
+      date: new Date(2020, 7, 15),
+      id: 1,
+      rating: 4,
+      text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+      userAvatar: `img/avatar-max.jpg`,
+      userName: `John`,
+    }
+  ],
+  user: {
+    name: `Angelina`,
+    avatar: `img/avatar-angelina.jpg`,
+    pro: true,
+  },
+};
+const nearOffers = [];
 const currentCity = `Amsterdam`;
 const noop = () => {};
 const mockStore = configureStore([]);
@@ -85,17 +116,27 @@ describe(`Offer Test`, () => {
       [NameSpace.REVIEWS]: {
         reviews: [],
       },
+      [NameSpace.USER]: {
+        authorizationStatus: false,
+      },
+      [NameSpace.DATA]: {
+        offers: [],
+      },
     });
     const tree = renderer
       .create(
           <Provider store={store}>
             <Offer
-              authorizationStatus = {authorizationStatus.NO_AUTH}
-              currentCity = {currentCity}
+              activeOffer={activeOffer}
+              authorizationStatus={authorizationStatus}
+              currentCity={currentCity}
               loadReviews={noop}
+              loadNearByOffer={noop}
               offerId={offerId}
-              onActiveItemChange = {noop}
-              placeCards = {placeCards}
+              offers={placeCards}
+              onFavoriteClick={noop}
+              nearOffers={nearOffers}
+              placeCards={placeCards}
             />
           </Provider>
       )

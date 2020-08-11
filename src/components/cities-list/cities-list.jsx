@@ -9,8 +9,8 @@ const CitiesList = (props) => {
   const {
     activeItem,
     cities,
+    onActiveItemChange,
     onCityClick,
-    onActiveItemChange
   } = props;
 
   return (

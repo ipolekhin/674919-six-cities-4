@@ -5,9 +5,7 @@ import configureStore from "redux-mock-store";
 import {App} from "./app.jsx";
 import NameSpace from "../../reducer/name-space.js";
 
-const authorizationStatus = {
-  NO_AUTH: `NO_AUTH`,
-};
+const authorizationStatus = false;
 const mockStore = configureStore([]);
 const currentCity = `Amsterdam`;
 const offersOfTown = [{
@@ -54,18 +52,23 @@ describe(`App Test`, () => {
       [NameSpace.REVIEWS]: {
         reviews: [],
       },
+      [NameSpace.USER]: {
+        authorizationStatus: false,
+      },
+      [NameSpace.DATA]: {
+        offers: [],
+      },
     });
     const tree = renderer
       .create(
           <Provider store={store}>
             <App
-              authorizationStatus={authorizationStatus.NO_AUTH}
+              authorizationStatus={authorizationStatus}
               currentCity={currentCity}
               login={noop}
               offers={offersOfTown}
               offersOfTown={offersOfTown}
               onSortClick={noop}
-              onActiveItemChange={noop}
               sortByName={sortByName}
               sortOffersOfTown={offersOfTown}
             />

@@ -10,17 +10,9 @@ const PlaceCard = (props) => {
     className,
     onFavoriteClick,
     onOptionHover,
-    // onActiveItemChange,
-    // onTitleClick,
     placeCard
   } = props;
-  // console.log(authorizationStatus);
 
-  // const onClick = (event) => {
-  //   event.preventDefault();
-  //   // onActiveItemChange(placeCard.id);
-  //   onTitleClick(placeCard.id);
-  // };
   const onFavoriteButtonClick = (event) => {
     event.preventDefault();
     return (authorizationStatus
@@ -88,7 +80,6 @@ const PlaceCard = (props) => {
           <h2 className="place-card__name">
             <Link
               to={`/offer/${placeCard.id}`}
-              // onClick={onClick}
             >
               {placeCard.cardName}
             </Link>
@@ -104,9 +95,7 @@ const PlaceCard = (props) => {
 PlaceCard.propTypes = {
   authorizationStatus: isBoolType,
   className: classNameType,
-  // onActiveItemChange: functionClickType,
   onFavoriteClick: functionClickType,
-  // onTitleClick: functionClickType,
   onOptionHover: functionClickType,
   placeCard: (placeCardType).isRequired,
 };

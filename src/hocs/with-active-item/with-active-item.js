@@ -11,7 +11,6 @@ const withActiveItem = (Component) => {
     }
 
     handleActiveItemChange(value) {
-      // this.setState(() => ({offer: this.props.offersOfTown.find((card) => card.id === offerId)}));
       this.setState(() => (
         {
           activeItem: value,

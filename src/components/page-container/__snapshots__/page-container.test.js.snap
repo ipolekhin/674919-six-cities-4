@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageContainer Test Render PageContainer 1`] = `
-<div>
-  Загрузка данных
-</div>
+<div
+  className="page page--gray page--main"
+/>
 `;

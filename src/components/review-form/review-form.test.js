@@ -8,7 +8,7 @@ describe(`ReviewForm Test`, () => {
   it(`AuthScreen component render correctly`, () => {
     const tree = renderer.create(
         <ReviewForm
-          onReviewFormSubmit = {noop}
+          onReviewFormSubmit={noop}
           onReviewFormChange={noop}
         />
     ).toJSON();

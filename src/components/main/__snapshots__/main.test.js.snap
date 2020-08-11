@@ -115,17 +115,18 @@ exports[`Main Test Render MainScreen 1`] = `
               </span>
             </div>
             <div
-              className="cities__image-wrapper place-card__image-wrapper"
+              className="undefined__image-wrapper place-card__image-wrapper"
             >
               <a
-                href="#"
+                href="/offer/1"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  height="200"
+                  height={200}
                   src="img/apartment-01.jpg"
-                  width="260"
+                  width={260}
                 />
               </a>
             </div>
@@ -151,7 +152,9 @@ exports[`Main Test Render MainScreen 1`] = `
                   </span>
                 </div>
                 <button
-                  className="place-card__bookmark-button button"
+                  className="place-card__bookmark-button button
+              "
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -194,7 +197,7 @@ exports[`Main Test Render MainScreen 1`] = `
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/1"
                   onClick={[Function]}
                 >
                   Wood and stone place

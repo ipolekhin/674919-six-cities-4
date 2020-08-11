@@ -23,9 +23,9 @@ const PlaceCards = (props) => {
         <PlaceCard
           authorizationStatus={authorizationStatus}
           className={className}
+          key={placeCard.id}
           onFavoriteClick={onFavoriteClick}
           onOptionHover={onOptionHover}
-          key={placeCard.id}
           onTitleClick={onTitleClick}
           placeCard={placeCard}
         />

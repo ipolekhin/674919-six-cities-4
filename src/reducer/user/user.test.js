@@ -10,6 +10,7 @@ describe(`Reducer User Test`, () => {
     expect(reducer(void 0, {})).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       user: null,
+      isLoading: true,
     });
   });
 

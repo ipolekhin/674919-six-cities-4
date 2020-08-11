@@ -1,7 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import PlaceCard from "./place-card.jsx";
+import {Router} from 'react-router-dom';
+import history from '../../history';
 
+const authorizationStatus = false;
 const className = `page`;
 const noop = () => {};
 const placeCard = {
@@ -40,13 +43,19 @@ const placeCard = {
 describe(`PlaceCard Test`, () => {
   it(`Render PlaceCard`, () => {
     const tree = renderer
-      .create(<PlaceCard
-        className={className}
-        onOptionHover={noop}
-        onActiveItemChange={noop}
-        onTitleClick={noop}
-        placeCard={placeCard}
-      />)
+      .create(
+          <Router
+            history={history}
+          >
+            <PlaceCard
+              authorizationStatus={authorizationStatus}
+              className={className}
+              onFavoriteClick={noop}
+              onOptionHover={noop}
+              placeCard={placeCard}
+            />
+          </Router>
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();

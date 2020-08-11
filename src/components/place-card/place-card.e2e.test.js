@@ -1,8 +1,10 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import PlaceCard from "./place-card";
+import PlaceCard from "./place-card.jsx";
 
+const authorizationStatus = false;
+const className = `page`;
 const placeCard = {
   adults: 3,
   townName: `Amsterdam`,
@@ -36,8 +38,6 @@ const placeCard = {
   },
 };
 
-const className = `page`;
-
 Enzyme.configure({
   adapter: new Adapter(),
 });
@@ -45,14 +45,13 @@ Enzyme.configure({
 describe(`PlaceCard e2e test`, () => {
   it(`Should mouse on card and get cardID`, () => {
     const onOptionHover = jest.fn((placeCardId) => placeCardId);
-    const onActiveItemChange = jest.fn();
-    const onTitleClick = jest.fn();
+    const onFavoriteClick = jest.fn();
     const placeCardComponent = shallow(
         <PlaceCard
+          authorizationStatus={authorizationStatus}
           className={className}
+          onFavoriteClick={onFavoriteClick}
           onOptionHover={onOptionHover}
-          onActiveItemChange={onActiveItemChange}
-          onTitleClick={onTitleClick}
           placeCard={placeCard}
         />
     );

@@ -100,7 +100,6 @@ const App = (props) => {
               </PageContainer>);
             }}
           />
-
           <PrivateRoute
             exact
             path={AppRoute.FAVORITES}

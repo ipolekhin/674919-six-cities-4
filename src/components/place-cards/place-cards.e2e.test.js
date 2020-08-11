@@ -71,7 +71,6 @@ const placeCards = [
 ];
 
 const className = `page`;
-const onOptionHover = () => {};
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -79,12 +78,13 @@ Enzyme.configure({
 
 describe(`PlaceCards e2e test`, () => {
   it(`Should title click handler be pressed`, () => {
-    const onActiveItemChange = jest.fn();
+    const onFavoriteClick = jest.fn();
+    const onOptionHover = jest.fn();
     const onTitleClick = jest.fn();
     const placeCardsComponent = shallow(
         <PlaceCards
           className = {className}
-          onActiveItemChange = {onActiveItemChange}
+          onFavoriteClick = {onFavoriteClick}
           onOptionHover = {onOptionHover}
           onTitleClick = {onTitleClick}
           placeCards = {placeCards}
@@ -97,6 +97,6 @@ describe(`PlaceCards e2e test`, () => {
       link.props().onClick();
     });
 
-    expect(onActiveItemChange.mock.calls.length).toBe(titleLinkBefore.length);
+    expect(onTitleClick.mock.calls.length).toBe(titleLinkBefore.length);
   });
 });

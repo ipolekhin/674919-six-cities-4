@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import PageContainer from "./page-container.jsx";
 
-const offersOfTown = [];
+const offersOfTown = [`Amsterdam`, `Paris`];
 
 describe(`PageContainer Test`, () => {
   it(`Render PageContainer`, () => {

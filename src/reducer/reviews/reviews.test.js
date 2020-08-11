@@ -1,4 +1,3 @@
-// import {ActionType, ActionCreator, reducer} from "./reviews.js";
 import {reducer} from "./reviews.js";
 
 describe(`Reducer Reviews Test`, () => {
