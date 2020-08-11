@@ -14,7 +14,7 @@ const PlaceCard = (props) => {
     // onTitleClick,
     placeCard
   } = props;
-  console.log(authorizationStatus);
+  // console.log(authorizationStatus);
 
   // const onClick = (event) => {
   //   event.preventDefault();

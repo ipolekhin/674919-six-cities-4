@@ -4,10 +4,12 @@ import {adapterOffers} from "../../adapters/offers.js";
 const initialState = {
   city: ``,
   offers: [],
+  favoriteOffers: [],
 };
 
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
+  FAVORITE_OFFERS_LIST: `FAVORITE_OFFERS_LIST`,
   OFFERS_LIST: `OFFERS_LIST`,
 };
 
@@ -18,6 +20,10 @@ const ActionCreator = {
       payload: city,
     });
   },
+  getFavoriteOffers: (offers) => ({
+    type: ActionType.FAVORITE_OFFERS_LIST,
+    payload: offers
+  }),
   getOffersList: (offers) => {
     return ({
       type: ActionType.OFFERS_LIST,
@@ -38,6 +44,12 @@ const Operation = {
         throw err;
       });
   },
+  loadFavoritesOffers: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        dispatch(ActionCreator.getFavoriteOffers(response.data));
+      });
+  },
   setFavoriteOffer: (id, status) => (dispatch, getState, api) => {
     return api.post(`/favorite/${id}/${+!status}`)
       .then(() => {
@@ -55,7 +67,10 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         city: action.payload,
       });
-
+    case ActionType.FAVORITE_OFFERS_LIST:
+      return extend(state, {
+        favoriteOffers: action.payload
+      });
     case ActionType.OFFERS_LIST:
       return extend(state, {
         offers: action.payload,

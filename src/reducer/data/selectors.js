@@ -20,6 +20,10 @@ export const getCities = (state) => {
   return [...new Set(cities)];
 };
 
+export const getFavoritesOffers = (state) => {
+  return state[NAME_SPACE].favoriteOffers;
+};
+
 export const getSortByName = (state) => {
   return state[NAME_SPACE].sortByName;
 };

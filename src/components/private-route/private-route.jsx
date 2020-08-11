@@ -1,40 +1,55 @@
 import React from "react";
 import {Route, Redirect} from "react-router-dom";
-import {connect} from "react-redux";
-import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+// import {connect} from "react-redux";
+// import {getAuthorizationStatus, getLoadingStatus} from "../../reducer/user/selectors.js";
 import {functionType, isBoolType, isStringType} from "../../types/types.js";
 import {AppRoute} from "../../const";
+// import {Operation as UserOperation} from "../../reducer/user/user.js";
+
 
 const PrivateRoute = (props) => {
-  const {authorizationStatus, render, path, exact} = props;
+  const {authorizationStatus, loading, render, path, exact} = props;
+  console.log(`PrivateRoute loading`);
+  console.log(loading);
 
   return (
-    <Route
-      path={path}
-      exact={exact}
-      render={() => {
-        return (
-          authorizationStatus
-            ? render()
-            : <Redirect to={AppRoute.SIGN_IN} />
-        );
-      }
-      }
-    />
+    loading
+      ? <div>Загрузка данных</div>
+      : <Route
+        path={path}
+        exact={exact}
+        render={() => {
+          return (
+            authorizationStatus
+              ? render()
+              : <Redirect to={AppRoute.SIGN_IN} />
+          );
+        }
+        }
+      />
   );
 };
 
 PrivateRoute.propTypes = {
   authorizationStatus: isBoolType,
   exact: isBoolType,
-  isUserAuthorized: functionType,
   path: isStringType,
   render: functionType,
+  // checkAuth: functionType,
+  loading: isBoolType,
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-});
+// const mapStateToProps = (state) => ({
+//   authorizationStatus: getAuthorizationStatus(state),
+//   loading: getLoadingStatus(state),
+// });
 
-export {PrivateRoute};
-export default connect(mapStateToProps)(PrivateRoute);
+// const mapDispatchToProps = (dispatch) => ({
+//   checkAuth() {
+//     dispatch(UserOperation.checkAuth());
+//   },
+// });
+
+export default PrivateRoute;
+// export {PrivateRoute};
+// export default connect(mapStateToProps)(PrivateRoute);

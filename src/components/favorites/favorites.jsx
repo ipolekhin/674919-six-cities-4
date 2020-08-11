@@ -1,6 +1,14 @@
 import React from "react";
+// import {connect} from "react-redux";
+// import {getFavoritesOffers} from "../../reducer/data/selectors.js";
+// import {Operation as DataOperation} from "../../reducer/data/data.js";
 
-const Favorites = () => {
+const Favorites = (props) => {
+  const {favoritesOffers, user} = props;
+  // loadFavoritesOffers();
+  console.log(favoritesOffers);
+  console.log(user);
+
   return (
     <React.Fragment>
       <div className="page">
@@ -163,4 +171,18 @@ const Favorites = () => {
   );
 };
 
+// const mapStateToProps = (state) => {
+//   return ({
+//     favoritesOffers: getFavoritesOffers(state),
+//   });
+// };
+
+// const mapDispatchToProps = (dispatch) => ({
+//   loadFavoritesOffers() {
+//     dispatch(DataOperation.loadFavoritesOffers());
+//   },
+// });
+
 export default Favorites;
+// export {Favorites};
+// export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

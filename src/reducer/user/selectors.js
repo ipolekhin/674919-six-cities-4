@@ -7,6 +7,10 @@ export const getAuthorizationStatus = (state) => {
   return (state[NAME_SPACE].authorizationStatus === AuthorizationStatus.AUTH);
 };
 
+export const getLoadingStatus = (state) => {
+  return state[NameSpace.USER].isLoading;
+};
+
 export const getUser = (state) => {
   return state[NameSpace.USER].user;
 };

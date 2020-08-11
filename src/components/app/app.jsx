@@ -4,11 +4,12 @@ import history from "../../history.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/site/site.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
-import {getOffersOfTown, getCurrentCity} from "../../reducer/data/selectors.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {getOffersOfTown, getCurrentCity, getFavoritesOffers} from "../../reducer/data/selectors.js";
 // import {Operation as ReviewOperation} from '../../reducer/reviews/reviews.js';
 import PrivateRoute from "../private-route/private-route.jsx";
 import {getActiveOfferId, getSortName, getSortOffers} from "../../reducer/site/selectors.js";
-import {getAuthorizationStatus, getUser} from "../../reducer/user/selectors.js";
+import {getAuthorizationStatus, getLoadingStatus, getUser} from "../../reducer/user/selectors.js";
 import PageContainer from "../page-container/page-container.jsx";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
@@ -37,7 +38,9 @@ const App = (props) => {
     activeOfferId,
     authorizationStatus,
     currentCity,
+    favoritesOffers,
     // loadReviews,
+    loading,
     login,
     offersOfTown,
     // onActiveItemChange,
@@ -47,7 +50,7 @@ const App = (props) => {
     user,
   } = props;
   // console.log(`App - 7`);
-  // console.log(authorizationStatus);
+  // console.log(loading);
 
   return (
     <React.Fragment>
@@ -117,8 +120,15 @@ const App = (props) => {
           <PrivateRoute
             exact
             path={AppRoute.FAVORITES}
+            authorizationStatus={authorizationStatus}
+            loading={loading}
             render={() => {
-              return (<Favorites/>);
+              return (
+                <Favorites
+                  favoritesOffers={favoritesOffers}
+                  user={user}
+                />
+              );
             }}
           />
           {/*<Route exact path={AppRoute.FAVORITES}>*/}
@@ -204,6 +214,8 @@ const mapStateToProps = (state) => {
     activeOfferId: getActiveOfferId(state),
     authorizationStatus: getAuthorizationStatus(state),
     currentCity: getCurrentCity(state),
+    favoritesOffers: getFavoritesOffers(state),
+    loading: getLoadingStatus(state),
     offersOfTown: getOffersOfTown(state),
     sortByName: getSortName(state),
     sortOffersOfTown: getSortOffers(state),
