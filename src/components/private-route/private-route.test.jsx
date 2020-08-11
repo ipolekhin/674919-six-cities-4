@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import PrivateRoute from "./private-route.jsx";
 import {Router} from 'react-router-dom';
 import history from '../../history';
-import PlaceCard from "../place-card/place-card";
 
 const authorizationStatus = false;
 const noop = () => {};
